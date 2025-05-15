@@ -78,6 +78,17 @@ function App() {
         if (upg.moneyPerFollowerBonus) moneyPerFollowerBonusTotal += upg.moneyPerFollowerBonus * upg.level;
       }
     });
+
+        // Check monetization unlocks
+        Object.keys(gs.monetizationOptions).forEach(key => {
+          const option = gs.monetizationOptions[key];
+          if (!option.unlocked && option.requirement && option.requirement(gs)) {
+              gs.monetizationOptions[key] = {
+                  ...option,
+                  unlocked: true
+              };
+          }
+      });
     return {
         calculatedFollowersPerClick: fpc,
         calculatedPassiveFollowersPerSecond: pfps,
@@ -263,6 +274,27 @@ function App() {
     }
   };
 
+  const handleResetGame = () => {
+    if (window.confirm('Are you sure you want to reset your game? All progress will be lost!')) {
+      // Create fresh achievements with original conditions
+      const resetState = {
+        ...initialGameState,
+        // Start with a fresh empty object for achievements
+        achievements: Object.keys(INITIAL_ACHIEVEMENTS).reduce((acc, key) => ({
+          ...acc,
+          [key]: {
+            ...INITIAL_ACHIEVEMENTS[key],
+            unlocked: false
+          }
+        }), {}), // Changed from INITIAL_ACHIEVEMENTS to {}
+        lastTick: Date.now()
+      };
+      
+      setGameState(resetState);
+      localStorage.removeItem(SAVE_KEY);
+    }
+  };
+
   // --- RENDER LOGIC ---
   const renderScreen = () => {
     switch (currentScreen) {
@@ -280,13 +312,15 @@ function App() {
       case 'achievements':
         return <AchievementsScreen achievements={gameState.achievements} />;
       case 'settings':
-        return <SettingsScreen onExport={handleExportGame} onImport={handleImportGame} />;
+        return <SettingsScreen onExport={handleExportGame} onImport={handleImportGame} onReset={handleResetGame} />;
       default:
         return <p>Unknown Screen</p>;
     }
   };
 
   const currentInsanityStage = INSANITY_STAGES[gameState.insanityLevelIndex] || INSANITY_STAGES[0];
+
+
 
   return (
     <div className="App">

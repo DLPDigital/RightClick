@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 interface SettingsScreenProps {
   onExport: () => string;
   onImport: (saveData: string) => void;
+  onReset: () => void;
 }
 
-const SettingsScreen: React.FC<SettingsScreenProps> = ({ onExport, onImport }) => {
+const SettingsScreen: React.FC<SettingsScreenProps> = ({ onExport, onImport, onReset }) => {
   const [importData, setImportData] = useState('');
   const [message, setMessage] = useState('');
 
@@ -46,6 +47,13 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({ onExport, onImport }) =
       />
       <button onClick={handleImport}>Import from Textarea</button>
       {message && <p>{message}</p>}
+      <h3>Reset Game</h3>
+      <button 
+        onClick={onReset}
+        style={{ backgroundColor: '#500', borderColor: '#800' }}
+      >
+        Reset Game
+      </button>
     </div>
   );
 };
