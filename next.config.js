@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
+  output: 'export',
+  images: {
+    unoptimized: true
+  },
+  // Ensure no trailing slash is added to URLs
+  trailingSlash: false,
 }
 
 module.exports = nextConfig
