@@ -1,38 +1,106 @@
+body {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #1a1a1a;
+  color: #0f0; /* Green text for hacker/conspiracy feel */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align top */
+  min-height: 100vh;
+}
+
 .App {
+  width: 800px;
+  max-width: 95%;
+  background-color: #222;
+  border: 1px solid #080;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #0f0;
+}
+
+.status-bar {
+  background-color: #111;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #050;
+  display: flex;
+  justify-content: space-around;
+}
+
+.status-bar span {
+  margin: 0 10px;
+}
+
+nav {
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav button {
+  background-color: #333;
+  color: #0f0;
+  border: 1px solid #0a0;
+  padding: 8px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-family: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav button:hover {
+  background-color: #444;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav button.active {
+  background-color: #050;
+  color: #fff;
+}
+
+.screen-content {
+  padding: 15px;
+  border: 1px dashed #070;
+  min-height: 300px;
+}
+
+h1, h2, h3 {
+  color: #0f0;
+  text-shadow: 0 0 3px #0f0;
+}
+
+button {
+  background-color: #030;
+  color: #0f0;
+  border: 1px solid #0a0;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-family: inherit;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #050;
+}
+
+button:disabled {
+  background-color: #222;
+  color: #070;
+  cursor: not-allowed;
+  border-color: #050;
+}
+
+.item-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.item {
+  background-color: #2a2a2a;
+  padding: 10px;
+  border: 1px solid #060;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item h3 {
+  margin-top: 0;
 }
