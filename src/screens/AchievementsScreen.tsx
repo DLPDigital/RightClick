@@ -12,7 +12,8 @@ const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ achievements })
       <h2>"Accolades"</h2>
       <p>Recognitions of your... influence.</p>
       <div className="item-list">
-        {Object.values(achievements).map(ach => (
+        {Object.values(achievements).map(ach => 
+        ach.unlocked && (
           <AchievementItem key={ach.id} achievement={ach} />
         ))}
       </div>
