@@ -1,5 +1,5 @@
 body {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   background-color: #1a1a1a;
   color: #0f0; /* Green text for hacker/conspiracy feel */
   margin: 0;
@@ -63,7 +63,9 @@ nav button.active {
   min-height: 300px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: #0f0;
   text-shadow: 0 0 3px #0f0;
 }

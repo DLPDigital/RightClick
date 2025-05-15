@@ -1,9 +1,9 @@
-import React from 'react';
-import { GameState } from '../types';
-import AchievementItem from '../components/AchievementsItem';
+import React from "react"
+import { GameState } from "../types"
+import AchievementItem from "../components/AchievementsItem"
 
 interface AchievementsScreenProps {
-  achievements: GameState['achievements'];
+  achievements: GameState["achievements"]
 }
 
 const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ achievements }) => {
@@ -12,12 +12,11 @@ const AchievementsScreen: React.FC<AchievementsScreenProps> = ({ achievements })
       <h2>"Accolades"</h2>
       <p>Recognitions of your... influence.</p>
       <div className="item-list">
-        {Object.values(achievements).map(ach => 
-        ach.unlocked && (
-          <AchievementItem key={ach.id} achievement={ach} />
-        ))}
+        {Object.values(achievements).map(
+          (ach) => ach.unlocked && <AchievementItem key={ach.id} achievement={ach} />
+        )}
       </div>
     </div>
-  );
-};
-export default AchievementsScreen;
+  )
+}
+export default AchievementsScreen

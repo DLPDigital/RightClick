@@ -1,18 +1,24 @@
-import React from 'react';
-import { MonetizationOption } from '../types';
-import { formatNumber } from '../utils/formatters';
+import React from "react"
+import { MonetizationOption } from "../types"
+import { formatNumber } from "../utils/formatters"
 
 interface MonetizationItemProps {
-  option: MonetizationOption;
-  money: number;
-  followers: number;
-  onActivate: (id: string) => void;
+  option: MonetizationOption
+  money: number
+  followers: number
+  onActivate: (id: string) => void
 }
 
-const MonetizationItem: React.FC<MonetizationItemProps> = ({ option, money, followers, onActivate }) => {
-  const canActivate = !option.active && money >= option.costToActivate && followers >= option.followerRequirement;
+const MonetizationItem: React.FC<MonetizationItemProps> = ({
+  option,
+  money,
+  followers,
+  onActivate,
+}) => {
+  const canActivate =
+    !option.active && money >= option.costToActivate && followers >= option.followerRequirement
 
-  if (!option.unlocked) return null;
+  // if (!option.unlocked) return null;
 
   return (
     <div className="item">
@@ -22,9 +28,9 @@ const MonetizationItem: React.FC<MonetizationItemProps> = ({ option, money, foll
       {option.costToActivate > 0 && <p>Activation Cost: ${formatNumber(option.costToActivate)}</p>}
       <p>Income: ${formatNumber(option.moneyPerSecond)}/sec</p>
       <button onClick={() => onActivate(option.id)} disabled={!canActivate || option.active}>
-        {option.active ? "Active" : (canActivate ? "Activate" : "Requirements Not Met")}
+        {option.active ? "Active" : canActivate ? "Activate" : "Requirements Not Met"}
       </button>
     </div>
-  );
-};
-export default MonetizationItem;
+  )
+}
+export default MonetizationItem
