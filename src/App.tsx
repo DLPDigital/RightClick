@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
-import { GameState, ScreenName, Upgrade, MonetizationOption, Achievement } from './types';
+import { GameState, ScreenName } from './types';
+// import { GameState, ScreenName, Upgrade, MonetizationOption, Achievement } from './types';
 import { INSANITY_STAGES } from './data/insanityLevels';
 import { INITIAL_UPGRADES } from './data/upgrades';
 import { INITIAL_MONETIZATION_OPTIONS } from './data/monetization';

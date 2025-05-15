@@ -1,5 +1,6 @@
 import React from 'react';
-import { GameState, MonetizationOption as MonetizationOptionType } from '../types';
+import { GameState } from '../types';
+// import { GameState, MonetizationOption as MonetizationOptionType } from '../types';
 import MonetizationItem from '../components/MonetizationItem';
 
 interface MonetizationScreenProps {

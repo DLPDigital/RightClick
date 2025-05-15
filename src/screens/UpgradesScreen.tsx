@@ -1,5 +1,6 @@
 import React from 'react';
-import { GameState, Upgrade as UpgradeType } from '../types';
+import { GameState } from '../types';
+// import { GameState, Upgrade as UpgradeType } from '../types';
 import UpgradeItem from '../components/UpgradeItem';
 
 interface UpgradesScreenProps {
