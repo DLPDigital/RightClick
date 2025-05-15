@@ -4,8 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  // Ensure no trailing slash is added to URLs
-  trailingSlash: false,
+  distDir: 'out'
 }
 
 module.exports = nextConfig
