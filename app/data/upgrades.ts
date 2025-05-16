@@ -18,7 +18,7 @@ export const INITIAL_UPGRADES: Record<string, Upgrade> = {
     baseCost: 100,
     costMultiplier: 1.2,
     level: 0,
-    unlocked: false,
+    unlocked: true,
     followersPerClickBonus: 5,
     requirement: (gs) => gs.followers >= 50,
   },

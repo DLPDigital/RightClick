@@ -77,7 +77,7 @@ function App() {
       case "upgrades":
         return <UpgradesScreen gameState={gameState} onPurchaseUpgrade={handlePurchaseUpgrade} />
       case "achievements":
-        return <AchievementsScreen achievements={gameState.achievements} />
+        return <AchievementsScreen unlockedAchievements={gameState.unlockedAchievements} />
       case "settings":
         return (
           <SettingsScreen

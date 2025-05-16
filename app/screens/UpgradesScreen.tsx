@@ -1,7 +1,7 @@
 import React from "react"
 import { GameState } from "../types"
-// import { GameState, Upgrade as UpgradeType } from '../types';
 import UpgradeItem from "../components/UpgradeItem"
+import { INITIAL_UPGRADES } from "../data/upgrades"
 
 interface UpgradesScreenProps {
   gameState: GameState
@@ -9,24 +9,34 @@ interface UpgradesScreenProps {
 }
 
 const UpgradesScreen: React.FC<UpgradesScreenProps> = ({ gameState, onPurchaseUpgrade }) => {
+  // Get all upgrades that either exist in player's state or are initially unlocked
+  const availableUpgrades = Object.values(INITIAL_UPGRADES)
+    .map(upgrade => {
+      const playerUpgrade = gameState.upgrades.find(u => u.id === upgrade.id)
+      return {
+        ...upgrade,
+        level: playerUpgrade?.level ?? 0
+      }
+    })
+    .filter(upgrade => upgrade.unlocked || gameState.upgrades.some(u => u.id === upgrade.id))
+    .sort((a, b) => a.baseCost - b.baseCost)
+
   return (
     <div>
       <h2>Invest in &ldquo;Research&rdquo; (and Propaganda)</h2>
       <p>Buy better equipment, hire help, and expand your reach.</p>
       <div className="item-list">
-        {Object.values(gameState.upgrades)
-          .filter((upg) => upg.unlocked)
-          .sort((a, b) => a.baseCost - b.baseCost) // Optional: sort
-          .map((upgrade) => (
-            <UpgradeItem
-              key={upgrade.id}
-              upgrade={upgrade}
-              money={gameState.money}
-              onPurchase={onPurchaseUpgrade}
-            />
-          ))}
+        {availableUpgrades.map((upgrade) => (
+          <UpgradeItem
+            key={upgrade.id}
+            upgrade={upgrade}
+            money={gameState.money}
+            onPurchase={onPurchaseUpgrade}
+          />
+        ))}
       </div>
     </div>
   )
 }
+
 export default UpgradesScreen

@@ -29,6 +29,16 @@ export interface MonetizationOption {
   requirement?: (gameState: GameState) => boolean // For unlocking
 }
 
+export interface UpgradeInstance {
+  id: string
+  level: number
+}
+
+export interface MonetizationInstance {
+  id: string
+  active: boolean
+}
+
 export interface Achievement {
   id: string
   name: string
@@ -56,9 +66,9 @@ export interface GameState {
   passiveFollowersPerSecond: number
   baseMoneyPerFollowerPerSecond: number // Base rate before monetization specific bonuses
 
-  upgrades: Record<string, Upgrade>
-  monetizationOptions: Record<string, MonetizationOption>
-  achievements: Record<string, Achievement>
+  upgrades: UpgradeInstance[]
+  monetizationOptions: MonetizationInstance[]
+  unlockedAchievements: string[]
 
   lastTick: number
 }

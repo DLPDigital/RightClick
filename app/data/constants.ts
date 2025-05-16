@@ -1,7 +1,7 @@
 import { GameState } from "../types"
-import { INITIAL_ACHIEVEMENTS } from "./achievements"
-import { INITIAL_MONETIZATION_OPTIONS } from "./monetization"
-import { INITIAL_UPGRADES } from "./upgrades"
+// import { INITIAL_ACHIEVEMENTS } from "./achievements"
+// import { INITIAL_MONETIZATION_OPTIONS } from "./monetization"
+// import { INITIAL_UPGRADES } from "./upgrades"
 
 export const SAVE_KEY = "conspiracyClickerSave"
 export const VISUAL_UPDATE_INTERVAL = 50 // 20fps for smooth UI
@@ -16,9 +16,9 @@ export const initialGameState: GameState = {
   followersPerClick: 1,
   passiveFollowersPerSecond: 0,
   baseMoneyPerFollowerPerSecond: 0.001,
-  upgrades: JSON.parse(JSON.stringify(INITIAL_UPGRADES)),
-  monetizationOptions: JSON.parse(JSON.stringify(INITIAL_MONETIZATION_OPTIONS)),
-  achievements: JSON.parse(JSON.stringify(INITIAL_ACHIEVEMENTS)),
+  upgrades: [{ id: 'faster-typing', level: 0 }],
+  monetizationOptions: [],
+  unlockedAchievements: [],
   moneyPerSecond: 0,
   lastTick: Date.now(),
 }
