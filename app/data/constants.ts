@@ -19,5 +19,6 @@ export const initialGameState: GameState = {
   upgrades: JSON.parse(JSON.stringify(INITIAL_UPGRADES)),
   monetizationOptions: JSON.parse(JSON.stringify(INITIAL_MONETIZATION_OPTIONS)),
   achievements: JSON.parse(JSON.stringify(INITIAL_ACHIEVEMENTS)),
+  moneyPerSecond: 0,
   lastTick: Date.now(),
 }

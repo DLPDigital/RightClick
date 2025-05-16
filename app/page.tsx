@@ -93,13 +93,15 @@ function App() {
 
   const currentInsanityStage = INSANITY_STAGES[gameState.insanityLevelIndex] || INSANITY_STAGES[0]
 
+  // console.log('game state', gameState)
+
   return (
     <div className="App">
       <StatusBar
         money={gameState.money}
         followers={gameState.followers}
         currentInsanityStage={currentInsanityStage}
-        baseMoneyPerFollowerPerSecond={gameState.baseMoneyPerFollowerPerSecond}
+        moneyPerSecond={gameState.moneyPerSecond}
       />
       <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
       <div className="screen-content">{renderScreen()}</div>

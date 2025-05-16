@@ -6,20 +6,19 @@ interface StatusBarProps {
   money: number
   followers: number
   currentInsanityStage: InsanityStage
-  baseMoneyPerFollowerPerSecond: number
+  moneyPerSecond: number
 }
 
 const StatusBar: React.FC<StatusBarProps> = ({
   money,
-  baseMoneyPerFollowerPerSecond,
+  moneyPerSecond,
   followers,
   currentInsanityStage,
 }) => {
   return (
     <div className="status-bar">
-      <span>Money: ${formatNumber(money)}</span>
-      {/* <span>Money: ${money}</span> */}
-      <span>Money per sec: ${formatNumber(baseMoneyPerFollowerPerSecond * followers)}</span>
+      <span>Money: ${formatNumber(money, true)}</span>
+      <span>Money per sec: ${formatNumber(moneyPerSecond, true)}</span>
       <span>Followers: {formatNumber(followers)}</span>
       <span>
         Insanity: {currentInsanityStage.name} ({currentInsanityStage.description})

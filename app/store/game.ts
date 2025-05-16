@@ -36,21 +36,22 @@ export const useGameStore = create<GameStore>()(
       },
       setGameState: (newState: GameState) => set({ gameState: newState }),
       calculateRates: (gs: GameState) => {
-        let fpc = 1
-        let pfps = 0
+        let followersPerClick = 1
+        let passiveFollowersPerSecond = 0 // passive followers per second
         let moneyPerFollowerBonusTotal = 0
         Object.values(gs.upgrades).forEach((upg) => {
           if (upg.level > 0) {
-            if (upg.followersPerClickBonus) fpc += upg.followersPerClickBonus * upg.level
+            if (upg.followersPerClickBonus)
+              followersPerClick += upg.followersPerClickBonus * upg.level
             if (upg.passiveFollowersPerSecondBonus)
-              pfps += upg.passiveFollowersPerSecondBonus * upg.level
+              passiveFollowersPerSecond += upg.passiveFollowersPerSecondBonus * upg.level
             if (upg.moneyPerFollowerBonus)
               moneyPerFollowerBonusTotal += upg.moneyPerFollowerBonus * upg.level
           }
         })
         return {
-          calculatedFollowersPerClick: fpc,
-          calculatedPassiveFollowersPerSecond: pfps,
+          calculatedFollowersPerClick: followersPerClick,
+          calculatedPassiveFollowersPerSecond: passiveFollowersPerSecond,
           calculatedMoneyPerFollowerPerSecond:
             gs.baseMoneyPerFollowerPerSecond * (1 + moneyPerFollowerBonusTotal),
         }
@@ -60,17 +61,34 @@ export const useGameStore = create<GameStore>()(
           const now = Date.now()
           const deltaSeconds = (now - state.gameState.lastTick) / 1000
           const rates = get().calculateRates(state.gameState)
+
+          // Calculate new followers
           const newFollowers =
             state.gameState.followers + rates.calculatedPassiveFollowersPerSecond * deltaSeconds
+
+          // Calculate money from followers
           const moneyFromFollowers =
             newFollowers * rates.calculatedMoneyPerFollowerPerSecond * deltaSeconds
+
+          // Calculate money from monetization options
           let moneyFromMonetization = 0
           Object.values(state.gameState.monetizationOptions).forEach((opt) => {
             if (opt.active) {
               moneyFromMonetization += opt.moneyPerSecond * deltaSeconds
             }
           })
+
+          // Calculate total new money
           const newMoney = state.gameState.money + moneyFromFollowers + moneyFromMonetization
+
+          // Calculate money per second (base rates without multiplication)
+          const totalMoneyPerSecond =
+            state.gameState.followers * rates.calculatedMoneyPerFollowerPerSecond +
+            Object.values(state.gameState.monetizationOptions).reduce(
+              (sum, opt) => sum + (opt.active ? opt.moneyPerSecond : 0),
+              0
+            )
+
           let newInsanityIndex = state.gameState.insanityLevelIndex
           for (let i = INSANITY_STAGES.length - 1; i >= 0; i--) {
             if (state.gameState.postsMade >= INSANITY_STAGES[i].threshold && i > newInsanityIndex) {
@@ -78,11 +96,12 @@ export const useGameStore = create<GameStore>()(
               break
             }
           }
-
+          console.log("totalMoneyPerSecond", totalMoneyPerSecond)
           const nextState: GameState = {
             ...state.gameState,
             money: newMoney,
             followers: newFollowers,
+            moneyPerSecond: totalMoneyPerSecond,
             insanityLevelIndex: newInsanityIndex,
             followersPerClick: rates.calculatedFollowersPerClick,
             passiveFollowersPerSecond: rates.calculatedPassiveFollowersPerSecond,
@@ -208,10 +227,12 @@ export const useGameStore = create<GameStore>()(
           ) {
             throw new Error("Invalid save data structure.")
           }
+          const importedMoneyPerSecond = importedState.moneyPerSecond || 0
           set({
             gameState: {
               ...initialGameState,
               ...importedState,
+              moneyPerSecond: importedMoneyPerSecond ?? 0,
               upgrades: { ...initialGameState.upgrades, ...importedState.upgrades },
               monetizationOptions: {
                 ...initialGameState.monetizationOptions,

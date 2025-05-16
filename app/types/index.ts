@@ -39,7 +39,7 @@ export interface Achievement {
 }
 
 export interface InsanityStage {
-  threshold: number // e.g., posts made or followers
+  threshold: number
   name: string
   description: string // Flavor text
 }
@@ -49,6 +49,7 @@ export interface GameState {
   followers: number
   postsMade: number
   insanityLevelIndex: number // Index in the insanityStages array
+  moneyPerSecond: number
 
   // Core rates
   followersPerClick: number
@@ -59,5 +60,5 @@ export interface GameState {
   monetizationOptions: Record<string, MonetizationOption>
   achievements: Record<string, Achievement>
 
-  lastTick: number // For calculating offline progress if desired (advanced)
+  lastTick: number
 }
