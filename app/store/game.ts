@@ -1,8 +1,8 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
-import { GameState } from '../types'
-import { initialGameState } from '../data/constants'
-import { INSANITY_STAGES } from '../data/insanityLevels'
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
+import { GameState } from "../types"
+import { initialGameState } from "../data/constants"
+import { INSANITY_STAGES } from "../data/insanityLevels"
 
 interface GameStore {
   gameState: GameState
@@ -26,49 +26,52 @@ export const useGameStore = create<GameStore>()(
     (set, get) => ({
       gameState: initialGameState,
       setGameState: (newState: GameState) => set({ gameState: newState }),
-      
+
       // Move the calculation logic into the store
       calculateRates: (gs: GameState) => {
         let fpc = 1
         let pfps = 0
         let moneyPerFollowerBonusTotal = 0
 
-        Object.values(gs.upgrades).forEach(upg => {
+        Object.values(gs.upgrades).forEach((upg) => {
           if (upg.level > 0) {
             if (upg.followersPerClickBonus) fpc += upg.followersPerClickBonus * upg.level
-            if (upg.passiveFollowersPerSecondBonus) pfps += upg.passiveFollowersPerSecondBonus * upg.level
-            if (upg.moneyPerFollowerBonus) moneyPerFollowerBonusTotal += upg.moneyPerFollowerBonus * upg.level
+            if (upg.passiveFollowersPerSecondBonus)
+              pfps += upg.passiveFollowersPerSecondBonus * upg.level
+            if (upg.moneyPerFollowerBonus)
+              moneyPerFollowerBonusTotal += upg.moneyPerFollowerBonus * upg.level
           }
         })
 
         return {
           calculatedFollowersPerClick: fpc,
           calculatedPassiveFollowersPerSecond: pfps,
-          calculatedMoneyPerFollowerPerSecond: gs.baseMoneyPerFollowerPerSecond * (1 + moneyPerFollowerBonusTotal)
+          calculatedMoneyPerFollowerPerSecond:
+            gs.baseMoneyPerFollowerPerSecond * (1 + moneyPerFollowerBonusTotal),
         }
       },
       tick: () => {
         set((state) => {
           const now = Date.now()
           const deltaSeconds = (now - state.gameState.lastTick) / 1000
-          
+
           const rates = get().calculateRates(state.gameState)
-          
-          const newFollowers = 
+
+          const newFollowers =
             state.gameState.followers + rates.calculatedPassiveFollowersPerSecond * deltaSeconds
-          
-          const moneyFromFollowers = 
+
+          const moneyFromFollowers =
             newFollowers * rates.calculatedMoneyPerFollowerPerSecond * deltaSeconds
-          
+
           let moneyFromMonetization = 0
           Object.values(state.gameState.monetizationOptions).forEach((opt) => {
             if (opt.active) {
               moneyFromMonetization += opt.moneyPerSecond * deltaSeconds
             }
           })
-          
+
           const newMoney = state.gameState.money + moneyFromFollowers + moneyFromMonetization
-          
+
           // Update Insanity Level
           let newInsanityIndex = state.gameState.insanityLevelIndex
           for (let i = INSANITY_STAGES.length - 1; i >= 0; i--) {
@@ -77,7 +80,7 @@ export const useGameStore = create<GameStore>()(
               break
             }
           }
-          
+
           const nextState: GameState = {
             ...state.gameState,
             money: newMoney,
@@ -87,7 +90,7 @@ export const useGameStore = create<GameStore>()(
             passiveFollowersPerSecond: rates.calculatedPassiveFollowersPerSecond,
             lastTick: now,
           }
-          
+
           // Check for unlocks
           Object.keys(nextState.upgrades).forEach((key) => {
             const upg = nextState.upgrades[key]
@@ -95,14 +98,14 @@ export const useGameStore = create<GameStore>()(
               nextState.upgrades[key] = { ...upg, unlocked: true }
             }
           })
-          
+
           Object.keys(nextState.monetizationOptions).forEach((key) => {
             const opt = nextState.monetizationOptions[key]
             if (!opt.unlocked && opt.requirement && opt.requirement(nextState)) {
               nextState.monetizationOptions[key] = { ...opt, unlocked: true }
             }
           })
-          
+
           // Check Achievements
           Object.keys(nextState.achievements).forEach((key) => {
             const ach = nextState.achievements[key]
@@ -115,7 +118,7 @@ export const useGameStore = create<GameStore>()(
               }
             }
           })
-          
+
           return { gameState: nextState }
         })
       },
@@ -125,7 +128,7 @@ export const useGameStore = create<GameStore>()(
             ...state.gameState,
             followers: state.gameState.followers + state.gameState.followersPerClick,
             postsMade: state.gameState.postsMade + 1,
-          }
+          },
         }))
       },
 
@@ -160,7 +163,7 @@ export const useGameStore = create<GameStore>()(
                 upgrades: newUpgrades,
                 followersPerClick: rates.calculatedFollowersPerClick,
                 passiveFollowersPerSecond: rates.calculatedPassiveFollowersPerSecond,
-              }
+              },
             }
           }
           return state
@@ -172,8 +175,10 @@ export const useGameStore = create<GameStore>()(
           const option = state.gameState.monetizationOptions[id]
           if (!option || option.active) return state
 
-          if (state.gameState.money >= option.costToActivate && 
-              state.gameState.followers >= option.followerRequirement) {
+          if (
+            state.gameState.money >= option.costToActivate &&
+            state.gameState.followers >= option.followerRequirement
+          ) {
             return {
               gameState: {
                 ...state.gameState,
@@ -181,8 +186,8 @@ export const useGameStore = create<GameStore>()(
                 monetizationOptions: {
                   ...state.gameState.monetizationOptions,
                   [id]: { ...option, active: true },
-                }
-              }
+                },
+              },
             }
           }
           return state
@@ -196,10 +201,13 @@ export const useGameStore = create<GameStore>()(
         try {
           const importedState = JSON.parse(data) as GameState
           // Basic validation
-          if (typeof importedState.money !== "number" || typeof importedState.followers !== "number") {
+          if (
+            typeof importedState.money !== "number" ||
+            typeof importedState.followers !== "number"
+          ) {
             throw new Error("Invalid save data structure.")
           }
-          set((state) => ({
+          set({
             gameState: {
               ...initialGameState,
               ...importedState,
@@ -210,8 +218,8 @@ export const useGameStore = create<GameStore>()(
               },
               achievements: { ...initialGameState.achievements, ...importedState.achievements },
               lastTick: Date.now(),
-            }
-          }))
+            },
+          })
         } catch (e) {
           console.error("Import failed:", e)
           throw e
@@ -219,14 +227,17 @@ export const useGameStore = create<GameStore>()(
       },
 
       resetGame: () => {
-        if (typeof window !== 'undefined' && window.confirm("Are you sure you want to reset your game?")) {
+        if (
+          typeof window !== "undefined" &&
+          window.confirm("Are you sure you want to reset your game?")
+        ) {
           set({ gameState: { ...initialGameState, lastTick: Date.now() } })
-          localStorage.removeItem('conspiracy-clicker-storage')
+          localStorage.removeItem("conspiracy-clicker-storage")
         }
-      }
+      },
     }),
     {
-      name: 'conspiracy-clicker-storage'
+      name: "conspiracy-clicker-storage",
     }
   )
 )

@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from "react"
 import { initialGameState, SAVE_KEY } from "../data/constants"
-import { GameState } from '../types'
+import { GameState } from "../types"
 
 interface HandleResetGameProps {
   setGameState: Dispatch<SetStateAction<GameState>>

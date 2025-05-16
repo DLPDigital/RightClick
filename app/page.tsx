@@ -34,7 +34,7 @@ function App() {
 
   // Save game state whenever it changes
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       localStorage.setItem(SAVE_KEY, JSON.stringify(gameState))
     }
   }, [gameState])

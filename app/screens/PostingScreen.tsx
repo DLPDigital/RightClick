@@ -25,8 +25,8 @@ const PostingScreen: React.FC<PostingScreenProps> = ({
         POST CONSPIRACY!
       </button>
       <p style={{ marginTop: "20px", fontStyle: "italic" }}>
-        Tip: The more you post, the deeper down the rabbit hole you go... and the more &ldquo;lucrative&rdquo;
-        opportunities arise.
+        Tip: The more you post, the deeper down the rabbit hole you go... and the more
+        &ldquo;lucrative&rdquo; opportunities arise.
       </p>
     </div>
   )
