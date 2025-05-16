@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react"
 import "./App.css"
-import { useGameStore } from "./store/game"
+import { useGameSelectors } from "./store/game"
 import { ScreenName } from "./types"
 import { INSANITY_STAGES } from "./data/insanityLevels"
+
 
 import NavBar from "./components/NavBar"
 import StatusBar from "./components/StatusBar"
@@ -16,14 +17,17 @@ import SettingsScreen from "./screens/SettingsScreen"
 import { SAVE_KEY, TICK_INTERVAL } from "./data/constants"
 
 function App() {
-  const gameState = useGameStore((state) => state.gameState)
-  const tick = useGameStore((state) => state.tick)
-  const handlePost = useGameStore((state) => state.handlePost)
-  const handlePurchaseUpgrade = useGameStore((state) => state.handlePurchaseUpgrade)
-  const handleActivateMonetization = useGameStore((state) => state.handleActivateMonetization)
-  const handleExportGame = useGameStore((state) => state.exportGame)
-  const handleImportGame = useGameStore((state) => state.importGame)
-  const handleResetGame = useGameStore((state) => state.resetGame)
+
+  const {
+    gameState,
+    tick,
+    handlePost,
+    handlePurchaseUpgrade,
+    handleActivateMonetization,
+    exportGame: handleExportGame,
+    importGame: handleImportGame,
+    resetGame: handleResetGame,
+  } = useGameSelectors()
 
   const [currentScreen, setCurrentScreen] = useState<ScreenName>("posting")
 
@@ -39,7 +43,6 @@ function App() {
     }
   }, [gameState])
 
-  // --- RENDER LOGIC ---
   const renderScreen = () => {
     switch (currentScreen) {
       case "posting":

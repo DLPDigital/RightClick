@@ -4,7 +4,7 @@ import { GameState } from "../types"
 import { initialGameState } from "../data/constants"
 import { INSANITY_STAGES } from "../data/insanityLevels"
 
-interface GameStore {
+export interface GameStore {
   gameState: GameState
   setGameState: (state: GameState) => void
   calculateRates: (gs: GameState) => {
@@ -238,6 +238,22 @@ export const useGameStore = create<GameStore>()(
     }),
     {
       name: "conspiracy-clicker-storage",
+      partialize: (state) => ({
+        gameState: state.gameState,
+      }),
     }
   )
 )
+
+export const useGameSelectors = () => {
+  return {
+    gameState: useGameStore((state) => state.gameState),
+    tick: useGameStore((state) => state.tick),
+    handlePost: useGameStore((state) => state.handlePost),
+    handlePurchaseUpgrade: useGameStore((state) => state.handlePurchaseUpgrade),
+    handleActivateMonetization: useGameStore((state) => state.handleActivateMonetization),
+    exportGame: useGameStore((state) => state.exportGame),
+    importGame: useGameStore((state) => state.importGame),
+    resetGame: useGameStore((state) => state.resetGame),
+  }
+}
