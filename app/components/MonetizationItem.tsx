@@ -3,7 +3,7 @@ import { MonetizationOption } from "../types"
 import { formatNumber } from "../utils/formatters"
 
 interface MonetizationItemProps {
-  option: MonetizationOption
+  option: MonetizationOption & { active: boolean } // Combine static data with active state
   money: number
   followers: number
   onActivate: (id: string) => void
@@ -18,8 +18,6 @@ const MonetizationItem: React.FC<MonetizationItemProps> = ({
   const canActivate =
     !option.active && money >= option.costToActivate && followers >= option.followerRequirement
 
-  // if (!option.unlocked) return null;
-
   return (
     <div className="item">
       <h3>{option.name}</h3>
@@ -33,4 +31,5 @@ const MonetizationItem: React.FC<MonetizationItemProps> = ({
     </div>
   )
 }
+
 export default MonetizationItem

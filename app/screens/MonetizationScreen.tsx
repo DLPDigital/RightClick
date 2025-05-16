@@ -13,13 +13,15 @@ const MonetizationScreen: React.FC<MonetizationScreenProps> = ({
   onActivateMonetization,
 }) => {
   // Map the monetization options from game state to full options with data
-  const availableOptions = gameState.monetizationOptions.map(stateOption => {
-    const optionData = INITIAL_MONETIZATION_OPTIONS[stateOption.id]
-    return {
-      ...optionData,
-      active: stateOption.active
-    }
-  }).sort((a, b) => a.followerRequirement - b.followerRequirement)
+  const availableOptions = gameState.monetizationOptions
+    .map((stateOption) => {
+      const optionData = INITIAL_MONETIZATION_OPTIONS[stateOption.id]
+      return {
+        ...optionData,
+        active: stateOption.active,
+      }
+    })
+    .sort((a, b) => a.followerRequirement - b.followerRequirement)
 
   return (
     <div>

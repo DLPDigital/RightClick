@@ -16,7 +16,7 @@ export const initialGameState: GameState = {
   followersPerClick: 1,
   passiveFollowersPerSecond: 0,
   baseMoneyPerFollowerPerSecond: 0.001,
-  upgrades: [{ id: 'faster-typing', level: 0 }],
+  upgrades: [{ id: "faster-typing", level: 0 }],
   monetizationOptions: [],
   unlockedAchievements: [],
   moneyPerSecond: 0,

@@ -42,10 +42,10 @@ export const useGameStore = create<GameStore>()(
         let followersPerClick = 1
         let passiveFollowersPerSecond = 0
         let moneyPerFollowerBonusTotal = 0
-      
+
         // Add safety check to ensure upgrades is an array
         const upgrades = Array.isArray(gs.upgrades) ? gs.upgrades : []
-      
+
         upgrades.forEach(({ id, level }) => {
           const upgrade = INITIAL_UPGRADES[id]
           if (level > 0) {
@@ -60,7 +60,7 @@ export const useGameStore = create<GameStore>()(
             }
           }
         })
-      
+
         return {
           calculatedFollowersPerClick: followersPerClick,
           calculatedPassiveFollowersPerSecond: passiveFollowersPerSecond,
@@ -134,8 +134,12 @@ export const useGameStore = create<GameStore>()(
 
           // Check for new monetization options
           Object.entries(INITIAL_MONETIZATION_OPTIONS).forEach(([id, monetizationData]) => {
-            const hasOption = nextState.monetizationOptions.some(m => m.id === id)
-            if (!hasOption && monetizationData.requirement && monetizationData.requirement(nextState)) {
+            const hasOption = nextState.monetizationOptions.some((m) => m.id === id)
+            if (
+              !hasOption &&
+              monetizationData.requirement &&
+              monetizationData.requirement(nextState)
+            ) {
               nextState.monetizationOptions.push({ id, active: false })
             }
           })
@@ -262,7 +266,7 @@ export const useGameStore = create<GameStore>()(
           ) {
             throw new Error("Invalid save data structure.")
           }
-      
+
           set({
             gameState: {
               ...initialGameState,

@@ -12,10 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-      <Script
-          src="https://scripts.withcabin.com/hello.js"
-          strategy="afterInteractive"
-        />
+        <Script src="https://scripts.withcabin.com/hello.js" strategy="afterInteractive" />
       </head>
       <body>{children}</body>
     </html>
