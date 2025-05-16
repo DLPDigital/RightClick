@@ -4,7 +4,9 @@ import { INITIAL_MONETIZATION_OPTIONS } from "./monetization"
 import { INITIAL_UPGRADES } from "./upgrades"
 
 export const SAVE_KEY = "conspiracyClickerSave"
-export const TICK_INTERVAL = 100
+export const VISUAL_UPDATE_INTERVAL = 50 // 20fps for smooth UI
+export const GAME_TICK_INTERVAL = 100 // 10fps for game logic
+export const SAVE_INTERVAL = 5000 // Save every 5 seconds
 
 export const initialGameState: GameState = {
   money: 0,
@@ -16,6 +18,6 @@ export const initialGameState: GameState = {
   baseMoneyPerFollowerPerSecond: 0.001,
   upgrades: JSON.parse(JSON.stringify(INITIAL_UPGRADES)), // This is fine as upgrades don't have functions
   monetizationOptions: JSON.parse(JSON.stringify(INITIAL_MONETIZATION_OPTIONS)),
-  achievements: INITIAL_ACHIEVEMENTS, // Direct reference instead of deep copy
+  achievements: JSON.parse(JSON.stringify(INITIAL_ACHIEVEMENTS)),
   lastTick: Date.now(),
 }

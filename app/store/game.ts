@@ -19,12 +19,21 @@ export interface GameStore {
   exportGame: () => string
   importGame: (data: string) => void
   resetGame: () => void
+  visualTick: () => void
+  visualState: {
+    displayedMoney: number
+    displayedFollowers: number
+  }
 }
 
 export const useGameStore = create<GameStore>()(
   persist(
     (set, get) => ({
       gameState: initialGameState,
+      visualState: {
+        displayedMoney: initialGameState.money,
+        displayedFollowers: initialGameState.followers,
+      },
       setGameState: (newState: GameState) => set({ gameState: newState }),
 
       // Move the calculation logic into the store
@@ -109,12 +118,18 @@ export const useGameStore = create<GameStore>()(
           // Check Achievements
           Object.keys(nextState.achievements).forEach((key) => {
             const ach = nextState.achievements[key]
-            if (!ach.unlocked && ach.condition(nextState)) {
-              nextState.achievements[key] = { ...ach, unlocked: true }
-              console.log(`Achievement Unlocked: ${ach.name}`)
-              if (ach.reward) {
-                const rewardChanges = ach.reward(nextState)
-                Object.assign(nextState, rewardChanges)
+            if (!ach.unlocked && ach.condition && typeof ach.condition === "function") {
+              try {
+                if (ach.condition(nextState)) {
+                  nextState.achievements[key] = { ...ach, unlocked: true }
+                  console.log(`Achievement Unlocked: ${ach.name}`)
+                  if (ach.reward && typeof ach.reward === "function") {
+                    const rewardChanges = ach.reward(nextState)
+                    Object.assign(nextState, rewardChanges)
+                  }
+                }
+              } catch (e) {
+                console.error(`Error checking achievement ${key}:`, e)
               }
             }
           })
@@ -234,6 +249,38 @@ export const useGameStore = create<GameStore>()(
           set({ gameState: { ...initialGameState, lastTick: Date.now() } })
           localStorage.removeItem("conspiracy-clicker-storage")
         }
+      },
+      visualTick: () => {
+        set((state) => {
+          const target = state.gameState
+          const current = state.visualState
+
+          // Only interpolate if difference is significant
+          const shouldInterpolate =
+            Math.abs(target.money - current.displayedMoney) > 100 ||
+            Math.abs(target.followers - current.displayedFollowers) > 100
+
+          if (!shouldInterpolate) {
+            return {
+              visualState: {
+                displayedMoney: target.money,
+                displayedFollowers: target.followers,
+              },
+            }
+          }
+
+          // Add lerp helper function if not defined elsewhere
+          const lerp = (start: number, end: number, factor: number) => {
+            return start + (end - start) * factor
+          }
+
+          return {
+            visualState: {
+              displayedMoney: lerp(current.displayedMoney, target.money, 0.3),
+              displayedFollowers: lerp(current.displayedFollowers, target.followers, 0.3),
+            },
+          }
+        })
       },
     }),
     {
