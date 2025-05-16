@@ -35,13 +35,10 @@ export const useGameStore = create<GameStore>()(
         displayedFollowers: initialGameState.followers,
       },
       setGameState: (newState: GameState) => set({ gameState: newState }),
-
-      // Move the calculation logic into the store
       calculateRates: (gs: GameState) => {
         let fpc = 1
         let pfps = 0
         let moneyPerFollowerBonusTotal = 0
-
         Object.values(gs.upgrades).forEach((upg) => {
           if (upg.level > 0) {
             if (upg.followersPerClickBonus) fpc += upg.followersPerClickBonus * upg.level
@@ -51,7 +48,6 @@ export const useGameStore = create<GameStore>()(
               moneyPerFollowerBonusTotal += upg.moneyPerFollowerBonus * upg.level
           }
         })
-
         return {
           calculatedFollowersPerClick: fpc,
           calculatedPassiveFollowersPerSecond: pfps,
@@ -63,25 +59,18 @@ export const useGameStore = create<GameStore>()(
         set((state) => {
           const now = Date.now()
           const deltaSeconds = (now - state.gameState.lastTick) / 1000
-
           const rates = get().calculateRates(state.gameState)
-
           const newFollowers =
             state.gameState.followers + rates.calculatedPassiveFollowersPerSecond * deltaSeconds
-
           const moneyFromFollowers =
             newFollowers * rates.calculatedMoneyPerFollowerPerSecond * deltaSeconds
-
           let moneyFromMonetization = 0
           Object.values(state.gameState.monetizationOptions).forEach((opt) => {
             if (opt.active) {
               moneyFromMonetization += opt.moneyPerSecond * deltaSeconds
             }
           })
-
           const newMoney = state.gameState.money + moneyFromFollowers + moneyFromMonetization
-
-          // Update Insanity Level
           let newInsanityIndex = state.gameState.insanityLevelIndex
           for (let i = INSANITY_STAGES.length - 1; i >= 0; i--) {
             if (state.gameState.postsMade >= INSANITY_STAGES[i].threshold && i > newInsanityIndex) {
@@ -99,8 +88,6 @@ export const useGameStore = create<GameStore>()(
             passiveFollowersPerSecond: rates.calculatedPassiveFollowersPerSecond,
             lastTick: now,
           }
-
-          // Check for unlocks
           Object.keys(nextState.upgrades).forEach((key) => {
             const upg = nextState.upgrades[key]
             if (!upg.unlocked && upg.requirement && upg.requirement(nextState)) {
@@ -115,7 +102,6 @@ export const useGameStore = create<GameStore>()(
             }
           })
 
-          // Check Achievements
           Object.keys(nextState.achievements).forEach((key) => {
             const ach = nextState.achievements[key]
             if (!ach.unlocked && ach.condition && typeof ach.condition === "function") {

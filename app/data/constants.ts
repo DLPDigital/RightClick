@@ -16,7 +16,7 @@ export const initialGameState: GameState = {
   followersPerClick: 1,
   passiveFollowersPerSecond: 0,
   baseMoneyPerFollowerPerSecond: 0.001,
-  upgrades: JSON.parse(JSON.stringify(INITIAL_UPGRADES)), // This is fine as upgrades don't have functions
+  upgrades: JSON.parse(JSON.stringify(INITIAL_UPGRADES)),
   monetizationOptions: JSON.parse(JSON.stringify(INITIAL_MONETIZATION_OPTIONS)),
   achievements: JSON.parse(JSON.stringify(INITIAL_ACHIEVEMENTS)),
   lastTick: Date.now(),
