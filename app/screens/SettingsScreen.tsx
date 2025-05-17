@@ -16,7 +16,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({ onExport, onImport, onR
       .writeText(data)
       .then(() => setMessage("Game data copied to clipboard!"))
       .catch(() => setMessage("Failed to copy. Please copy manually from textarea."))
-    setImportData(data) // Show it in textarea as well
+    setImportData(data)
   }
 
   const handleImport = () => {

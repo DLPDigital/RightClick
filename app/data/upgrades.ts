@@ -1,6 +1,6 @@
 import { Upgrade } from "../types"
 
-export const INITIAL_UPGRADES: Record<string, Upgrade> = {
+export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
   "faster-typing": {
     id: "faster-typing",
     name: "Faster Typing",

@@ -9,24 +9,23 @@ export interface Upgrade {
   level: number
   maxLevel?: number
   unlocked: boolean
-  // Effects (can be specific or generic)
   followersPerClickBonus?: number
   passiveFollowersPerSecondBonus?: number
-  moneyPerFollowerBonus?: number // e.g., better conversion from followers to cash
-  unlocks?: string[] // IDs of other upgrades/monetizations it unlocks
-  requirement?: (gameState: GameState) => boolean // For unlocking
+  moneyPerFollowerBonus?: number
+  unlocks?: string[]
+  requirement?: (gameState: GameState) => boolean
 }
 
 export interface MonetizationOption {
   id: string
   name: string
   description: string
-  costToActivate: number // One-time cost or follower threshold
+  costToActivate: number
   followerRequirement: number
   moneyPerSecond: number
   active: boolean
   unlocked: boolean
-  requirement?: (gameState: GameState) => boolean // For unlocking
+  requirement?: (gameState: GameState) => boolean
 }
 
 export interface UpgradeInstance {
@@ -45,31 +44,27 @@ export interface Achievement {
   description: string
   unlocked: boolean
   condition: (gameState: GameState) => boolean
-  reward?: (gameState: GameState) => Partial<GameState> // Optional: give a bonus
+  reward?: (gameState: GameState) => Partial<GameState>
 }
 
 export interface InsanityStage {
   threshold: number
   name: string
-  description: string // Flavor text
+  description: string
 }
 
 export interface GameState {
   money: number
   followers: number
   postsMade: number
-  insanityLevelIndex: number // Index in the insanityStages array
+  insanityLevelIndex: number
   moneyPerSecond: number
-
-  // Core rates
   followersPerClick: number
   passiveFollowersPerSecond: number
-  baseMoneyPerFollowerPerSecond: number // Base rate before monetization specific bonuses
-
+  baseMoneyPerFollowerPerSecond: number
   upgrades: UpgradeInstance[]
   monetizationOptions: MonetizationInstance[]
   unlockedAchievements: string[]
-
   lastTick: number
 }
 

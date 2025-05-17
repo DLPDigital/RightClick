@@ -1,5 +1,4 @@
 import React from "react"
-// import { GameState } from '../types'; // If you need more from GameState
 import { formatNumber } from "../utils/formatters"
 
 interface PostingScreenProps {
