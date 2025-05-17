@@ -72,3 +72,12 @@ export interface GameState {
 
   lastTick: number
 }
+
+export interface GameStore {
+  gameState: GameState
+  visualState: {
+    displayedMoney: number
+    displayedFollowers: number
+  }
+  setGameState: (state: GameState) => void
+}

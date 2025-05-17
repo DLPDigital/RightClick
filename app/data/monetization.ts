@@ -21,7 +21,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 5,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.upgrades["basic-mic"]?.level > 0 && gs.followers >= 1000,
+    // requirement: (gs) => gs.upgrades["basic-mic"]?.level > 0 && gs.followers >= 1000,
   },
   "gold-buying": {
     id: "gold-buying",
@@ -32,7 +32,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 50,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.upgrades["gold-buying"]?.level > 0 && gs.followers >= 5000,
+    // requirement: (gs) => gs.upgrades["gold-buying"]?.level > 0 && gs.followers >= 5000,
   },
   // ... more: Merch, "Truth Conferences", Paid Newsletter, "Survival Gear" affiliate
 }
