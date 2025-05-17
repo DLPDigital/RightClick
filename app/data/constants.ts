@@ -1,12 +1,10 @@
 import { GameState } from "../types"
-// import { INITIAL_ACHIEVEMENTS } from "./achievements"
-// import { INITIAL_MONETIZATION_OPTIONS } from "./monetization"
-// import { INITIAL_UPGRADES } from "./upgrades"
 
 export const SAVE_KEY = "conspiracyClickerSave"
 export const VISUAL_UPDATE_INTERVAL = 50 // 20fps for smooth UI
 export const GAME_TICK_INTERVAL = 100 // 10fps for game logic
 export const SAVE_INTERVAL = 5000 // Save every 5 seconds
+export const DEBOUNCED_SAVE_INTERVAL = 10000 // 10 seconds
 
 export const initialGameState: GameState = {
   money: 0,

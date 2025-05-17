@@ -1,9 +1,9 @@
 import React from "react"
-import { MonetizationOption } from "../types"
+import { AvailableMonetizationDisplay } from "../hooks/useMonetization"
 import { formatNumber } from "../utils/formatters"
 
 interface MonetizationItemProps {
-  option: MonetizationOption & { active: boolean } // Combine static data with active state
+  option: AvailableMonetizationDisplay
   money: number
   followers: number
   onActivate: (id: string) => void
@@ -15,19 +15,49 @@ const MonetizationItem: React.FC<MonetizationItemProps> = ({
   followers,
   onActivate,
 }) => {
-  const canActivate =
-    !option.active && money >= option.costToActivate && followers >= option.followerRequirement
+  const handleActivateClick = () => {
+    if (option.canActivate && !option.active) {
+      onActivate(option.id)
+    }
+  }
 
   return (
-    <div className="item">
+    <div className="item-card monetization-item">
+      {" "}
       <h3>{option.name}</h3>
       <p>{option.description}</p>
       <p>Requires: {formatNumber(option.followerRequirement)} Followers</p>
       {option.costToActivate > 0 && <p>Activation Cost: ${formatNumber(option.costToActivate)}</p>}
       <p>Income: ${formatNumber(option.moneyPerSecond)}/sec</p>
-      <button onClick={() => onActivate(option.id)} disabled={!canActivate || option.active}>
-        {option.active ? "Active" : canActivate ? "Activate" : "Requirements Not Met"}
-      </button>
+      {option.active ? (
+        <p className="status-active">✅ Activated</p>
+      ) : (
+        <>
+          <button onClick={handleActivateClick} disabled={!option.canActivate}>
+            {option.canActivate ? "Activate" : "Requirements Not Met"}
+          </button>
+          {!option.canActivate && (
+            <div
+              className="requirements-missing"
+              style={{ fontSize: "0.9em", color: "#777", marginTop: "5px" }}
+            >
+              {money < option.costToActivate && (
+                <div>
+                  <small>Need ${formatNumber(option.costToActivate - money)} more</small>
+                </div>
+              )}
+              {followers < option.followerRequirement && (
+                <div>
+                  <small>
+                    Need {formatNumber(option.followerRequirement - Math.floor(followers))} more
+                    followers
+                  </small>
+                </div>
+              )}
+            </div>
+          )}
+        </>
+      )}
     </div>
   )
 }

@@ -5,7 +5,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     id: "shady-supplement",
     name: "Shady Supplement Sponsorship",
     description: 'Sell "Brain Clarity Plus" to your followers. Increases money per second.',
-    costToActivate: 0, // Activated by follower count
+    costToActivate: 0,
     followerRequirement: 100,
     moneyPerSecond: 0.5,
     active: false,

@@ -1,36 +1,40 @@
 import React from "react"
-import { GameState } from "../types"
+import { AvailableUpgradeDisplay } from "../hooks/useUpgrades"
 import UpgradeItem from "../components/UpgradeItem"
-import { INITIAL_UPGRADES } from "../data/upgrades"
 
 interface UpgradesScreenProps {
-  gameState: GameState
+  availableUpgrades: AvailableUpgradeDisplay[]
   onPurchaseUpgrade: (id: string) => void
+  currentMoney: number
 }
 
-const UpgradesScreen: React.FC<UpgradesScreenProps> = ({ gameState, onPurchaseUpgrade }) => {
-  // Get all upgrades that either exist in player's state or are initially unlocked
-  const availableUpgrades = Object.values(INITIAL_UPGRADES)
-    .map((upgrade) => {
-      const playerUpgrade = gameState.upgrades.find((u) => u.id === upgrade.id)
-      return {
-        ...upgrade,
-        level: playerUpgrade?.level ?? 0,
-      }
-    })
-    .filter((upgrade) => upgrade.unlocked || gameState.upgrades.some((u) => u.id === upgrade.id))
-    .sort((a, b) => a.baseCost - b.baseCost)
+const UpgradesScreen: React.FC<UpgradesScreenProps> = ({
+  availableUpgrades,
+  onPurchaseUpgrade,
+  currentMoney,
+}) => {
+  const sortedAvailableUpgrades = [...availableUpgrades].sort((a, b) => {
+    if (a.canAfford && !b.canAfford) return -1
+    if (!a.canAfford && b.canAfford) return 1
+    return a.currentCost - b.currentCost
+  })
 
   return (
-    <div>
-      <h2>Invest in &ldquo;Research&rdquo; (and Propaganda)</h2>
-      <p>Buy better equipment, hire help, and expand your reach.</p>
+    <div className="upgrades-screen">
+      <h2>Invest in “Research” (and Propaganda)</h2>
+      <p>
+        Buy better equipment, hire help, and expand your reach. Current Money: $
+        {currentMoney.toFixed(2)}
+      </p>
+      {sortedAvailableUpgrades.length === 0 && (
+        <p>No upgrades available yet. Keep building your empire!</p>
+      )}
       <div className="item-list">
-        {availableUpgrades.map((upgrade) => (
+        {sortedAvailableUpgrades.map((upgrade) => (
           <UpgradeItem
             key={upgrade.id}
             upgrade={upgrade}
-            money={gameState.money}
+            money={currentMoney}
             onPurchase={onPurchaseUpgrade}
           />
         ))}
