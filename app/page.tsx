@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react"
 import "./App.css"
+import "./theme/colours.css.ts"
 
 import { ScreenName } from "./types"
 import { INSANITY_STAGES } from "./data/insanityLevels"
