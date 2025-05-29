@@ -32,22 +32,26 @@ A React-based incremental game built with Next.js and TypeScript, demonstrating 
 ### Key Technical Features
 
 #### Custom Hook Architecture
+
 - `useGameEngine`: Central game state management
 - `useGamePersistence`: Save/load game state handling
 - `useUpgrades`: Upgrade system logic
 - `useMonetization`: In-game economy management
 
 #### Type Safety
+
 - Comprehensive TypeScript interfaces for game state
 - Exhaustive type checking for screen navigation
 - Strict null checks enabled
 
 #### State Management
+
 - Uses React's useReducer for predictable state updates
 - Memoized calculations with useMemo
 - Optimized re-renders with useCallback
 
 #### Performance Optimizations
+
 - Debounced save operations
 - Controlled update intervals for game ticks
 - Memoized component rendering
@@ -59,7 +63,9 @@ A React-based incremental game built with Next.js and TypeScript, demonstrating 
 - Custom ESLint rules for maintaining code quality
 
 ### Deployment
+
 The project includes Netlify configuration for easy deployment:
+
 - `netlify.toml` with build settings
 - Static export configuration in `next.config.js`
 - Environment-aware build process
@@ -67,12 +73,14 @@ The project includes Netlify configuration for easy deployment:
 ### Game Architecture
 
 #### Core Systems
+
 1. **Game Loop**: Managed through useEffect with configurable tick rates
 2. **Save System**: Persistent storage with import/export functionality
 3. **Achievement System**: Event-based unlocks with conditions
 4. **Progression System**: Insanity levels and upgrade paths
 
 #### State Management Pattern
+
 ```typescript
 interface GameState {
   money: number
@@ -81,8 +89,6 @@ interface GameState {
   // ... additional state properties
 }
 
-type GameAction = 
-  | { type: "TICK" }
-  | { type: "POST" }
-  // ... other action types
+type GameAction = { type: "TICK" } | { type: "POST" }
+// ... other action types
 ```
