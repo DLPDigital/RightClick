@@ -1,8 +1,8 @@
 import React from "react"
 
-import { container, colorContainer, colorBox } from "./page.css"
+import { container, colorContainer, colorBox } from "./details.css"
 
-export const Page: React.FC = () => {
+const Details: React.FC = () => {
   return (
     <div className={container}>
       <h1>Theme Page</h1>
@@ -46,4 +46,4 @@ export const Page: React.FC = () => {
   )
 }
 
-export default Page
+export default Details
