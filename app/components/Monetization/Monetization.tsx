@@ -1,7 +1,6 @@
 import React from "react"
-import { AvailableMonetizationDisplay } from "../../../hooks/useMonetization"
+import { AvailableMonetizationDisplay } from "../../hooks/useMonetization"
 import { MonetizationItem } from "./Item"
-
 
 interface MonetizationScreenProps {
   availableMonetization: AvailableMonetizationDisplay[]

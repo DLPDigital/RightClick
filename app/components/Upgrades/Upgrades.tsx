@@ -1,6 +1,6 @@
 import React from "react"
-import { AvailableUpgradeDisplay } from "../hooks/useUpgrades"
-import UpgradeItem from "../components/UpgradeItem"
+import { AvailableUpgradeDisplay } from "../../hooks/useUpgrades"
+import { UpgradeItem } from "./Item"
 
 interface UpgradesScreenProps {
   availableUpgrades: AvailableUpgradeDisplay[]
@@ -8,7 +8,7 @@ interface UpgradesScreenProps {
   currentMoney: number
 }
 
-const UpgradesScreen: React.FC<UpgradesScreenProps> = ({
+export const Upgrades: React.FC<UpgradesScreenProps> = ({
   availableUpgrades,
   onPurchaseUpgrade,
   currentMoney,
@@ -42,5 +42,3 @@ const UpgradesScreen: React.FC<UpgradesScreenProps> = ({
     </div>
   )
 }
-
-export default UpgradesScreen

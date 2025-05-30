@@ -1,6 +1,6 @@
 import React from "react"
-import { formatNumber } from "../../../../utils/formatters"
-import { AvailableMonetizationDisplay } from "../../../../hooks/useMonetization"
+import { formatNumber } from "../../../utils/formatters"
+import { AvailableMonetizationDisplay } from "../../../hooks/useMonetization"
 
 interface MonetizationItemProps {
   option: AvailableMonetizationDisplay

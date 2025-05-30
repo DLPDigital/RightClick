@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { Achievements } from "./Achievements"
-import { Achievement } from "../../../types"
+import { Achievement } from "../../types"
 
 const mockAchievements = {
   achv1: { id: "achv1", name: "First Post", description: "Make your first post", unlocked: true },

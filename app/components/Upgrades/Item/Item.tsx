@@ -1,6 +1,7 @@
 import React from "react"
-import { AvailableUpgradeDisplay } from "../hooks/useUpgrades"
-import { formatNumber } from "../utils/formatters"
+import { AvailableUpgradeDisplay } from "../../../hooks/useUpgrades"
+import { formatNumber } from "../../../utils/formatters"
+import { Button } from "../../Button"
 
 interface UpgradeItemProps {
   upgrade: AvailableUpgradeDisplay
@@ -8,7 +9,7 @@ interface UpgradeItemProps {
   onPurchase: (id: string) => void
 }
 
-const UpgradeItem: React.FC<UpgradeItemProps> = ({ upgrade, money, onPurchase }) => {
+export const UpgradeItem: React.FC<UpgradeItemProps> = ({ upgrade, money, onPurchase }) => {
   const handlePurchaseClick = () => {
     if (upgrade.canAfford && !upgrade.isMaxLevel) {
       onPurchase(upgrade.id)
@@ -34,9 +35,9 @@ const UpgradeItem: React.FC<UpgradeItemProps> = ({ upgrade, money, onPurchase })
         <p>Effect: +{upgrade.moneyPerFollowerBonus * 100}% Money/Follower (per level)</p>
       )} */}
 
-      <button onClick={handlePurchaseClick} disabled={!upgrade.canAfford || upgrade.isMaxLevel}>
+      <Button onClick={handlePurchaseClick} disabled={!upgrade.canAfford || upgrade.isMaxLevel}>
         {upgrade.isMaxLevel ? "Max Level" : upgrade.canAfford ? "Buy" : "Not Enough Money"}
-      </button>
+      </Button>
       {!upgrade.canAfford && !upgrade.isMaxLevel && (
         <div
           className="requirements-missing"
@@ -48,5 +49,3 @@ const UpgradeItem: React.FC<UpgradeItemProps> = ({ upgrade, money, onPurchase })
     </div>
   )
 }
-
-export default UpgradeItem
