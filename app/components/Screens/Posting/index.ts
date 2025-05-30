@@ -1,0 +1,1 @@
+export { Posting } from "./Posting"

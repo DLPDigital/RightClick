@@ -1,6 +1,7 @@
 import React from "react"
-import { AvailableMonetizationDisplay } from "../hooks/useMonetization"
-import MonetizationItem from "../components/MonetizationItem"
+import { AvailableMonetizationDisplay } from "../../../hooks/useMonetization"
+import { MonetizationItem } from "./Item"
+
 
 interface MonetizationScreenProps {
   availableMonetization: AvailableMonetizationDisplay[]
@@ -9,7 +10,7 @@ interface MonetizationScreenProps {
   currentFollowers: number
 }
 
-const MonetizationScreen: React.FC<MonetizationScreenProps> = ({
+export const Monetization: React.FC<MonetizationScreenProps> = ({
   availableMonetization,
   onActivateMonetization,
   currentMoney,
@@ -44,5 +45,3 @@ const MonetizationScreen: React.FC<MonetizationScreenProps> = ({
     </div>
   )
 }
-
-export default MonetizationScreen

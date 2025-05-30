@@ -14,6 +14,7 @@ export const vars = createGlobalTheme(":root", {
     link: "#070",
     border: "#2a2a2a",
     borderSecondary: "#0a0",
+    footerColor: "#080",
   },
   fontFamily: {
     Courier: `"Courier New", Courier, monospace`,

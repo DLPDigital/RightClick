@@ -44,6 +44,9 @@ const Details: React.FC = () => {
         <div className={colorBox.borderSecondary}>
           <span className="invert">Border Secondary</span>
         </div>
+        <div className={colorBox.footerColor}>
+          <span className="invert">Footer Color</span>
+        </div>
       </div>
     </div>
   )

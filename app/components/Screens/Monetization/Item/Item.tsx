@@ -1,6 +1,6 @@
 import React from "react"
-import { AvailableMonetizationDisplay } from "../hooks/useMonetization"
-import { formatNumber } from "../utils/formatters"
+import { formatNumber } from "../../../../utils/formatters"
+import { AvailableMonetizationDisplay } from "../../../../hooks/useMonetization"
 
 interface MonetizationItemProps {
   option: AvailableMonetizationDisplay
@@ -9,7 +9,7 @@ interface MonetizationItemProps {
   onActivate: (id: string) => void
 }
 
-const MonetizationItem: React.FC<MonetizationItemProps> = ({
+export const MonetizationItem: React.FC<MonetizationItemProps> = ({
   option,
   money,
   followers,
@@ -23,7 +23,6 @@ const MonetizationItem: React.FC<MonetizationItemProps> = ({
 
   return (
     <div className="item-card monetization-item">
-      {" "}
       <h3>{option.name}</h3>
       <p>{option.description}</p>
       <p>Requires: {formatNumber(option.followerRequirement)} Followers</p>
@@ -61,5 +60,3 @@ const MonetizationItem: React.FC<MonetizationItemProps> = ({
     </div>
   )
 }
-
-export default MonetizationItem
