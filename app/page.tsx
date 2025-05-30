@@ -7,21 +7,22 @@ import "./theme/theme.css"
 import { ScreenName } from "./types"
 import { INSANITY_STAGES } from "./data/insanityLevels"
 import { GAME_TICK_INTERVAL } from "./data/constants"
+import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
 
 import { useGameEngine, GameEngineHook } from "./hooks/useGameEngine"
 import { useGamePersistence, GamePersistenceHook } from "./hooks/useGamePersistence"
 import { useUpgrades, UpgradesHook } from "./hooks/useUpgrades"
 import { useMonetization, MonetizationHook } from "./hooks/useMonetization"
 
+import { AppContainer } from "./components/AppContainer"
+import { ComponentContainer } from "./components/ComponentContainer"
 import { NavBar } from "./components/NavBar"
-import StatusBar from "./components/StatusBar"
-import UpgradesScreen from "./screens/UpgradesScreen"
-import { Achievements } from "./components/Screens/Achievements"
-import { Posting } from "./components/Screens/Posting"
-import { Monetization } from "./components/Screens/Monetization"
-import SettingsScreen from "./screens/SettingsScreen"
-import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
-import { vars } from "./theme/theme.css"
+import { StatusBar } from "./components/StatusBar"
+import { Achievements } from "./components/Achievements"
+import { Posting } from "./components/Posting"
+import { Monetization } from "./components/Monetization"
+import { Upgrades } from "./components/Upgrades"
+import { Settings } from "./components/Settings"
 import { Footer } from "./components/Footer"
 
 function App() {
@@ -90,7 +91,6 @@ function App() {
         )
       case "monetization":
         return (
-          // <MonetizationScreen
           <Monetization
             availableMonetization={availableMonetization}
             onActivateMonetization={handleActivateMonetization}
@@ -100,7 +100,7 @@ function App() {
         )
       case "upgrades":
         return (
-          <UpgradesScreen
+          <Upgrades
             availableUpgrades={availableUpgrades}
             onPurchaseUpgrade={handlePurchaseUpgrade}
             currentMoney={gameState.money}
@@ -115,7 +115,7 @@ function App() {
         )
       case "settings":
         return (
-          <SettingsScreen
+          <Settings
             onExport={handleExportGame}
             onImport={handleImportGame}
             onReset={handleResetGame}
@@ -129,8 +129,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1 style={{ color: vars.color.text }}>Resting</h1>
+    <AppContainer>
+      <h1>Right Click</h1>
       <StatusBar
         money={gameState.money}
         followers={gameState.followers}
@@ -138,9 +138,9 @@ function App() {
         moneyPerSecond={gameState.moneyPerSecond} // From gameState via reducer
       />
       <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
-      <div className="screen-content">{renderScreen()}</div>
+      <ComponentContainer>{renderScreen()}</ComponentContainer>
       <Footer />
-    </div>
+    </AppContainer>
   )
 }
 

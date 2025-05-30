@@ -28,12 +28,12 @@ export const colorContainer = style({
 const baseColorStyle = style({
   padding: "1rem",
   color: "red",
-  width: "300px",
-  height: "300px",
+  width: "150px",
+  height: "150px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "1.5rem",
+  fontSize: "1.25rem",
 })
 
 globalStyle(`${colorContainer} span`, {
@@ -122,6 +122,20 @@ export const colorBox = styleVariants({
     baseColorStyle,
     {
       backgroundColor: vars.color.footerColor,
+    },
+  ],
+  warning: [
+    baseColorStyle,
+    {
+      backgroundColor: vars.color.warning,
+      color: vars.color.text,
+    },
+  ],
+  lightRed: [
+    baseColorStyle,
+    {
+      backgroundColor: vars.color.lightRed,
+      color: vars.color.text,
     },
   ],
 })

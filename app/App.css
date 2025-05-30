@@ -10,43 +10,15 @@ body {
   min-height: 100vh;
 }
 
-.App {
-  width: 800px;
-  max-width: 95%;
-  background-color: #222;
-  border: 1px solid #080;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 0 10px #0f0;
-}
-
-.status-bar {
-  background-color: #111;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #050;
-  display: flex;
-  justify-content: space-around;
-}
-
-.status-bar span {
-  margin: 0 10px;
-}
-
-.screen-content {
-  padding: 15px;
-  border: 1px dashed #070;
-  min-height: 300px;
-}
-
-h1,
+/* h1,
 h2,
 h3 {
   color: #0f0;
   text-shadow: 0 0 3px #0f0;
-}
+  border: "9px solid red"
+} */
 
-button {
+/* button {
   background-color: #030;
   color: #0f0;
   border: 1px solid #0a0;
@@ -65,7 +37,7 @@ button:disabled {
   color: #070;
   cursor: not-allowed;
   border-color: #050;
-}
+} */
 
 .item-list {
   display: flex;

@@ -1,6 +1,8 @@
 import React from "react"
-import { InsanityStage } from "../types"
-import { formatNumber } from "../utils/formatters"
+import { InsanityStage } from "../../types"
+import { formatNumber } from "../../utils/formatters"
+
+import { container } from "./StatusBar.css"
 
 interface StatusBarProps {
   money: number
@@ -9,14 +11,14 @@ interface StatusBarProps {
   moneyPerSecond: number
 }
 
-const StatusBar: React.FC<StatusBarProps> = ({
+export const StatusBar: React.FC<StatusBarProps> = ({
   money,
   moneyPerSecond,
   followers,
   currentInsanityStage,
 }) => {
   return (
-    <div className="status-bar">
+    <div className={container}>
       <span>Money: ${formatNumber(money, true)}</span>
       <span>Money per sec: ${formatNumber(moneyPerSecond, true)}</span>
       <span>Followers: {formatNumber(followers)}</span>
@@ -26,4 +28,3 @@ const StatusBar: React.FC<StatusBarProps> = ({
     </div>
   )
 }
-export default StatusBar

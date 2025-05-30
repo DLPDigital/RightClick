@@ -1,4 +1,7 @@
 import React, { useState } from "react"
+import { Button } from "../Button"
+
+import { resetContainer } from "./Settings.css"
 
 interface SettingsScreenProps {
   onExport: () => string
@@ -6,7 +9,7 @@ interface SettingsScreenProps {
   onReset: () => void
 }
 
-const SettingsScreen: React.FC<SettingsScreenProps> = ({ onExport, onImport, onReset }) => {
+export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, onReset }) => {
   const [importData, setImportData] = useState("")
   const [message, setMessage] = useState("")
 
@@ -35,7 +38,7 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({ onExport, onImport, onR
     <div>
       <h2>Settings</h2>
       <h3>Export Game</h3>
-      <button onClick={handleExport}>Export to Clipboard & Textarea</button>
+      <Button onClick={handleExport}>Export to Clipboard</Button>
 
       <h3>Import Game</h3>
       <textarea
@@ -52,13 +55,12 @@ const SettingsScreen: React.FC<SettingsScreenProps> = ({ onExport, onImport, onR
           boxSizing: "border-box",
         }}
       />
-      <button onClick={handleImport}>Import from Textarea</button>
+      <Button onClick={handleImport}>Import from Textarea</Button>
       {message && <p>{message}</p>}
-      <h3>Reset Game</h3>
-      <button onClick={onReset} style={{ backgroundColor: "#500", borderColor: "#800" }}>
-        Reset Game
-      </button>
+      <div className={resetContainer}>
+        <h3>Reset</h3>
+        <Button onClick={onReset}>Reset Game</Button>
+      </div>
     </div>
   )
 }
-export default SettingsScreen

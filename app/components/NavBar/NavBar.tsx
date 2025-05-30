@@ -2,6 +2,7 @@ import React from "react"
 import { ScreenName } from "../../types"
 
 import { navBar } from "./NavBar.css"
+import { Button } from "../Button"
 
 interface NavBarProps {
   currentScreen: ScreenName
@@ -14,13 +15,13 @@ export const NavBar: React.FC<NavBarProps> = ({ currentScreen, onNavigate }) => 
   return (
     <nav className={navBar}>
       {SCREENS.map((screen) => (
-        <button
-          key={screen}
+        <Button
+          key={`${screen}-button`}
           onClick={() => onNavigate(screen)}
-          className={currentScreen === screen ? "active" : ""}
+          isActive={currentScreen === screen}
         >
           {screen.charAt(0).toUpperCase() + screen.slice(1)}
-        </button>
+        </Button>
       ))}
     </nav>
   )
