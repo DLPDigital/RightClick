@@ -6,7 +6,7 @@ const Details: React.FC = () => {
   return (
     <div className={container}>
       <h1>Theme Page</h1>
-        <h2>Colors</h2>
+      <h2>Colors</h2>
       <div className={colorContainer}>
         <div className={colorBox.primary}>
           <span className="invert">Primary</span>
@@ -40,6 +40,9 @@ const Details: React.FC = () => {
         </div>
         <div className={colorBox.border}>
           <span className="invert">Border</span>
+        </div>
+        <div className={colorBox.borderSecondary}>
+          <span className="invert">Border Secondary</span>
         </div>
       </div>
     </div>

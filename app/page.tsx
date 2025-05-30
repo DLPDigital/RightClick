@@ -13,7 +13,7 @@ import { useGamePersistence, GamePersistenceHook } from "./hooks/useGamePersiste
 import { useUpgrades, UpgradesHook } from "./hooks/useUpgrades"
 import { useMonetization, MonetizationHook } from "./hooks/useMonetization"
 
-import NavBar from "./components/NavBar"
+import { NavBar } from "./components/NavBar"
 import StatusBar from "./components/StatusBar"
 import PostingScreen from "./screens/PostingScreen"
 import MonetizationScreen from "./screens/MonetizationScreen"
@@ -138,9 +138,6 @@ function App() {
       <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
       <div className="screen-content">{renderScreen()}</div>
       <footer>
-        <p style={{ fontSize: "0.8em", textAlign: "center", marginTop: "20px", color: "#080" }}>
-          Conspiracy Clicker v0.1 - Remember, it&apos;s just a game... or is it?
-        </p>
         <p style={{ fontSize: "0.8em", textAlign: "center", marginTop: "20px", color: "#080" }}>
           Conspiracy Clicker v0.1 - Remember, it&apos;s just a game... or is it?
         </p>
