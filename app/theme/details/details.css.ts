@@ -118,4 +118,10 @@ export const colorBox = styleVariants({
       backgroundColor: vars.color.borderSecondary,
     },
   ],
+  footerColor: [
+    baseColorStyle,
+    {
+      backgroundColor: vars.color.footerColor,
+    },
+  ],
 })

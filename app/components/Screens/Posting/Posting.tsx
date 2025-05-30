@@ -1,5 +1,5 @@
 import React from "react"
-import { formatNumber } from "../utils/formatters"
+import { formatNumber } from "../../../utils/formatters"
 
 interface PostingScreenProps {
   followers: number
@@ -8,7 +8,7 @@ interface PostingScreenProps {
   onPost: () => void
 }
 
-const PostingScreen: React.FC<PostingScreenProps> = ({
+export const Posting: React.FC<PostingScreenProps> = ({
   followers,
   followersPerClick,
   postsMade,
@@ -30,4 +30,3 @@ const PostingScreen: React.FC<PostingScreenProps> = ({
     </div>
   )
 }
-export default PostingScreen

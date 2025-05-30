@@ -15,13 +15,14 @@ import { useMonetization, MonetizationHook } from "./hooks/useMonetization"
 
 import { NavBar } from "./components/NavBar"
 import StatusBar from "./components/StatusBar"
-import PostingScreen from "./screens/PostingScreen"
-import MonetizationScreen from "./screens/MonetizationScreen"
 import UpgradesScreen from "./screens/UpgradesScreen"
 import { Achievements } from "./components/Screens/Achievements"
+import { Posting } from "./components/Screens/Posting"
+import { Monetization } from "./components/Screens/Monetization"
 import SettingsScreen from "./screens/SettingsScreen"
 import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
 import { vars } from "./theme/theme.css"
+import { Footer } from "./components/Footer"
 
 function App() {
   // --- State for UI Navigation ---
@@ -80,7 +81,7 @@ function App() {
     switch (currentScreen) {
       case "posting":
         return (
-          <PostingScreen
+          <Posting
             followers={gameState.followers}
             followersPerClick={gameState.followersPerClick}
             postsMade={gameState.postsMade}
@@ -89,7 +90,8 @@ function App() {
         )
       case "monetization":
         return (
-          <MonetizationScreen
+          // <MonetizationScreen
+          <Monetization
             availableMonetization={availableMonetization}
             onActivateMonetization={handleActivateMonetization}
             currentMoney={gameState.money}
@@ -137,11 +139,7 @@ function App() {
       />
       <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
       <div className="screen-content">{renderScreen()}</div>
-      <footer>
-        <p style={{ fontSize: "0.8em", textAlign: "center", marginTop: "20px", color: "#080" }}>
-          Conspiracy Clicker v0.1 - Remember, it&apos;s just a game... or is it?
-        </p>
-      </footer>
+      <Footer />
     </div>
   )
 }
