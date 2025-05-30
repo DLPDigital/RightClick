@@ -9,15 +9,12 @@ type Props = {
   disabled?: boolean
 }
 
-export const Button: React.FC<Props> = ({ children, onClick, isActive, disabled }) => {
-  console.log("isactive", isActive)
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={isActive ? activeButton.Active : activeButton.Default}
-    >
-      {children}
-    </button>
-  )
-}
+export const Button: React.FC<Props> = ({ children, onClick, isActive, disabled }) => (
+  <button
+    onClick={onClick}
+    disabled={disabled}
+    className={isActive ? activeButton.Active : activeButton.Default}
+  >
+    {children}
+  </button>
+)

@@ -25,7 +25,7 @@ export const Posting: React.FC<PostingScreenProps> = ({
       <p>Total Posts Made: {formatNumber(postsMade)}</p>
 
       <Button onClick={onPost} isActive={true} disabled={false}>
-        Post Conspiracy
+        Post Conspiracy!
       </Button>
 
       <p className={tip}>

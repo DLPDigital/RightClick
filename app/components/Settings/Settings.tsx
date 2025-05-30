@@ -38,9 +38,7 @@ export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, on
     <div>
       <h2>Settings</h2>
       <h3>Export Game</h3>
-      <Button onClick={handleExport} >
-        Export to Clipboard
-      </Button>
+      <Button onClick={handleExport}>Export to Clipboard</Button>
 
       <h3>Import Game</h3>
       <textarea
@@ -57,14 +55,11 @@ export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, on
           boxSizing: "border-box",
         }}
       />
-      <Button onClick={handleImport} >
-        Import from Textarea
-      </Button>
+      <Button onClick={handleImport}>Import from Textarea</Button>
       {message && <p>{message}</p>}
       <div className={resetContainer}>
-        
-      <h3>Reset</h3>
-      <Button onClick={onReset}>Reset Game</Button>
+        <h3>Reset</h3>
+        <Button onClick={onReset}>Reset Game</Button>
       </div>
     </div>
   )

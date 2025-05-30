@@ -13,7 +13,7 @@ describe("Posting", () => {
     expect(getByText(/Current Followers/i)).toHaveTextContent("1.23K")
     expect(getByText(/Followers per Post/i)).toHaveTextContent("56")
     expect(getByText(/Total Posts Made/i)).toHaveTextContent("7")
-    const button = getByText(/POST CONSPIRACY!/i)
+    const button = getByText(/Post Conspiracy/i)
     fireEvent.click(button)
     expect(mockOnPost).toHaveBeenCalledTimes(1)
   })
