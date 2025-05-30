@@ -1,6 +1,6 @@
-import { createGlobalTheme } from '@vanilla-extract/css';
+import { createGlobalTheme } from "@vanilla-extract/css"
 
-export const vars = createGlobalTheme(':root', {
+export const vars = createGlobalTheme(":root", {
   color: {
     primary: "#1a1a1a",
     secondary: "#0f0",
@@ -14,4 +14,8 @@ export const vars = createGlobalTheme(':root', {
     link: "#070",
     border: "#2a2a2a",
   },
+  fontFamily: {
+    Courier: `"Courier New", Courier, monospace`,
+  }
 })
+
