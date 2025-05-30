@@ -1,5 +1,7 @@
 import React from "react"
-import { ScreenName } from "../types"
+import { ScreenName } from "../../types"
+
+import { navBar } from "./NavBar.css"
 
 interface NavBarProps {
   currentScreen: ScreenName
@@ -8,9 +10,9 @@ interface NavBarProps {
 
 const SCREENS: ScreenName[] = ["posting", "monetization", "upgrades", "achievements", "settings"]
 
-const NavBar: React.FC<NavBarProps> = ({ currentScreen, onNavigate }) => {
+export const NavBar: React.FC<NavBarProps> = ({ currentScreen, onNavigate }) => {
   return (
-    <nav>
+    <nav className={navBar}>
       {SCREENS.map((screen) => (
         <button
           key={screen}
@@ -23,4 +25,3 @@ const NavBar: React.FC<NavBarProps> = ({ currentScreen, onNavigate }) => {
     </nav>
   )
 }
-export default NavBar

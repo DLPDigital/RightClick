@@ -13,9 +13,9 @@ export const vars = createGlobalTheme(":root", {
     mutedText: "#030",
     link: "#070",
     border: "#2a2a2a",
+    borderSecondary: "#0a0",
   },
   fontFamily: {
     Courier: `"Courier New", Courier, monospace`,
-  }
+  },
 })
-

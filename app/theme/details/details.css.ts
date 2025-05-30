@@ -112,4 +112,10 @@ export const colorBox = styleVariants({
       backgroundColor: vars.color.border,
     },
   ],
+  borderSecondary: [
+    baseColorStyle,
+    {
+      backgroundColor: vars.color.borderSecondary,
+    },
+  ],
 })
