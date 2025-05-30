@@ -18,7 +18,7 @@ import StatusBar from "./components/StatusBar"
 import PostingScreen from "./screens/PostingScreen"
 import MonetizationScreen from "./screens/MonetizationScreen"
 import UpgradesScreen from "./screens/UpgradesScreen"
-import AchievementsScreen from "./screens/AchievementsScreen"
+import { Achievements } from "./components/Screens/Achievements"
 import SettingsScreen from "./screens/SettingsScreen"
 import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
 import { vars } from "./theme/theme.css"
@@ -106,7 +106,7 @@ function App() {
         )
       case "achievements":
         return (
-          <AchievementsScreen
+          <Achievements
             allAchievements={INITIAL_ACHIEVEMENTS}
             unlockedAchievementIds={gameState.unlockedAchievements}
           />

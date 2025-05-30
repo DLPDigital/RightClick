@@ -19,3 +19,12 @@ export const vars = createGlobalTheme(":root", {
     Courier: `"Courier New", Courier, monospace`,
   },
 })
+
+export const breakpointValues = {
+  xs: "22.99rem", // 367.84px
+  sm: "34.99rem", // 559.84px
+  md: "47.99rem", // 767.84px
+  lg: "63.99rem", // 1023.84px
+  xl: "89.99rem", // 1439.84px
+} as const
+export const breakpoints = breakpointValues
