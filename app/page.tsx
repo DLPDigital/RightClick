@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react"
 import "./App.css"
-import "./theme/colours.css.ts"
+import "./theme/theme.css"
 
 import { ScreenName } from "./types"
 import { INSANITY_STAGES } from "./data/insanityLevels"
@@ -21,6 +21,7 @@ import UpgradesScreen from "./screens/UpgradesScreen"
 import AchievementsScreen from "./screens/AchievementsScreen"
 import SettingsScreen from "./screens/SettingsScreen"
 import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
+import { vars } from "./theme/theme.css"
 
 function App() {
   // --- State for UI Navigation ---
@@ -127,6 +128,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{ color: vars.color.text }}>Resting</h1>
       <StatusBar
         money={gameState.money}
         followers={gameState.followers}
@@ -136,6 +138,9 @@ function App() {
       <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
       <div className="screen-content">{renderScreen()}</div>
       <footer>
+        <p style={{ fontSize: "0.8em", textAlign: "center", marginTop: "20px", color: "#080" }}>
+          Conspiracy Clicker v0.1 - Remember, it&apos;s just a game... or is it?
+        </p>
         <p style={{ fontSize: "0.8em", textAlign: "center", marginTop: "20px", color: "#080" }}>
           Conspiracy Clicker v0.1 - Remember, it&apos;s just a game... or is it?
         </p>
