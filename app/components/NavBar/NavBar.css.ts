@@ -2,7 +2,7 @@ import { style, globalStyle } from "@vanilla-extract/css"
 import { vars } from "../../theme/theme.css"
 
 export const navBar = style({
-  marginBottom: "20px",
+  marginBottom: "1.25rem",
   textAlign: "center",
 })
 
