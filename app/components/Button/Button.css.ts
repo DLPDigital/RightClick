@@ -10,6 +10,7 @@ const button = style({
   ":hover": {
     backgroundColor: vars.color.accent,
   },
+  maxWidth: "15rem",
 })
 
 export const activeButton = styleVariants({

@@ -2,6 +2,7 @@ import { useEffect, useCallback, Dispatch } from "react"
 import { GameAction } from "../reducers/gameReducer"
 import { SAVE_KEY, DEBOUNCED_SAVE_INTERVAL } from "../data/constants"
 import { GameState } from "../types"
+import pako from "pako"
 
 export interface GamePersistenceHook {
   handleExportGame: () => string
@@ -44,17 +45,28 @@ export const useGamePersistence = (
 
   // --- Export Game Function ---
   const handleExportGame = useCallback((): string => {
-    console.log("PERSISTENCE_HOOK: Exporting game state.")
-    // Export the latest state directly from the ref
-    return JSON.stringify(gameStateRef.current)
-  }, [gameStateRef]) // Depends on gameStateRef (stable)
+    const jsonString = JSON.stringify(gameStateRef.current)
+    // Deflate (compress) the string to a Uint8Array
+    const compressed = pako.deflate(jsonString)
+    // Convert Uint8Array to binary string for Base64 encoding
+    const binaryString = Array.from(compressed, (byte) => String.fromCharCode(byte)).join("")
+    return btoa(binaryString)
+  }, [gameStateRef])
 
   // --- Import Game Function ---
   const handleImportGame = useCallback(
     (data: string): void => {
       console.log("PERSISTENCE_HOOK: Attempting to import game.")
       try {
-        const importedState = JSON.parse(data) as GameState // Type assertion
+        // Decode Base64 to get the binary string
+        const compressedString = atob(data)
+        // Convert binary string to Uint8Array
+        const compressedBytes = new Uint8Array(
+          Array.from(compressedString, (char) => char.charCodeAt(0))
+        )
+        // Inflate (decompress) the Uint8Array
+        const jsonString = pako.inflate(compressedBytes, { to: "string" })
+        const importedState = JSON.parse(jsonString as string) as GameState
 
         // Basic validation of the imported state structure
         // (More robust validation with a schema library like Zod would be even better for complex states)
