@@ -1,5 +1,5 @@
 import { useCallback, useMemo, Dispatch } from "react"
-import { GameAction } from "../reducers/gameReducer" // Or from types.ts
+import { GameAction } from "../reducers/gameReducer"
 import { INITIAL_MONETIZATION_OPTIONS } from "../data/monetization"
 import { GameState, MonetizationInstance } from "../types"
 

@@ -1,8 +1,7 @@
 import { useCallback, useMemo, Dispatch } from "react"
-import { GameAction } from "../reducers/gameReducer" // Or from types.ts directly
-import { AVAILABLE_UPGRADES } from "../data/upgrades" // Static upgrade definitions
+import { GameAction } from "../reducers/gameReducer"
+import { AVAILABLE_UPGRADES } from "../data/upgrades"
 import { GameState, UpgradeInstance } from "../types"
-// import { calculateRates } from "../utils/calculateRates"; // To recalculate rates after purchase (though reducer handles this)
 
 // Define what an "available" upgrade might look like for the UI
 export interface AvailableUpgradeDisplay extends UpgradeInstance {

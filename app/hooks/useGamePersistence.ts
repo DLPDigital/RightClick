@@ -1,12 +1,7 @@
-// src/hooks/useGamePersistence.ts
-
 import { useEffect, useCallback, Dispatch } from "react"
-import { GameAction } from "../reducers/gameReducer" // Import types
-import { SAVE_KEY, DEBOUNCED_SAVE_INTERVAL } from "../data/constants" // Use the constant from your data file
+import { GameAction } from "../reducers/gameReducer"
+import { SAVE_KEY, DEBOUNCED_SAVE_INTERVAL } from "../data/constants"
 import { GameState } from "../types"
-// If DEBOUNCED_SAVE_INTERVAL is not in data/constants, define it here or pass as arg.
-// For this example, assuming it's in data/constants.ts (or you can define it locally in this file)
-// const LOCAL_DEBOUNCED_SAVE_INTERVAL = 10000; // Or use the imported one
 
 export interface GamePersistenceHook {
   handleExportGame: () => string

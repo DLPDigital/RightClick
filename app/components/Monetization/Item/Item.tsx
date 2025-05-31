@@ -1,6 +1,7 @@
 import React from "react"
 import { formatNumber } from "../../../utils/formatters"
 import { AvailableMonetizationDisplay } from "../../../hooks/useMonetization"
+import { Button } from "../../Button"
 
 interface MonetizationItemProps {
   option: AvailableMonetizationDisplay
@@ -32,9 +33,9 @@ export const MonetizationItem: React.FC<MonetizationItemProps> = ({
         <p className="status-active">✅ Activated</p>
       ) : (
         <>
-          <button onClick={handleActivateClick} disabled={!option.canActivate}>
+          <Button onClick={handleActivateClick} disabled={!option.canActivate}>
             {option.canActivate ? "Activate" : "Requirements Not Met"}
-          </button>
+          </Button>
           {!option.canActivate && (
             <div
               className="requirements-missing"
