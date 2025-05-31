@@ -32,7 +32,7 @@ describe("Settings", () => {
     fireEvent.change(screen.getByPlaceholderText(/Paste your game data here/i), {
       target: { value: "imported-data" },
     })
-    fireEvent.click(screen.getByText(/Import from Textarea/i))
+    fireEvent.click(screen.getByText(/Import My Game/i))
     expect(window.confirm).toHaveBeenCalled()
     expect(mockImport).toHaveBeenCalledWith("imported-data")
     await waitFor(() =>

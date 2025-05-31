@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Button } from "../Button"
 
-import { resetContainer } from "./Settings.css"
+import { resetContainer, importContainer } from "./Settings.css"
 
 interface SettingsScreenProps {
   onExport: () => string
@@ -39,7 +39,7 @@ export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, on
       <h2>Settings</h2>
       <h3>Export Game</h3>
       <Button onClick={handleExport}>Export to Clipboard</Button>
-
+      <div className={importContainer}>
       <h3>Import Game</h3>
       <textarea
         value={importData}
@@ -55,8 +55,9 @@ export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, on
           boxSizing: "border-box",
         }}
       />
-      <Button onClick={handleImport}>Import from Textarea</Button>
+      <Button onClick={handleImport}>Import My Game</Button>
       {message && <p>{message}</p>}
+      </div>
       <div className={resetContainer}>
         <h3>Reset</h3>
         <Button onClick={onReset}>Reset Game</Button>
