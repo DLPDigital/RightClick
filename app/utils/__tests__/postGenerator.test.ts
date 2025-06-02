@@ -1,4 +1,5 @@
 import { generateRandomConspiracyPost } from "../postGenerator"
+import * as getRandomElementModule from "../getRandomElement"
 
 describe("generateRandomConspiracyPost", () => {
   it("returns a non-empty string", () => {
@@ -17,13 +18,13 @@ describe("generateRandomConspiracyPost", () => {
 
   it("returns null if an error occurs (simulate by mocking getRandomElement)", () => {
     const original = jest.requireActual("../getRandomElement").getRandomElement
-    jest.spyOn(require("../getRandomElement"), "getRandomElement").mockImplementation(() => {
+    jest.spyOn(getRandomElementModule, "getRandomElement").mockImplementation(() => {
       throw new Error("fail")
     })
     const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {}) // suppress error
     const result = generateRandomConspiracyPost()
     expect(result).toBeNull()
     consoleErrorSpy.mockRestore() // restore after test
-    jest.spyOn(require("../getRandomElement"), "getRandomElement").mockImplementation(original)
+    jest.spyOn(getRandomElementModule, "getRandomElement").mockImplementation(original)
   })
 })

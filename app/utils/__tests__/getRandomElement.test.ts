@@ -14,7 +14,7 @@ describe("getRandomElement", () => {
   })
 
   it("throws an error if the array is undefined", () => {
-    // @ts-expect-error
+    // @ts-expect-error Testing function with undefined input
     expect(() => getRandomElement(undefined)).toThrow(
       "Cannot select random element from an empty or undefined array."
     )

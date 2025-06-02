@@ -1,5 +1,5 @@
+import { POST_HASHTAGS } from "../../data/posting/hashtags"
 import { getRandomHashtags } from "../getRandomHashtags"
-import { POST_HASHTAGS } from "../../data/postsData"
 
 describe("getRandomHashtags", () => {
   it("returns a string with the correct number of hashtags, all prefixed with #", () => {

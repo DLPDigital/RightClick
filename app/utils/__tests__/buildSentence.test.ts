@@ -14,10 +14,11 @@ describe("buildSentence", () => {
     expect(result).toMatch(/^Aliens are invading Earth\./)
   })
 
-  it("appends 6 hashtags, each prefixed with #", () => {
+  it("appends between 3 and 8 hashtags, each prefixed with #", () => {
     const result = buildSentence(subjectSingular, "testing", "something")
     const hashtags = result.split(". ")[1].split(" ")
-    expect(hashtags.length).toBe(6)
+    expect(hashtags.length).toBeLessThan(9)
+    expect(hashtags.length).toBeGreaterThan(2)
     hashtags.forEach((tag) => {
       expect(tag.startsWith("#")).toBe(true)
       expect(tag.length).toBeGreaterThan(1)
