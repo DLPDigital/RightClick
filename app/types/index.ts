@@ -76,3 +76,30 @@ export interface GameStore {
   }
   setGameState: (state: GameState) => void
 }
+
+export type VerbCategoryType = "acquisition" | "creation" | "control" | "destruction"
+export type TargetCategoryType =
+  | "locationBad"
+  | "locationGood"
+  | "thingBad"
+  | "thingGood"
+  | "abstractGood"
+  | "abstractBad"
+  | "phenomenon"
+  | "mediaGood"
+  | "mediaBad"
+
+export interface PostSubject {
+  name: string
+  plural: boolean
+}
+
+export interface PostVerbs {
+  type: VerbCategoryType
+  verbs: string[]
+}
+
+export interface PostTargets {
+  type: TargetCategoryType
+  targets: string[]
+}

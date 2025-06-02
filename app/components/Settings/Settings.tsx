@@ -40,23 +40,23 @@ export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, on
       <h3>Export Game</h3>
       <Button onClick={handleExport}>Export to Clipboard</Button>
       <div className={importContainer}>
-      <h3>Import Game</h3>
-      <textarea
-        value={importData}
-        onChange={(e) => setImportData(e.target.value)}
-        rows={10}
-        cols={50}
-        placeholder="Paste your game data here"
-        style={{
-          backgroundColor: "#333",
-          color: "#0f0",
-          border: "1px solid #0a0",
-          width: "100%",
-          boxSizing: "border-box",
-        }}
-      />
-      <Button onClick={handleImport}>Import My Game</Button>
-      {message && <p>{message}</p>}
+        <h3>Import Game</h3>
+        <textarea
+          value={importData}
+          onChange={(e) => setImportData(e.target.value)}
+          rows={10}
+          cols={50}
+          placeholder="Paste your game data here"
+          style={{
+            backgroundColor: "#333",
+            color: "#0f0",
+            border: "1px solid #0a0",
+            width: "100%",
+            boxSizing: "border-box",
+          }}
+        />
+        <Button onClick={handleImport}>Import My Game</Button>
+        {message && <p>{message}</p>}
       </div>
       <div className={resetContainer}>
         <h3>Reset</h3>

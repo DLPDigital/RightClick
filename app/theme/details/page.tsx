@@ -1,8 +1,13 @@
+"use client"
 import React from "react"
 
 import { container, colorContainer, colorBox } from "./details.css"
+import { generateRandomConspiracyPost } from "../../utils/postGenerator"
 
 const Details: React.FC = () => {
+  for (let i = 1; i < 3; i++) {
+    console.log(generateRandomConspiracyPost())
+  }
   return (
     <div className={container}>
       <h1>Theme Page</h1>
