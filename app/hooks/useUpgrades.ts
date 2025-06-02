@@ -49,7 +49,7 @@ export const useUpgrades = (gameState: GameState, dispatch: Dispatch<GameAction>
       }
 
       // If all checks pass (or to let reducer handle final validation), dispatch the action
-      console.log(`UPGRADES_HOOK: Dispatching PURCHASE_UPGRADE for ID: ${id}`)
+      // console.log(`UPGRADES_HOOK: Dispatching PURCHASE_UPGRADE for ID: ${id}`)
       dispatch({ type: "PURCHASE_UPGRADE", payload: { id } })
     },
     [gameState.money, gameState.upgrades, dispatch]
@@ -58,7 +58,7 @@ export const useUpgrades = (gameState: GameState, dispatch: Dispatch<GameAction>
   // Memoized list of upgrades available for display/purchase
   // This combines static data from AVAILABLE_UPGRADES with dynamic data from gameState
   const availableUpgrades = useMemo((): AvailableUpgradeDisplay[] => {
-    console.log("UPGRADES_HOOK: Recalculating availableUpgrades.")
+    // console.log("UPGRADES_HOOK: Recalculating availableUpgrades.")
     // Filter AVAILABLE_UPGRADES to only those that are "unlocked" (present in gameState.upgrades)
     // OR whose requirements are met to be shown.
     // For simplicity, we'll assume `gameState.upgrades` contains all discoverable upgrades (level 0 if not bought).

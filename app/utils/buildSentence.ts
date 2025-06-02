@@ -1,7 +1,10 @@
-import { PostSubject } from "../types"
+import { PostSubject, PostWithHashTags } from "../types"
 import { getRandomHashtags } from "./getRandomHashtags"
 
-export const buildSentence = (subject: PostSubject, verbGerund: string, target: string): string => {
+export const buildSentence = (subject: PostSubject, verbGerund: string, target: string): PostWithHashTags => {
   const hashtagCount = Math.floor(Math.random() * 7) + 3
-  return `${subject.name} ${subject.plural ? "are" : "is"} ${verbGerund.toLowerCase()} ${target}. ${getRandomHashtags(hashtagCount)}`
+  return {
+    content: `${subject.name} ${subject.plural ? "are" : "is"} ${verbGerund.toLowerCase()} ${target}.`,
+    hashtags: getRandomHashtags(hashtagCount)
+  }
 }

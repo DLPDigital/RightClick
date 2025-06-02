@@ -25,6 +25,7 @@ import { Monetization } from "./components/Monetization"
 import { Upgrades } from "./components/Upgrades"
 import { Settings } from "./components/Settings"
 import { Footer } from "./components/Footer"
+import { useAutoPostGenerator } from "./hooks/useAutoPostGenerator"
 
 function App() {
   // --- State for UI Navigation ---
@@ -50,15 +51,23 @@ function App() {
     dispatch
   )
 
+  // Posting Engine
+  const postsFeedLength = Array.isArray(gameState?.postsFeed) ? gameState.postsFeed.length : 0;
+  useAutoPostGenerator(
+    gameState?.postsMade ?? 0,
+    postsFeedLength,
+    dispatch
+  );
+
   // --- Game Tick Dispatch ---
   useEffect(() => {
-    console.log("PAGE.TSX: Setting up game tick dispatch interval.")
+    // console.log("PAGE.TSX: Setting up game tick dispatch interval.")
     const tickIntervalId = setInterval(() => {
       dispatch({ type: "TICK" })
     }, GAME_TICK_INTERVAL)
 
     return () => {
-      console.log("PAGE.TSX: Clearing game tick dispatch interval.")
+      // console.log("PAGE.TSX: Clearing game tick dispatch interval.")
       clearInterval(tickIntervalId)
     }
   }, [dispatch]) // `dispatch` from useReducer is stable and won't change.
@@ -88,6 +97,7 @@ function App() {
             followersPerClick={gameState.followersPerClick}
             postsMade={gameState.postsMade}
             onPost={handlePost}
+            postsFeed={gameState.postsFeed}
           />
         )
       case "monetization":

@@ -7,7 +7,7 @@ import { GameState } from "../types"
 // Initializer function for useReducer to load state from localStorage
 // This function is run ONCE by useReducer when the hook first mounts.
 const initGameStateFromStorage = (initialState: GameState): GameState => {
-  console.log("ENGINE_HOOK: initGameStateFromStorage called by useReducer.")
+  // console.log("ENGINE_HOOK: initGameStateFromStorage called by useReducer.")
   if (typeof window !== "undefined") {
     const savedGame = localStorage.getItem(SAVE_KEY)
     if (savedGame) {
@@ -23,7 +23,7 @@ const initGameStateFromStorage = (initialState: GameState): GameState => {
           Array.isArray(parsedState.unlockedAchievements) &&
           typeof parsedState.lastTick === "number"
         ) {
-          console.log("ENGINE_HOOK: Valid saved game found, loading it.")
+          // console.log("ENGINE_HOOK: Valid saved game found, loading it.")
           return {
             ...initialState, // Base defaults
             ...parsedState, // Override with saved values
@@ -40,7 +40,7 @@ const initGameStateFromStorage = (initialState: GameState): GameState => {
         console.error("ENGINE_HOOK: Failed to parse saved game. Using default initial state:", e)
       }
     } else {
-      console.log("ENGINE_HOOK: No saved game found. Using default initial state.")
+      // console.log("ENGINE_HOOK: No saved game found. Using default initial state.")
     }
   }
   // Fallback to a fresh copy of initialGameState
@@ -79,7 +79,7 @@ export const useGameEngine = (): GameEngineHook => {
     gameStateRef.current = gameState
   }, [gameState])
 
-  console.log("ENGINE_HOOK: useGameEngine hook executed/re-rendered. Posts:", gameState.postsMade)
+  // console.log("ENGINE_HOOK: useGameEngine hook executed/re-rendered. Posts:", gameState.postsMade)
 
   return {
     gameState,

@@ -3,8 +3,9 @@ import { buildSentence } from "./buildSentence"
 import { POST_SUBJECTS } from "../data/posting/subjects"
 import { POST_VERBS } from "../data/posting/verbs"
 import { POST_TARGETS, verbTargetCompatibility } from "../data/posting/targets"
+import { PostWithHashTags } from "../types"
 
-export const generateRandomConspiracyPost = (): string | null => {
+export const generateRandomConspiracyPost = (): PostWithHashTags | null => {
   try {
     const subject = getRandomElement(POST_SUBJECTS)
     const verbData = getRandomElement(POST_VERBS)

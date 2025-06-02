@@ -3,12 +3,15 @@ import { formatNumber } from "../../utils/formatters"
 import { Button } from "../Button"
 
 import { container, tip } from "./Posting.css"
+import { GeneratedPost } from "../../types"
+import { PostsFeed } from "../PostsFeed"
 
 interface PostingScreenProps {
   followers: number
   followersPerClick: number
   postsMade: number
   onPost: () => void
+  postsFeed: GeneratedPost[]
 }
 
 export const Posting: React.FC<PostingScreenProps> = ({
@@ -16,6 +19,7 @@ export const Posting: React.FC<PostingScreenProps> = ({
   followersPerClick,
   postsMade,
   onPost,
+  postsFeed,
 }) => {
   return (
     <div className={container}>
@@ -32,6 +36,7 @@ export const Posting: React.FC<PostingScreenProps> = ({
         Tip: The more you post, the deeper down the rabbit hole you go... and the more
         &ldquo;lucrative&rdquo; opportunities arise.
       </p>
+      {postsFeed.length >= 0 && <PostsFeed postsFeed={postsFeed} />}
     </div>
   )
 }

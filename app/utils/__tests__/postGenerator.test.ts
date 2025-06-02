@@ -4,16 +4,16 @@ import * as getRandomElementModule from "../getRandomElement"
 describe("generateRandomConspiracyPost", () => {
   it("returns a non-empty string", () => {
     const result = generateRandomConspiracyPost()
-    expect(typeof result).toBe("string")
+    expect(typeof result).toBe("object")
     expect(result).not.toBeNull()
-    expect(result && result.length).toBeGreaterThan(0)
+    expect(result && result.content.length).toBeGreaterThan(0)
   })
 
   it("returns a string with a verb, target, and hashtags", () => {
     const result = generateRandomConspiracyPost()
-    expect(result).toMatch(/\bis\b|\bare\b/) // contains 'is' or 'are'
-    expect(result).toMatch(/#\w+/) // contains at least one hashtag
-    expect(result).toMatch(/\./) // contains a period
+    expect(result?.content).toMatch(/\bis\b|\bare\b/) // contains 'is' or 'are'
+    expect(result?.hashtags).toMatch(/#\w+/) // contains at least one hashtag
+    expect(result?.content).toMatch(/\./) // contains a period
   })
 
   it("returns null if an error occurs (simulate by mocking getRandomElement)", () => {

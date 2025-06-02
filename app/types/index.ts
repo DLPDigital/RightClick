@@ -66,6 +66,7 @@ export interface GameState {
   monetizationOptions: MonetizationInstance[]
   unlockedAchievements: string[]
   lastTick: number
+  postsFeed: GeneratedPost[]
 }
 
 export interface GameStore {
@@ -102,4 +103,14 @@ export interface PostVerbs {
 export interface PostTargets {
   type: TargetCategoryType
   targets: string[]
+}
+
+export interface PostWithHashTags {
+  content: string
+  hashtags: string
+}
+
+export interface GeneratedPost extends PostWithHashTags {
+  id: string
+  timestamp: number
 }
