@@ -97,7 +97,7 @@ export const POST_TARGETS: PostTargets[] = [
       "hidden secrets of Atlantis and just what went down there",
       "secrets, and lots of them",
       "plans to take over your children's nap times with mandatory interpretive dance",
-      "the secret history of what can only be called 'mega abortion,'",
+      "the secret history of what can only be called 'mega abortion'",
       "the globalist agenda to make everyone use the metric system and enjoy quinoa",
       "the deep state's plot to replace all coffee with decaf soy milk",
       "the true meaning of 'covfefe', which unlocks a government mind-control program",
