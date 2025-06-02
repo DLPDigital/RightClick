@@ -47,14 +47,14 @@ export const useMonetization = (
         return
       }
 
-      console.log(`MONETIZATION_HOOK: Dispatching ACTIVATE_MONETIZATION for ID: ${id}`)
+      // console.log(`MONETIZATION_HOOK: Dispatching ACTIVATE_MONETIZATION for ID: ${id}`)
       dispatch({ type: "ACTIVATE_MONETIZATION", payload: { id } })
     },
     [gameState.money, gameState.followers, gameState.monetizationOptions, dispatch]
   )
 
   const availableMonetization = useMemo((): AvailableMonetizationDisplay[] => {
-    console.log("MONETIZATION_HOOK: Recalculating availableMonetization.")
+    // console.log("MONETIZATION_HOOK: Recalculating availableMonetization.")
     // Assumes gameState.monetizationOptions contains all "discovered" options.
     // The 'tick' in the reducer adds newly discoverable options.
     const currentMonetizationOptions = Array.isArray(gameState.monetizationOptions)

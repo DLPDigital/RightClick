@@ -90,4 +90,12 @@ export const POST_SUBJECTS: PostSubject[] = [
   { name: "Pfizer", plural: false },
   { name: "Big Pharma", plural: true },
   { name: "Antifa", plural: false },
+  { name: "Tony Fauci", plural: false},
+  { name: "Tony Fauci", plural: false},
+  { name: "Tony Fauci", plural: false},
+  { name: "Tony Fauci", plural: false},
+  { name: "Tony Fauci", plural: false},
+  { name: "Tony Fauci", plural: false},
+  { name: "Fauci", plural: false},
+  { name: "WHO", plural: false }
 ]

@@ -111,5 +111,5 @@ export const POST_HASHTAGS: string[] = [
   "Prepare",
   "GridDown",
   "EMP",
-  "covfefe"
+  "covfefe",
 ]

@@ -1,4 +1,4 @@
-import { GameState, UpgradeInstance, MonetizationInstance } from "../types" // Import necessary types
+import { GameState, UpgradeInstance, MonetizationInstance, GeneratedPost } from "../types" // Import necessary types
 import { initialGameState } from "../data/constants" // For reset and potentially initial load
 import { AVAILABLE_UPGRADES } from "../data/upgrades"
 import { INITIAL_MONETIZATION_OPTIONS } from "../data/monetization"
@@ -17,10 +17,11 @@ export type GameAction =
   | { type: "LOAD_GAME"; payload: GameState }
   | { type: "RESET_GAME" }
   | { type: "EXPORT_GAME_REQUEST" } // For persistence, though export itself doesn't change state here
+  | { type: "ADD_TO_POST_FEED"; payload: GeneratedPost }
 
 // --- Reducer Function ---
 export const gameReducer = (state: GameState, action: GameAction): GameState => {
-  console.log(`REDUCER: Action dispatched - ${action.type}`, action.type !== "TICK" ? action : "") // Log actions (verbose for TICK)
+  // console.log(`REDUCER: Action dispatched - ${action.type}`, action.type !== "TICK" ? action : "") // Log actions (verbose for TICK)
 
   switch (action.type) {
     case "TICK": {
@@ -244,6 +245,19 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
         monetizationOptions: initialGameState.monetizationOptions.map((m) => ({ ...m })),
         unlockedAchievements: [...initialGameState.unlockedAchievements],
         lastTick: Date.now(),
+      }
+    }
+
+    case "ADD_TO_POST_FEED": {
+      const newFeed = [action.payload, ...state.postsFeed]
+      // const MAX_FEED_ITEMS = 50
+      const MAX_FEED_ITEMS = 10
+      if (newFeed.length > MAX_FEED_ITEMS) {
+        newFeed.length = MAX_FEED_ITEMS
+      }
+      return {
+        ...state,
+        postsFeed: newFeed,
       }
     }
 

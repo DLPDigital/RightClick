@@ -16,16 +16,16 @@ export const useGamePersistence = (
 ): GamePersistenceHook => {
   // --- Periodic Save Logic ---
   useEffect(() => {
-    console.log("PERSISTENCE_HOOK: Setting up periodic save interval.")
+    // console.log("PERSISTENCE_HOOK: Setting up periodic save interval.")
 
     const saveIntervalId = setInterval(() => {
       if (typeof window !== "undefined") {
         const currentStateToSave = gameStateRef.current // Get latest state from ref
         if (currentStateToSave) {
           // Ensure ref is populated
-          console.log(
-            `PERSISTENCE_HOOK: --- PERIODIC SAVE --- Saving. Posts: ${currentStateToSave.postsMade}, Money: ${currentStateToSave.money.toFixed(0)}`
-          )
+          // console.log(
+          //   `PERSISTENCE_HOOK: --- PERIODIC SAVE --- Saving. Posts: ${currentStateToSave.postsMade}, Money: ${currentStateToSave.money.toFixed(0)}`
+          // )
           localStorage.setItem(SAVE_KEY, JSON.stringify(currentStateToSave))
         } else {
           console.warn(
@@ -36,7 +36,7 @@ export const useGamePersistence = (
     }, DEBOUNCED_SAVE_INTERVAL) // Use the constant for the interval
 
     return () => {
-      console.log("PERSISTENCE_HOOK: Clearing periodic save interval.")
+      // console.log("PERSISTENCE_HOOK: Clearing periodic save interval.")
       clearInterval(saveIntervalId)
     }
   }, [gameStateRef]) // Only re-run if gameStateRef itself changes (which it won't after initial assignment)
@@ -56,7 +56,7 @@ export const useGamePersistence = (
   // --- Import Game Function ---
   const handleImportGame = useCallback(
     (data: string): void => {
-      console.log("PERSISTENCE_HOOK: Attempting to import game.")
+      // console.log("PERSISTENCE_HOOK: Attempting to import game.")
       try {
         // Decode Base64 to get the binary string
         const compressedString = atob(data)
@@ -84,7 +84,7 @@ export const useGamePersistence = (
         // If valid, dispatch the LOAD_GAME action with the validated payload
         dispatch({ type: "LOAD_GAME", payload: importedState })
         alert("Game imported successfully!")
-        console.log("PERSISTENCE_HOOK: Game import successful, dispatched LOAD_GAME.")
+        // console.log("PERSISTENCE_HOOK: Game import successful, dispatched LOAD_GAME.")
       } catch (e) {
         console.error("PERSISTENCE_HOOK: Import failed:", e)
         alert("Failed to import game data. It might be corrupted.")
@@ -101,7 +101,7 @@ export const useGamePersistence = (
         "Are you sure you want to reset your game? This will erase your saved progress."
       )
     ) {
-      console.log("PERSISTENCE_HOOK: Resetting game.")
+      // console.log("PERSISTENCE_HOOK: Resetting game.")
       // Dispatch the RESET_GAME action
       dispatch({ type: "RESET_GAME" })
       // Also clear the localStorage save
