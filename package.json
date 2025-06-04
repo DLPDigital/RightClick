@@ -34,6 +34,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.0.3",
     "ts-jest": "^29.3.4",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.2"
   },
   "scripts": {
@@ -46,7 +47,7 @@
     "check": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "fetch-content": "node ./app/scripts/fetch-contentful-data.ts",
+    "fetch-content": "ts-node ./app/scripts/fetch-contentful-data.ts",
     "generate": "npm run fetch-content"
   }
 }
