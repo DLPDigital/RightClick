@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 const contentful = require("contentful")
 const { mapContentfulEntry } = require("../utils/mapContentfulEntry.ts")
 const fs = require("fs")
