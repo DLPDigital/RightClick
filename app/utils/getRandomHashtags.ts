@@ -1,4 +1,4 @@
-import { POST_HASHTAGS } from "../data/posting/hashtags"
+import { POST_HASHTAGS } from "../data/generated/hashtags"
 
 export const getRandomHashtags = (count: number): string => {
   const shuffled = [...POST_HASHTAGS]

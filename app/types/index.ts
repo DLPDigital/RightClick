@@ -103,6 +103,8 @@ export interface PostVerbs {
 export interface PostTargets {
   type: TargetCategoryType
   targets: string[]
+  typename?: "RightClickerPostTargetGroups"
+  id?: string
 }
 
 export interface PostWithHashTags {

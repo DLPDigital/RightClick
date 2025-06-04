@@ -1,4 +1,4 @@
-import { POST_HASHTAGS } from "../../data/posting/hashtags"
+import { POST_HASHTAGS } from "../../data/generated/hashtags"
 import { getRandomHashtags } from "../getRandomHashtags"
 
 describe("getRandomHashtags", () => {

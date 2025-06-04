@@ -11,19 +11,19 @@ export const postsContainer = style({
   maxHeight: "37.5rem",
   overflowY: "scroll",
   selectors: {
-    '&::-webkit-scrollbar': {
+    "&::-webkit-scrollbar": {
       width: "8px",
       background: vars.color.background,
     },
-    '&::-webkit-scrollbar-thumb': {
+    "&::-webkit-scrollbar-thumb": {
       background: vars.color.foreground,
       borderRadius: "4px",
     },
-    '&::-webkit-scrollbar-thumb:hover': {
+    "&::-webkit-scrollbar-thumb:hover": {
       background: vars.color.accent,
     },
     // For Firefox
-    '&': {
+    "&": {
       scrollbarColor: `${vars.color.foreground} ${vars.color.background}`,
       scrollbarWidth: "thin",
     },
@@ -46,7 +46,7 @@ export const postContent = style({
 
 globalStyle(`${postContent} p`, {
   marginTop: "0",
-  marginBottom: "8px"
+  marginBottom: "8px",
 })
 
 globalStyle(`${postContent} span`, {

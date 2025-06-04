@@ -5,7 +5,7 @@ import { container, colorContainer, colorBox } from "./details.css"
 import { generateRandomConspiracyPost } from "../../utils/postGenerator"
 
 const Details: React.FC = () => {
-  for (let i = 1; i < 3; i++) {
+  for (let i = 1; i < 20; i++) {
     console.log(generateRandomConspiracyPost())
   }
   return (
