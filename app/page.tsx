@@ -52,12 +52,8 @@ function App() {
   )
 
   // Posting Engine
-  const postsFeedLength = Array.isArray(gameState?.postsFeed) ? gameState.postsFeed.length : 0;
-  useAutoPostGenerator(
-    gameState?.postsMade ?? 0,
-    postsFeedLength,
-    dispatch
-  );
+  const postsFeedLength = Array.isArray(gameState?.postsFeed) ? gameState.postsFeed.length : 0
+  useAutoPostGenerator(gameState?.postsMade ?? 0, postsFeedLength, dispatch)
 
   // --- Game Tick Dispatch ---
   useEffect(() => {

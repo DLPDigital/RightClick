@@ -110,6 +110,7 @@ export const POST_HASHTAGS: string[] = [
   "Vax",
   "WakeUp",
   "WEF",
+  "WeSayMerryChristmas",
   "WHO",
   "woke",
   "WokeMindVirus",

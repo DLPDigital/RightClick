@@ -7,7 +7,13 @@ describe("Posting", () => {
   it("renders follower stats and calls onPost when button is clicked", () => {
     const mockOnPost = jest.fn()
     const { getByText } = render(
-      <Posting followers={1234} followersPerClick={56} postsMade={7} onPost={mockOnPost} postsFeed={[]} />
+      <Posting
+        followers={1234}
+        followersPerClick={56}
+        postsMade={7}
+        onPost={mockOnPost}
+        postsFeed={[]}
+      />
     )
 
     expect(getByText(/Current Followers/i)).toHaveTextContent("1.23K")

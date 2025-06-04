@@ -1,6 +1,5 @@
 import { PostSubject } from "../../types"
 
-// People, organisations etc. to include in the negative posts, add duplicates in to increase weighting
 export const POST_SUBJECTS: PostSubject[] = [
   { name: "Barack Obama", plural: false },
   { name: "Barack Obama", plural: false },
@@ -90,12 +89,12 @@ export const POST_SUBJECTS: PostSubject[] = [
   { name: "Pfizer", plural: false },
   { name: "Big Pharma", plural: true },
   { name: "Antifa", plural: false },
-  { name: "Tony Fauci", plural: false},
-  { name: "Tony Fauci", plural: false},
-  { name: "Tony Fauci", plural: false},
-  { name: "Tony Fauci", plural: false},
-  { name: "Tony Fauci", plural: false},
-  { name: "Tony Fauci", plural: false},
-  { name: "Fauci", plural: false},
-  { name: "WHO", plural: false }
+  { name: "Tony Fauci", plural: false },
+  { name: "Tony Fauci", plural: false },
+  { name: "Tony Fauci", plural: false },
+  { name: "Tony Fauci", plural: false },
+  { name: "Tony Fauci", plural: false },
+  { name: "Tony Fauci", plural: false },
+  { name: "Fauci", plural: false },
+  { name: "WHO", plural: false },
 ]

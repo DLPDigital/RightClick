@@ -1,8 +1,9 @@
 import { getRandomElement } from "./getRandomElement"
 import { buildSentence } from "./buildSentence"
-import { POST_SUBJECTS } from "../data/posting/subjects"
-import { POST_VERBS } from "../data/posting/verbs"
-import { POST_TARGETS, verbTargetCompatibility } from "../data/posting/targets"
+import { POST_SUBJECTS } from "../data/generated/subjects"
+import { POST_VERBS } from "../data/generated/verbCategories"
+import { POST_TARGETS } from "../data/generated/targetCategories"
+import { verbTargetCompatibility } from "../data/generated/targetGroups"
 import { PostWithHashTags } from "../types"
 
 export const generateRandomConspiracyPost = (): PostWithHashTags | null => {

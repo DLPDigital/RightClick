@@ -13,16 +13,14 @@ export const PostsFeed: React.FC<Props> = ({ postsFeed }) => (
     <div className={postsContainer}>
       {postsFeed.length === 0 && <p>Start posting to see the theories fly!</p>}
       {postsFeed.map((post) => {
-        console.log('post =', post)
+        console.log("post =", post)
         return (
-        <div
-          key={post.id}
-          className={postContent}
-        >
-          <p>{post.content}</p>
-          <span>{post.hashtags}</span>
-        </div>
-      )})}
+          <div key={post.id} className={postContent}>
+            <p>{post.content}</p>
+            <span>{post.hashtags}</span>
+          </div>
+        )
+      })}
     </div>
   </div>
 )
