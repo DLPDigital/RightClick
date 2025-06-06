@@ -28,7 +28,7 @@ export const MonetizationItem: React.FC<MonetizationItemProps> = ({
       <p>{option.description}</p>
       <p>Requires: {formatNumber(option.followerRequirement)} Followers</p>
       {option.costToActivate > 0 && <p>Activation Cost: ${formatNumber(option.costToActivate)}</p>}
-      <p>Income: ${formatNumber(option.moneyPerSecond)}/sec</p>
+      <p>Income: ${formatNumber(option.moneyPerSecond, true)}/sec</p>
       {option.active ? (
         <p className="status-active">✅ Activated</p>
       ) : (

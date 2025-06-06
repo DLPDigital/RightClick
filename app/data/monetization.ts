@@ -21,7 +21,10 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 5,
     active: false,
     unlocked: false,
-    // requirement: (gs) => gs.upgrades["basic-mic"]?.level > 0 && gs.followers >= 1000,
+    requirement: (gs) => {
+      const micUpgrade = gs.upgrades.find((u) => u.id === "basic-mic")
+      return micUpgrade !== undefined && micUpgrade.level > 0 && gs.followers >= 1000
+    },
   },
   "gold-buying": {
     id: "gold-buying",

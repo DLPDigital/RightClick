@@ -14,6 +14,10 @@
 /.next
 /out
 
+# Generated data from Contentful build script
+/app/data/generated/
+
+
 # misc  
 .DS_Store
 .env.local

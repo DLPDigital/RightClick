@@ -25,6 +25,17 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
   "basic-mic": {
     id: "basic-mic",
     name: "Basic Microphone",
+    description: "Buy equipment for your podcast.",
+    baseCost: 1000,
+    costMultiplier: 1, // One-time purchase for now, or could upgrade quality
+    level: 0,
+    maxLevel: 1,
+    unlocked: false,
+    requirement: (gs) => gs.followers >= 500 && gs.money >= 1000,
+  },
+  podcasting: {
+    id: "podcasting",
+    name: "Launch your podcast",
     description: "Start your own podcast (very quietly).",
     baseCost: 1000,
     costMultiplier: 1, // One-time purchase for now, or could upgrade quality
@@ -32,7 +43,10 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     maxLevel: 1,
     unlocked: false,
     unlocks: ["podcast-sponsorships"],
-    requirement: (gs) => gs.followers >= 500 && gs.money >= 1000,
+    requirement: (gs) => {
+      const micUpgrade = gs.upgrades.find((u) => u.id === "basic-mic")
+      return micUpgrade !== undefined && gs.followers >= 1000 && gs.money >= 20000
+    },
   },
   "intern-army": {
     id: "intern-army",
