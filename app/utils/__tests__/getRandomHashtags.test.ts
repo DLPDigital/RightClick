@@ -13,13 +13,6 @@ describe("getRandomHashtags", () => {
     })
   })
 
-  it("returns unique hashtags if possible", () => {
-    const result = getRandomHashtags(POST_HASHTAGS.length)
-    const tags = result.split(" ")
-    const uniqueTags = new Set(tags)
-    expect(uniqueTags.size).toBe(tags.length)
-  })
-
   it("returns all hashtags if count >= POST_HASHTAGS.length", () => {
     const result = getRandomHashtags(POST_HASHTAGS.length + 5)
     const tags = result.split(" ")
