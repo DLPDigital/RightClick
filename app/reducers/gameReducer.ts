@@ -18,6 +18,7 @@ export type GameAction =
   | { type: "RESET_GAME" }
   | { type: "EXPORT_GAME_REQUEST" } // For persistence, though export itself doesn't change state here
   | { type: "ADD_TO_POST_FEED"; payload: GeneratedPost }
+  | { type: "SET_USERNAME"; payload: { username: string } }
 
 // --- Reducer Function ---
 export const gameReducer = (state: GameState, action: GameAction): GameState => {
@@ -228,11 +229,21 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
       return state // Conditions not met, no change
     }
 
+    case "SET_USERNAME": {
+      console.log("REDUCER: Setting username to", action.payload.username)
+      return {
+        ...state,
+        username: action.payload.username.trim(), // Trim whitespace
+      }
+    }
+
     case "LOAD_GAME": {
       // The payload IS the new GameState, but we should ensure lastTick is current.
       // The validation of the loaded state structure should happen BEFORE dispatching this action.
+      const loadedUsername = action.payload.username || initialGameState.username || ""
       return {
         ...action.payload,
+        username: loadedUsername,
         lastTick: Date.now(), // Always reset lastTick on load
       }
     }

@@ -54,6 +54,7 @@ export interface InsanityStage {
 }
 
 export interface GameState {
+  username: string
   money: number
   followers: number
   postsMade: number

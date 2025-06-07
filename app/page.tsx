@@ -26,6 +26,7 @@ import { Upgrades } from "./components/Upgrades"
 import { Settings } from "./components/Settings"
 import { Footer } from "./components/Footer"
 import { useAutoPostGenerator } from "./hooks/useAutoPostGenerator"
+import { UsernameSetup } from "./components/UsernameSetup"
 
 function App() {
   // --- State for UI Navigation ---
@@ -73,6 +74,13 @@ function App() {
     dispatch({ type: "POST" })
   }, [dispatch])
 
+  const handleUsernameSet = useCallback(
+    (username: string) => {
+      dispatch({ type: "SET_USERNAME", payload: { username } })
+    },
+    [dispatch]
+  )
+
   // --- Derived Data for UI ---
   const currentInsanityStage = useMemo(() => {
     const insanityLevelIndex = gameState?.insanityLevelIndex ?? 0
@@ -81,6 +89,10 @@ function App() {
 
   if (!gameState) {
     return <div>Loading Game...</div>
+  }
+
+  if (!gameState.username) {
+    return <UsernameSetup onUsernameSet={handleUsernameSet} />
   }
 
   // --- Screen Rendering Logic ---
