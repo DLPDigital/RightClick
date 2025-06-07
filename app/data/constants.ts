@@ -9,6 +9,7 @@ export const POST_GENERATION_INTERVAL = 6000 // 6 seconds
 export const MAX_AUTO_POST_LEAD = 10 // Allow auto-posts to be at most 10 ahead of manual posts
 
 export const initialGameState: GameState = {
+  username: "",
   money: 0,
   followers: 0,
   postsMade: 0,

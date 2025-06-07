@@ -26,6 +26,7 @@ const VERBS_FILE = path.join(OUTPUT_DIR, "verbCategories.ts")
 const TARGETS_FILE = path.join(OUTPUT_DIR, "targetCategories.ts")
 const TARGETS_GROUP_FILE = path.join(OUTPUT_DIR, "targetGroups.ts")
 const HASHTAGS_FILE = path.join(OUTPUT_DIR, "hashtags.ts")
+const USERNAMES_FILE = path.join(OUTPUT_DIR, "usernames.ts")
 
 async function fetchAndSaveData() {
   if (!SPACE_ID || !ACCESS_TOKEN || !HASHTAGS_ENTRY || !SUBJECTS_ENTRY) {
@@ -41,15 +42,23 @@ async function fetchAndSaveData() {
 
   try {
     console.log("--------------------")
-    console.log("Fetching Game Hashtags from Contentful...")
+    console.log("Fetching Game Hashtags and Usernames from Contentful...")
     const hashtagEntries = await client.getEntry(HASHTAGS_ENTRY)
-    const mappedHashtags = mapContentfulEntry(hashtagEntries)
-    const hashtagsData = JSON.stringify(mappedHashtags.postHashtags, null, 2)
+    const mappedHashtagsUsernames = mapContentfulEntry(hashtagEntries)
+    const hashtagsData = JSON.stringify(mappedHashtagsUsernames.postHashtags, null, 2)
     const hashtagsString = `export const POST_HASHTAGS: string[] = ${hashtagsData}`
 
     fs.writeFileSync(HASHTAGS_FILE, hashtagsString)
     console.log(
-      `Successfully wrote ${mappedHashtags.postHashtags.length} hashtags to ${HASHTAGS_FILE}`
+      `Successfully wrote ${mappedHashtagsUsernames.postHashtags.length} hashtags to ${HASHTAGS_FILE}`
+    )
+
+    const usernamesData = JSON.stringify(mappedHashtagsUsernames.usernames, null, 2)
+    const usernamesString = `export const POST_USERNAMES: string[] = ${usernamesData}`
+
+    fs.writeFileSync(USERNAMES_FILE, usernamesString)
+    console.log(
+      `Successfully wrote ${mappedHashtagsUsernames.usernames.length} hashtags to ${USERNAMES_FILE}`
     )
 
     console.log("--------------------")

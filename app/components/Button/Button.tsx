@@ -14,6 +14,7 @@ export const Button: React.FC<Props> = ({ children, onClick, isActive, disabled 
     onClick={onClick}
     disabled={disabled}
     className={isActive ? activeButton.Active : activeButton.Default}
+    type="button"
   >
     {children}
   </button>
