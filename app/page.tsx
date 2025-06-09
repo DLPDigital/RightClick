@@ -53,7 +53,12 @@ function App() {
 
   // Posting Engine
   const postsFeedLength = Array.isArray(gameState?.postsFeed) ? gameState.postsFeed.length : 0
-  useAutoPostGenerator(gameState?.postsMade ?? 0, postsFeedLength, dispatch)
+  useAutoPostGenerator(
+    gameState?.postsMade ?? 0,
+    postsFeedLength,
+    gameState.followers ?? 0,
+    dispatch
+  )
 
   // --- Game Tick Dispatch ---
   useEffect(() => {
@@ -105,6 +110,7 @@ function App() {
             postsMade={gameState.postsMade}
             onPost={handlePost}
             postsFeed={gameState.postsFeed}
+            username={gameState.username}
           />
         )
       case "monetization":

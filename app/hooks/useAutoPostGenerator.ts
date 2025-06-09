@@ -7,8 +7,10 @@ import { GeneratedPost } from "../types"
 export const useAutoPostGenerator = (
   postsMade: number,
   postsFeedLength: number,
+  followers: number,
   dispatch: Dispatch<GameAction>
 ): void => {
+  console.log("followers on useAutorPost = ", followers)
   useEffect(() => {
     console.log("AUTO_POST_HOOK: Evaluating post generation interval setup.")
 
@@ -20,7 +22,7 @@ export const useAutoPostGenerator = (
     if (hasPlayerStartedPosting && isFeedNotTooFarAhead) {
       console.log("AUTO_POST_HOOK: Conditions met. Setting up post generation interval.")
       intervalId = setInterval(() => {
-        const fullPostContentWithHashtags = generateRandomConspiracyPost()
+        const fullPostContentWithHashtags = generateRandomConspiracyPost(followers)
         if (fullPostContentWithHashtags) {
           const newPost: GeneratedPost = {
             id: `post-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
@@ -42,7 +44,7 @@ export const useAutoPostGenerator = (
         clearInterval(intervalId)
       }
     }
-  }, [dispatch, postsMade, postsFeedLength])
+  }, [dispatch, postsMade, postsFeedLength, followers])
 
   // This hook doesn't need to return anything if it's purely for side effects.
 }

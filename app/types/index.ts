@@ -111,6 +111,11 @@ export interface PostTargets {
 export interface PostWithHashTags {
   content: string
   hashtags: string
+  engagements: {
+    comments: number
+    retweets: number
+    likes: number
+  }
 }
 
 export interface GeneratedPost extends PostWithHashTags {

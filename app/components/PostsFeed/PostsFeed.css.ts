@@ -1,4 +1,4 @@
-import { style, globalStyle } from "@vanilla-extract/css"
+import { style } from "@vanilla-extract/css"
 import { vars } from "../../theme/theme.css"
 
 export const container = style({
@@ -28,28 +28,4 @@ export const postsContainer = style({
       scrollbarWidth: "thin",
     },
   },
-})
-
-export const postContent = style({
-  margin: "8px 0",
-  paddingBottom: "16px",
-  selectors: {
-    "&::after": {
-      content: '""',
-      display: "block",
-      margin: "24px auto 0 auto",
-      width: "50%",
-      borderBottom: `1px dashed ${vars.color.text}`,
-    },
-  },
-})
-
-globalStyle(`${postContent} p`, {
-  marginTop: "0",
-  marginBottom: "8px",
-})
-
-globalStyle(`${postContent} span`, {
-  fontSize: "0.75em",
-  paddingBottom: "0.5rem",
 })
