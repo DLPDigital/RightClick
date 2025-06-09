@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css"
-import { vars } from "../../theme/theme.css"
+import { vars, alveraFontBold } from "../../theme/theme.css"
 
 export const usernameSetupContainer = style({
   backgroundColor: vars.color.tertiary,
@@ -17,17 +17,14 @@ export const usernameSetupContainer = style({
 
 export const welcomeMessage = style({
   fontSize: "clamp(1.5rem, 5vw, 2.2rem)",
-  fontWeight: "bold",
-  marginBottom: "1rem",
-  color: "#e0e0e0",
+  fontFamily: alveraFontBold,
+  marginBottom: "0",
 })
 
 export const statusMessage = style({
-  fontFamily: "monospace, 'Courier New', Courier",
   fontSize: "clamp(1rem, 4vw, 1.3rem)",
-  color: "#00ff00",
-  marginBottom: "1.5rem",
   whiteSpace: "pre-wrap",
+  marginBottom: "0",
 })
 
 export const formContainer = style({
@@ -42,19 +39,14 @@ export const formContainer = style({
 export const inputField = style({
   padding: "0.75rem 1rem",
   fontSize: "1rem",
+  fontFamily: alveraFontBold,
+  textAlign: "center",
   borderRadius: "0.375rem",
-  border: "1px solid #444",
-  backgroundColor: "#222",
+  border: `1px solid ${vars.color.text}`,
+  backgroundColor: vars.color.tertiary,
   color: vars.color.text,
   outline: "none",
   transition: "border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
-  ":focus": {
-    borderColor: "#00ff00",
-    boxShadow: "0 0 0 0.125rem rgba(0, 255, 0, 0.3)",
-  },
-  "::placeholder": {
-    color: "#888",
-  },
 })
 
 export const buttonRow = style({
@@ -62,11 +54,10 @@ export const buttonRow = style({
   justifyContent: "center",
   gap: "1rem",
   marginTop: "0.375rem",
-  flexWrap: "wrap",
 })
 
 export const errorMessage = style({
-  color: "#ff5555",
+  color: vars.color.secondary,
   marginTop: "0.5rem",
   minHeight: "1.2em",
   fontSize: "0.9rem",
