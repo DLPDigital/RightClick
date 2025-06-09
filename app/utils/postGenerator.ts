@@ -14,9 +14,9 @@ export const generateRandomConspiracyPost = (followers: number): PostWithHashTag
     const verbGerund = getRandomElement(verbData.verbs)
 
     const engagements = {
-      comments:  getRandomEngagement(followers, 0.2),
-      retweets:  getRandomEngagement(followers, 0.4),
-      likes:  getRandomEngagement(followers, 0.6),
+      comments: getRandomEngagement(followers, 0.2),
+      retweets: getRandomEngagement(followers, 0.4),
+      likes: getRandomEngagement(followers, 0.6),
     }
 
     const compatibleTargetTypes = verbTargetCompatibility[verbData.type]

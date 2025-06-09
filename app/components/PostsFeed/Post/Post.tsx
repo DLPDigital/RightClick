@@ -42,8 +42,7 @@ export const Post: React.FC<Props> = ({ content, hashtags, username, engagements
           <Verified fill={vars.color.secondary} />
         </div>
         <div className={contentContainer}>
-          {content}{" "}
-          <span>{hashtags}</span>
+          {content} <span>{hashtags}</span>
         </div>
         <div className={iconsContainer}>
           <div>

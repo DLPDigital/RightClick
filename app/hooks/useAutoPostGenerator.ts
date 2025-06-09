@@ -10,7 +10,7 @@ export const useAutoPostGenerator = (
   followers: number,
   dispatch: Dispatch<GameAction>
 ): void => {
-  console.log('followers on useAutorPost = ', followers)
+  console.log("followers on useAutorPost = ", followers)
   useEffect(() => {
     console.log("AUTO_POST_HOOK: Evaluating post generation interval setup.")
 

@@ -6,7 +6,7 @@ import { generateRandomConspiracyPost } from "../../utils/postGenerator"
 
 const Details: React.FC = () => {
   for (let i = 1; i < 20; i++) {
-    console.log(generateRandomConspiracyPost())
+    console.log(generateRandomConspiracyPost(10))
   }
   return (
     <div className={container}>

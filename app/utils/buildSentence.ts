@@ -11,6 +11,6 @@ export const buildSentence = (
   return {
     content: `${subject.name} ${subject.plural ? "are" : "is"} ${verbGerund.toLowerCase()} ${target}.`,
     hashtags: getRandomHashtags(hashtagCount),
-    engagements
+    engagements,
   }
 }
