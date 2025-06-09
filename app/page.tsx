@@ -17,7 +17,7 @@ import { useMonetization, MonetizationHook } from "./hooks/useMonetization"
 import { AppContainer } from "./components/AppContainer"
 import { IntroModal } from "./components/IntroModal"
 import { ComponentContainer } from "./components/ComponentContainer"
-import { NavBar } from "./components/NavBar"
+import { ScreenSelect } from "./components/ScreenSelect"
 import { StatusBar } from "./components/StatusBar"
 import { Achievements } from "./components/Achievements"
 import { Posting } from "./components/Posting"
@@ -156,7 +156,7 @@ function App() {
         currentInsanityStage={currentInsanityStage}
         moneyPerSecond={gameState.moneyPerSecond} // From gameState via reducer
       />
-      <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
+      <ScreenSelect currentScreen={currentScreen} onNavigate={setCurrentScreen} />
       <ComponentContainer>{renderScreen()}</ComponentContainer>
       <Footer />
     </AppContainer>

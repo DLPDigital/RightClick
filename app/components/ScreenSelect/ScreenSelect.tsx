@@ -1,17 +1,17 @@
 import React from "react"
 import { ScreenName } from "../../types"
 
-import { navBar } from "./NavBar.css"
+import { navBar } from "./ScreenSelect.css"
 import { Button } from "../Button"
 
-interface NavBarProps {
+interface ScreenSelectProps {
   currentScreen: ScreenName
   onNavigate: (screen: ScreenName) => void
 }
 
 const SCREENS: ScreenName[] = ["posting", "monetization", "upgrades", "achievements", "settings"]
 
-export const NavBar: React.FC<NavBarProps> = ({ currentScreen, onNavigate }) => {
+export const ScreenSelect: React.FC<ScreenSelectProps> = ({ currentScreen, onNavigate }) => {
   return (
     <nav className={navBar}>
       {SCREENS.map((screen) => (
