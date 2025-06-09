@@ -1,4 +1,4 @@
-import { createGlobalTheme } from "@vanilla-extract/css"
+import { createGlobalTheme, globalFontFace } from "@vanilla-extract/css"
 
 export const vars = createGlobalTheme(":root", {
   color: {
@@ -38,3 +38,25 @@ export const breakpoints = {
   desktop: `screen and (min-width: ${breakpointValues?.lg})`,
   desktopLarge: `screen and (min-width: ${breakpointValues?.xl})`,
 }
+
+const alveraFont = "alvera"
+
+globalFontFace(alveraFont, {
+  src: `url('/fonts/AlveraDemoRegularSquare.woff2') format('woff2'),
+        url('/fonts/AlveraDemoRegularSquare.otf') format('opentype')`,
+  fontWeight: "normal",
+  fontStyle: "normal",
+  fontDisplay: "swap",
+})
+
+const alveraFontBold = "alveraBold"
+
+globalFontFace(alveraFontBold, {
+  src: `url('/fonts/AlveraDemoBoldSquare.woff2') format('woff2'),
+        url('/fonts/AlveraDemoBoldSquare.otf') format('opentype')`,
+  fontWeight: "normal",
+  fontStyle: "normal",
+  fontDisplay: "swap",
+})
+
+export { alveraFont, alveraFontBold }
