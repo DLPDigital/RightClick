@@ -1,5 +1,5 @@
 import { style, globalStyle } from "@vanilla-extract/css"
-import { alveraFontBold } from "../../theme/theme.css"
+import { alveraFontBold, breakpoints, vars } from "../../theme/theme.css"
 
 export const container = style({
   display: "flex",
@@ -11,14 +11,39 @@ export const container = style({
 
 export const header = style({
   textAlign: "center",
-  marginRight: "1rem",
+  marginRight: "0.5rem",
+  "@media": {
+    [breakpoints.smallDesktop]: {
+      marginRight: "1rem",
+    },
+  },
 })
 
 globalStyle(`${header} h1`, {
   fontFamily: alveraFontBold,
-  fontSize: "4rem",
-  lineHeight: "3rem",
+  color: vars.color.secondary,
+  fontSize: "2rem",
+  lineHeight: "1.75rem",
   margin: "0 auto",
+
+  "@media": {
+    [breakpoints.smallDesktop]: {
+      fontSize: "4rem",
+      lineHeight: "3rem",
+    },
+  },
 })
 
 export const iconContainer = style({})
+
+globalStyle(`${iconContainer} img`, {
+  height: "50px",
+  width: "40px",
+
+  "@media": {
+    [breakpoints.smallDesktop]: {
+      height: "90px",
+      width: "72px",
+    },
+  },
+})

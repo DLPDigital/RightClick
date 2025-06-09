@@ -15,12 +15,6 @@ export const usernameSetupContainer = style({
   boxSizing: "border-box",
 })
 
-export const welcomeMessage = style({
-  fontSize: "clamp(1.5rem, 5vw, 2.2rem)",
-  fontFamily: alveraFontBold,
-  marginBottom: "0",
-})
-
 export const statusMessage = style({
   fontSize: "clamp(1rem, 4vw, 1.3rem)",
   whiteSpace: "pre-wrap",

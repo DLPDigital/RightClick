@@ -3,7 +3,6 @@ import { POST_USERNAMES } from "../../data/generated/usernames"
 
 import {
   usernameSetupContainer,
-  welcomeMessage,
   statusMessage,
   formContainer,
   inputField,
@@ -12,6 +11,7 @@ import {
 } from "./UsernameSetup.css"
 import { Button } from "../Button"
 import { activeButton } from "../Button/Button.css"
+import { IntroModal } from "../IntroModal"
 
 interface UsernameSetupProps {
   onUsernameSet: (username: string) => void
@@ -56,33 +56,34 @@ export const UsernameSetup: React.FC<UsernameSetupProps> = memo(({ onUsernameSet
   }
 
   return (
-    <div className={usernameSetupContainer}>
-      <h2 className={welcomeMessage}>Welcome</h2>
+    <>
+      <div className={usernameSetupContainer}>
+        <IntroModal />
+        <p className={statusMessage}>Choose your username</p>
 
-      <p className={statusMessage}>Choose your username</p>
-
-      <form onSubmit={handleSubmit} className={formContainer}>
-        <input
-          type="text"
-          value={currentUsername}
-          onChange={(e) => {
-            setCurrentUsername(e.target.value)
-            if (error) setError("")
-          }}
-          placeholder="Enter your username"
-          maxLength={25}
-          className={inputField}
-          autoFocus
-        />
-        <div className={buttonRow}>
-          <Button onClick={getRandomUsername}>Generate a Username</Button>
-          <button type="submit" className={activeButton.Active}>
-            Start Spreading Truth
-          </button>
-        </div>
-        {error && <p className={errorMessage}>{error}</p>}
-      </form>
-    </div>
+        <form onSubmit={handleSubmit} className={formContainer}>
+          <input
+            type="text"
+            value={currentUsername}
+            onChange={(e) => {
+              setCurrentUsername(e.target.value)
+              if (error) setError("")
+            }}
+            placeholder="Enter your username"
+            maxLength={25}
+            className={inputField}
+            autoFocus
+          />
+          <div className={buttonRow}>
+            <Button onClick={getRandomUsername}>Generate a Username</Button>
+            <button type="submit" className={activeButton.Active}>
+              Start Spreading Truth
+            </button>
+          </div>
+          {error && <p className={errorMessage}>{error}</p>}
+        </form>
+      </div>
+    </>
   )
 })
 
