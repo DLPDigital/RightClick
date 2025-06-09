@@ -12,6 +12,7 @@ interface PostingScreenProps {
   postsMade: number
   onPost: () => void
   postsFeed: GeneratedPost[]
+  username: string
 }
 
 export const Posting: React.FC<PostingScreenProps> = ({
@@ -20,6 +21,7 @@ export const Posting: React.FC<PostingScreenProps> = ({
   postsMade,
   onPost,
   postsFeed,
+  username,
 }) => {
   return (
     <div className={container}>
@@ -36,7 +38,9 @@ export const Posting: React.FC<PostingScreenProps> = ({
         Tip: The more you post, the deeper down the rabbit hole you go... and the more
         &ldquo;lucrative&rdquo; opportunities arise.
       </p>
-      {postsFeed.length >= 0 && <PostsFeed postsFeed={postsFeed} />}
+      {postsFeed.length >= 0 && (
+        <PostsFeed postsFeed={postsFeed} username={username} />
+      )}
     </div>
   )
 }
