@@ -15,18 +15,18 @@ const SCREENS: ScreenName[] = ["posting", "monetization", "upgrades", "achieveme
 export const NavBar: React.FC<NavBarProps> = ({ currentScreen, onNavigate }) => {
   return (
     <>
-    <IntroModal />
-    <nav className={navBar}>
-      {SCREENS.map((screen) => (
-        <Button
-          key={`${screen}-button`}
-          onClick={() => onNavigate(screen)}
-          isActive={currentScreen === screen}
-        >
-          {screen.charAt(0).toUpperCase() + screen.slice(1)}
-        </Button>
-      ))}
-    </nav>
+      <IntroModal />
+      <nav className={navBar}>
+        {SCREENS.map((screen) => (
+          <Button
+            key={`${screen}-button`}
+            onClick={() => onNavigate(screen)}
+            isActive={currentScreen === screen}
+          >
+            {screen.charAt(0).toUpperCase() + screen.slice(1)}
+          </Button>
+        ))}
+      </nav>
     </>
   )
 }

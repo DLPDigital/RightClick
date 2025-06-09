@@ -15,7 +15,8 @@ export const header = style({
   "@media": {
     [breakpoints.smallDesktop]: {
       marginRight: "1rem",
-    }}
+    },
+  },
 })
 
 globalStyle(`${header} h1`, {
@@ -32,8 +33,7 @@ globalStyle(`${header} h1`, {
   },
 })
 
-export const iconContainer = style({
-})
+export const iconContainer = style({})
 
 globalStyle(`${iconContainer} img`, {
   height: "50px",

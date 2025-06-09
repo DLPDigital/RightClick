@@ -10,23 +10,23 @@ export const navBar = style({
   maxWidth: "calc(100vw - 5rem)",
   marginBottom: "1rem",
   selectors: {
-      "&::-webkit-scrollbar": {
-        width: "8px",
-        background: vars.color.background,
-      },
-      "&::-webkit-scrollbar-thumb": {
-        background: vars.color.foreground,
-        borderRadius: "4px",
-      },
-      "&::-webkit-scrollbar-thumb:hover": {
-        background: vars.color.accent,
-      },
-      // For Firefox
-      "&": {
-        scrollbarColor: `${vars.color.foreground} ${vars.color.background}`,
-        scrollbarWidth: "thin",
-      },
+    "&::-webkit-scrollbar": {
+      width: "8px",
+      background: vars.color.background,
     },
+    "&::-webkit-scrollbar-thumb": {
+      background: vars.color.foreground,
+      borderRadius: "4px",
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+      background: vars.color.accent,
+    },
+    // For Firefox
+    "&": {
+      scrollbarColor: `${vars.color.foreground} ${vars.color.background}`,
+      scrollbarWidth: "thin",
+    },
+  },
   "@media": {
     [breakpoints.smallDesktop]: {
       marginBottom: "1.25rem",
