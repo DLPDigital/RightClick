@@ -57,32 +57,32 @@ export const UsernameSetup: React.FC<UsernameSetupProps> = memo(({ onUsernameSet
 
   return (
     <>
-    <div className={usernameSetupContainer}>
-      <IntroModal />
-      <p className={statusMessage}>Choose your username</p>
+      <div className={usernameSetupContainer}>
+        <IntroModal />
+        <p className={statusMessage}>Choose your username</p>
 
-      <form onSubmit={handleSubmit} className={formContainer}>
-        <input
-          type="text"
-          value={currentUsername}
-          onChange={(e) => {
-            setCurrentUsername(e.target.value)
-            if (error) setError("")
-          }}
-          placeholder="Enter your username"
-          maxLength={25}
-          className={inputField}
-          autoFocus
-        />
-        <div className={buttonRow}>
-          <Button onClick={getRandomUsername}>Generate a Username</Button>
-          <button type="submit" className={activeButton.Active}>
-            Start Spreading Truth
-          </button>
-        </div>
-        {error && <p className={errorMessage}>{error}</p>}
-      </form>
-    </div>
+        <form onSubmit={handleSubmit} className={formContainer}>
+          <input
+            type="text"
+            value={currentUsername}
+            onChange={(e) => {
+              setCurrentUsername(e.target.value)
+              if (error) setError("")
+            }}
+            placeholder="Enter your username"
+            maxLength={25}
+            className={inputField}
+            autoFocus
+          />
+          <div className={buttonRow}>
+            <Button onClick={getRandomUsername}>Generate a Username</Button>
+            <button type="submit" className={activeButton.Active}>
+              Start Spreading Truth
+            </button>
+          </div>
+          {error && <p className={errorMessage}>{error}</p>}
+        </form>
+      </div>
     </>
   )
 })
