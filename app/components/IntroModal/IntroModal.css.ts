@@ -1,5 +1,5 @@
 import { style, globalStyle } from "@vanilla-extract/css"
-import { alveraFontBold, breakpoints } from "../../theme/theme.css"
+import { alveraFontBold, breakpoints, vars } from "../../theme/theme.css"
 
 export const container = style({
   display: "flex",
@@ -21,6 +21,7 @@ export const header = style({
 
 globalStyle(`${header} h1`, {
   fontFamily: alveraFontBold,
+  color: vars.color.secondary,
   fontSize: "2rem",
   lineHeight: "1.75rem",
   margin: "0 auto",

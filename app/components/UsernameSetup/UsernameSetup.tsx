@@ -3,7 +3,6 @@ import { POST_USERNAMES } from "../../data/generated/usernames"
 
 import {
   usernameSetupContainer,
-  welcomeMessage,
   statusMessage,
   formContainer,
   inputField,
@@ -12,6 +11,7 @@ import {
 } from "./UsernameSetup.css"
 import { Button } from "../Button"
 import { activeButton } from "../Button/Button.css"
+import { IntroModal } from "../IntroModal"
 
 interface UsernameSetupProps {
   onUsernameSet: (username: string) => void
@@ -56,9 +56,9 @@ export const UsernameSetup: React.FC<UsernameSetupProps> = memo(({ onUsernameSet
   }
 
   return (
+    <>
     <div className={usernameSetupContainer}>
-      <h2 className={welcomeMessage}>Welcome</h2>
-
+      <IntroModal />
       <p className={statusMessage}>Choose your username</p>
 
       <form onSubmit={handleSubmit} className={formContainer}>
@@ -83,6 +83,7 @@ export const UsernameSetup: React.FC<UsernameSetupProps> = memo(({ onUsernameSet
         {error && <p className={errorMessage}>{error}</p>}
       </form>
     </div>
+    </>
   )
 })
 
