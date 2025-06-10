@@ -14,7 +14,7 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
   "clickbait-headlines": {
     id: "clickbait-headlines",
     name: "Clickbait Headlines",
-    description: "Lure them in with irresistible titles.",
+    description: "Lure them in with irresistible titles. Adds 5 followers per click",
     baseCost: 100,
     costMultiplier: 1.2,
     level: 0,
@@ -52,12 +52,28 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     id: "intern-army",
     name: "Hire an Intern",
     description: 'They post while you "research". +1 follower/sec.',
-    baseCost: 5000,
+    baseCost: 1,
     costMultiplier: 1.5,
     level: 0,
-    unlocked: false,
+    maxLevel: 18,
+    unlocked: true,
     passiveFollowersPerSecondBonus: 1,
-    requirement: (gs) => gs.followers >= 2000,
+    requirement: (gs) => gs.followers >= 10,
+  },
+  "Bot farm": {
+    id: "bot-farm",
+    name: "Hire a bot farm",
+    description: "Move on from just interns to an entire bot farm",
+    baseCost: 1200,
+    costMultiplier: 1.8,
+    level: 0,
+    maxLevel: 3,
+    unlocked: true,
+    passiveFollowersPerSecondBonus: 10,
+    requirement: (gs) => {
+      const internArmyLevel = gs.upgrades.find((u) => u.id === "intern-army")
+      return (internArmyLevel?.level ?? 0) >= 18
+    },
   },
   // ... more upgrades: SEO, Bot Farm, Green Screen, Studio, etc.
 }
