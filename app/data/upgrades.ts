@@ -14,7 +14,7 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
   "clickbait-headlines": {
     id: "clickbait-headlines",
     name: "Clickbait Headlines",
-    description: "Lure them in with irresistible titles.",
+    description: "Lure them in with irresistible titles. Adds 5 followers per click",
     baseCost: 100,
     costMultiplier: 1.2,
     level: 0,

@@ -1,5 +1,5 @@
 import React from "react"
-import { Heart, Retweet, Speechbubble, Verified } from "../../SVG"
+import { HeartIcon, RetweetIcon, SpeechbubbleIcon, VerifiedIcon } from "../../SVG"
 import Image from "next/image"
 
 import {
@@ -39,22 +39,22 @@ export const Post: React.FC<Props> = ({ content, hashtags, username, engagements
       <div className={tweetContainer}>
         <div className={userContainer}>
           <h4>@{username}</h4>
-          <Verified fill={vars.color.secondary} />
+          <VerifiedIcon fill={vars.color.secondary} />
         </div>
         <div className={contentContainer}>
           {content} <span>{hashtags}</span>
         </div>
         <div className={iconsContainer}>
           <div>
-            <Speechbubble fill={vars.color.borderSecondary} />
+            <SpeechbubbleIcon fill={vars.color.borderSecondary} />
             <span>{comments}</span>
           </div>
           <div>
-            <Retweet fill={vars.color.borderSecondary} />
+            <RetweetIcon fill={vars.color.borderSecondary} />
             <span>{retweets}</span>
           </div>
           <div>
-            <Heart fill={vars.color.borderSecondary} />
+            <HeartIcon fill={vars.color.borderSecondary} />
             <span>{likes}</span>
           </div>
         </div>

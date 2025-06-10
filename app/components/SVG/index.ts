@@ -1,6 +1,9 @@
-import { Heart } from "./Heart"
-import { Retweet } from "./Retweet"
-import { Speechbubble } from "./Speechbubble"
-import { Verified } from "./Verified"
+import { Dollar as DollarIcon } from "./Dollar"
+import { Heart as HeartIcon } from "./Heart"
+import { Post as PostIcon } from "./Post"
+import { Retweet as RetweetIcon } from "./Retweet"
+import { Sheep as SheepIcon } from "./Sheep"
+import { Speechbubble as SpeechbubbleIcon } from "./Speechbubble"
+import { Verified as VerifiedIcon } from "./Verified"
 
-export { Heart, Retweet, Speechbubble, Verified }
+export { DollarIcon, HeartIcon, PostIcon, RetweetIcon, SheepIcon, SpeechbubbleIcon, VerifiedIcon }

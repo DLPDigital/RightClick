@@ -1,48 +1,43 @@
 import React from "react"
-import { InsanityStage } from "../../types"
 import { formatNumber } from "../../utils/formatters"
+import { Stat } from "./Stat"
 
-import { container, stats, statsContainer, insanityLevel, stat } from "./StatusBar.css"
+import { container, iconsContainer } from "./StatusBar.css"
 
 interface StatusBarProps {
   money: number
   followers: number
-  currentInsanityStage: InsanityStage
   moneyPerSecond: number
+  postsMade: number
+  followersPerSecond: number
 }
 
 export const StatusBar: React.FC<StatusBarProps> = ({
   money,
   moneyPerSecond,
   followers,
-  currentInsanityStage,
+  postsMade,
+  followersPerSecond,
 }) => {
   return (
-    <div className={container}>
-      <div className={stats}>
-        <h4>Stats</h4>
-        <div className={statsContainer}>
-          <div className={stat}>
-            <h5>Money:</h5>
-            <span>${formatNumber(money, true)}</span>
-          </div>
-          <div className={stat}>
-            <h5>Money per sec:</h5>
-            <span>${formatNumber(moneyPerSecond, true)}</span>
-          </div>
-          <div className={stat}>
-            <h5>Followers:</h5>
-            <span>{formatNumber(followers)}</span>
-          </div>
+    <>
+      <div className={container}>
+        <div className={iconsContainer}>
+          <Stat icon="posts" rate={2} total={postsMade} label="Posts" />
+          <Stat
+            icon="followers"
+            rate={followersPerSecond}
+            total={formatNumber(followers)}
+            label="Followers"
+          />
+          <Stat
+            icon="money"
+            rate={`$${formatNumber(moneyPerSecond, true)}`}
+            total={`$${formatNumber(money, true)}`}
+            label="Money"
+          />
         </div>
       </div>
-      <div className={insanityLevel}>
-        <h4>Insanity Level</h4>
-        <h5>Current mind melt:</h5>
-        <span>
-          {currentInsanityStage.name} ({currentInsanityStage.description})
-        </span>
-      </div>
-    </div>
+    </>
   )
 }
