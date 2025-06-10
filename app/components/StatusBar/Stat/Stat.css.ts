@@ -8,7 +8,7 @@ export const container = style({
 
   "@media": {
     [breakpoints.smallDesktop]: {
-      width: "180px",
+      width: "192px",
       gap: "1rem",
     },
   },
@@ -27,8 +27,8 @@ globalStyle(`${iconContainer} svg `, {
 
   "@media": {
     [breakpoints.smallDesktop]: {
-      width: "24px",
-      height: "24px",
+      width: "36px",
+      height: "36px",
     },
   },
 })

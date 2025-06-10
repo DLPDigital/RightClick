@@ -4,14 +4,15 @@ import { vars, breakpoints } from "../../theme/theme.css"
 export const container = style({
   backgroundColor: vars.color.background,
   padding: "0.625rem",
-  marginBottom: "1.25rem",
+  marginBottom: "0.75rem",
   display: "flex",
-  justifyContent: "space-around",
   flexDirection: "column",
+
   "@media": {
     [breakpoints.smallDesktop]: {
       flexDirection: "row",
       gap: "1rem",
+      marginBottom: "1.25rem",
     },
   },
 })
@@ -21,4 +22,10 @@ export const iconsContainer = style({
   gap: "1rem",
   justifyContent: "space-between",
   width: "100%",
+
+  "@media": {
+    [breakpoints.smallDesktop]: {
+      justifyContent: "space-around",
+    },
+  },
 })

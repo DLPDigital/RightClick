@@ -13,3 +13,7 @@ export const tip = style({
   marginTop: "1.25rem",
   fontStyle: "italic",
 })
+
+export const content = style({
+  textAlign: "center",
+})

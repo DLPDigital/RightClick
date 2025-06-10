@@ -11,6 +11,7 @@ const button = style({
     backgroundColor: vars.color.accent,
   },
   maxWidth: "15rem",
+  scrollSnapAlign: "start",
 })
 
 export const activeButton = styleVariants({
