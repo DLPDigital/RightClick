@@ -22,8 +22,8 @@ export const iconContainer = style({
 })
 
 globalStyle(`${iconContainer} svg `, {
-  width: "18px",
-  height: "18px",
+  width: "24px",
+  height: "24px",
 
   "@media": {
     [breakpoints.smallDesktop]: {
@@ -61,7 +61,7 @@ export const totalNum = style({
 })
 
 export const rateNum = style({
-  fontSize: "0.5rem",
+  fontSize: "0.625rem",
 
   "@media": {
     [breakpoints.smallDesktop]: {

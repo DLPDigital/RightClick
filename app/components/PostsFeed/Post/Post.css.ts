@@ -15,9 +15,9 @@ export const avatarContainer = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-    "@media": {
+  "@media": {
     [breakpoints.smallDesktop]: {
-  padding: "0.5rem",
+      padding: "0.5rem",
     },
   },
 })
@@ -52,9 +52,9 @@ export const contentContainer = style({
   marginTop: "0.25rem",
   paddingRight: "0.5rem",
   fontSize: "0.875rem",
-    "@media": {
+  "@media": {
     [breakpoints.smallDesktop]: {
-  fontSize: "1rem",
+      fontSize: "1rem",
     },
   },
 })
@@ -63,9 +63,9 @@ globalStyle(`${contentContainer} span`, {
   fontWeight: 600,
   color: vars.color.borderSecondary,
   fontSize: "0.75rem",
-    "@media": {
+  "@media": {
     [breakpoints.smallDesktop]: {
-  fontSize: "0.875rem",
+      fontSize: "0.875rem",
     },
   },
 })

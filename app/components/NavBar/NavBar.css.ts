@@ -7,7 +7,7 @@ export const navBar = style({
   flexWrap: "nowrap",
   overflow: "hidden",
   overflowX: "scroll",
-  maxWidth: "calc(100vw - 5rem)",
+  maxWidth: "calc(100vw - 2rem)",
   marginBottom: "1rem",
   selectors: {
     "&::-webkit-scrollbar": {

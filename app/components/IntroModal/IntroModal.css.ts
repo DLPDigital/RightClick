@@ -12,9 +12,11 @@ export const container = style({
 export const header = style({
   textAlign: "center",
   marginRight: "0.5rem",
+  paddingLeft: "2rem",
   "@media": {
     [breakpoints.smallDesktop]: {
       marginRight: "1rem",
+      paddingLeft: "4rem",
     },
   },
 })
