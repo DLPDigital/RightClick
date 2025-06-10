@@ -1,5 +1,5 @@
 import { globalStyle, style } from "@vanilla-extract/css"
-import { vars } from "../../../theme/theme.css"
+import { vars, breakpoints } from "../../../theme/theme.css"
 
 export const container = style({
   display: "flex",
@@ -11,10 +11,15 @@ globalStyle(`${container} + ${container}`, {
 })
 
 export const avatarContainer = style({
-  padding: "0.5rem",
+  padding: "0.5rem 0.5rem 0.5rem 0",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+    "@media": {
+    [breakpoints.smallDesktop]: {
+  padding: "0.5rem",
+    },
+  },
 })
 
 export const avatar = style({
@@ -47,11 +52,22 @@ export const contentContainer = style({
   marginTop: "0.25rem",
   paddingRight: "0.5rem",
   fontSize: "0.875rem",
+    "@media": {
+    [breakpoints.smallDesktop]: {
+  fontSize: "1rem",
+    },
+  },
 })
 
 globalStyle(`${contentContainer} span`, {
   fontWeight: 600,
   color: vars.color.borderSecondary,
+  fontSize: "0.75rem",
+    "@media": {
+    [breakpoints.smallDesktop]: {
+  fontSize: "0.875rem",
+    },
+  },
 })
 
 export const iconsContainer = style({
