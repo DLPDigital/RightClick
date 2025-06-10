@@ -1,11 +1,11 @@
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from "react"
+import { useState, useEffect, useCallback } from "react"
 import "./App.css"
 import "./theme/theme.css"
 
 import { ScreenName } from "./types"
-import { INSANITY_STAGES } from "./data/insanityLevels"
+// import { INSANITY_STAGES } from "./data/insanityLevels"
 import { GAME_TICK_INTERVAL } from "./data/constants"
 import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
 
@@ -86,10 +86,10 @@ function App() {
   )
 
   // --- Derived Data for UI ---
-  const currentInsanityStage = useMemo(() => {
-    const insanityLevelIndex = gameState?.insanityLevelIndex ?? 0
-    return INSANITY_STAGES[insanityLevelIndex] || INSANITY_STAGES[0]
-  }, [gameState?.insanityLevelIndex])
+  // const currentInsanityStage = useMemo(() => {
+  //   const insanityLevelIndex = gameState?.insanityLevelIndex ?? 0
+  //   return INSANITY_STAGES[insanityLevelIndex] || INSANITY_STAGES[0]
+  // }, [gameState?.insanityLevelIndex])
 
   if (!gameState) {
     return <div>Loading Game...</div>
@@ -157,9 +157,10 @@ function App() {
       <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
       <StatusBar
         money={gameState.money}
+        postsMade={gameState.postsMade}
         followers={gameState.followers}
-        currentInsanityStage={currentInsanityStage}
-        moneyPerSecond={gameState.moneyPerSecond} // From gameState via reducer
+        followersPerSecond={gameState.passiveFollowersPerSecond}
+        moneyPerSecond={gameState.moneyPerSecond}
       />
       <ComponentContainer>{renderScreen()}</ComponentContainer>
       <Footer />

@@ -1,6 +1,6 @@
 import { useEffect, Dispatch } from "react"
-import { GameAction } from "../reducers/gameReducer" // Or from types.ts
-import { generateRandomConspiracyPost } from "../utils/postGenerator" // Adjust path
+import { GameAction } from "../reducers/gameReducer"
+import { generateRandomConspiracyPost } from "../utils/postGenerator"
 import { MAX_AUTO_POST_LEAD, POST_GENERATION_INTERVAL } from "../data/constants"
 import { GeneratedPost } from "../types"
 
@@ -10,7 +10,6 @@ export const useAutoPostGenerator = (
   followers: number,
   dispatch: Dispatch<GameAction>
 ): void => {
-  console.log("followers on useAutorPost = ", followers)
   useEffect(() => {
     console.log("AUTO_POST_HOOK: Evaluating post generation interval setup.")
 
@@ -45,6 +44,4 @@ export const useAutoPostGenerator = (
       }
     }
   }, [dispatch, postsMade, postsFeedLength, followers])
-
-  // This hook doesn't need to return anything if it's purely for side effects.
 }

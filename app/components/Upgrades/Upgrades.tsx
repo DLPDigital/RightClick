@@ -1,6 +1,7 @@
 import React from "react"
 import { AvailableUpgradeDisplay } from "../../hooks/useUpgrades"
 import { UpgradeItem } from "./Item"
+import { formatNumber } from "../../utils/formatters"
 
 interface UpgradesScreenProps {
   availableUpgrades: AvailableUpgradeDisplay[]
@@ -24,7 +25,7 @@ export const Upgrades: React.FC<UpgradesScreenProps> = ({
       <h2>Invest in “Research” (and Propaganda)</h2>
       <p>
         Buy better equipment, hire help, and expand your reach. Current Money: $
-        {currentMoney.toFixed(2)}
+        {formatNumber(currentMoney, true)}
       </p>
       {sortedAvailableUpgrades.length === 0 && (
         <p>No upgrades available yet. Keep building your empire!</p>
