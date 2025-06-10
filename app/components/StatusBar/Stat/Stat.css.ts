@@ -51,11 +51,11 @@ globalStyle(`${contentContainer} p `, {
 })
 
 export const totalNum = style({
-  fontSize: "0.75rem",
+  fontSize: "1rem",
 
   "@media": {
     [breakpoints.smallDesktop]: {
-      fontSize: "1rem",
+      fontSize: "1.25rem",
     },
   },
 })
@@ -87,11 +87,11 @@ export const numbers = style({
 
 globalStyle(`${numbers} h5`, {
   margin: "0px",
-  fontSize: "0.5rem",
+  fontSize: "0.75rem",
   paddingTop: "0.25rem",
   "@media": {
     [breakpoints.smallDesktop]: {
-      fontSize: "0.75rem",
+      fontSize: "1rem",
 
       paddingTop: "0rem",
     },

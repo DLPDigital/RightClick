@@ -33,7 +33,9 @@ export const StatusBar: React.FC<StatusBarProps> = ({
           <Stat
             icon="money"
             rate={`$${formatNumber(moneyPerSecond, true)}`}
+            // rate={4}
             total={`$${formatNumber(money, true)}`}
+            // total={`$888.88`}
             label="Money"
           />
         </div>
