@@ -52,28 +52,12 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     id: "intern-army",
     name: "Hire an Intern",
     description: 'They post while you "research". +1 follower/sec.',
-    baseCost: 1,
+    baseCost: 5000,
     costMultiplier: 1.5,
     level: 0,
-    maxLevel: 18,
-    unlocked: true,
+    unlocked: false,
     passiveFollowersPerSecondBonus: 1,
-    requirement: (gs) => gs.followers >= 10,
-  },
-  "Bot farm": {
-    id: "bot-farm",
-    name: "Hire a bot farm",
-    description: "Move on from just interns to an entire bot farm",
-    baseCost: 1200,
-    costMultiplier: 1.8,
-    level: 0,
-    maxLevel: 3,
-    unlocked: true,
-    passiveFollowersPerSecondBonus: 10,
-    requirement: (gs) => {
-      const internArmyLevel = gs.upgrades.find((u) => u.id === "intern-army")
-      return (internArmyLevel?.level ?? 0) >= 18
-    },
+    requirement: (gs) => gs.followers >= 2000,
   },
   // ... more upgrades: SEO, Bot Farm, Green Screen, Studio, etc.
 }

@@ -20,8 +20,6 @@ export const useAutoPostGenerator = (
 
     if (hasPlayerStartedPosting && isFeedNotTooFarAhead) {
       console.log("AUTO_POST_HOOK: Conditions met. Setting up post generation interval.")
-      console.log("isFeedNotTooFarAhead  ", isFeedNotTooFarAhead)
-      console.log("postsFeedLength  ", postsFeedLength)
       intervalId = setInterval(() => {
         const fullPostContentWithHashtags = generateRandomConspiracyPost(followers)
         if (fullPostContentWithHashtags) {
