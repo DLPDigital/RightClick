@@ -8,7 +8,8 @@ export const navBar = style({
   overflow: "hidden",
   overflowX: "scroll",
   maxWidth: "calc(100vw - 2rem)",
-  marginBottom: "1rem",
+  marginBottom: "0.5rem",
+  scrollSnapType: "x mandatory",
   selectors: {
     "&::-webkit-scrollbar": {
       width: "8px",

@@ -105,9 +105,6 @@ function App() {
       case "posting":
         return (
           <Posting
-            followers={gameState.followers}
-            followersPerClick={gameState.followersPerClick}
-            postsMade={gameState.postsMade}
             onPost={handlePost}
             postsFeed={gameState.postsFeed}
             username={gameState.username}
