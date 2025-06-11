@@ -25,6 +25,7 @@ describe("Achievements", () => {
         allAchievements={mockAchievements as unknown as Record<string, Achievement>}
         unlockedAchievementIds={mockUnlockedAchievementIds}
         insanity={mockInsanity}
+        postsMade={20}
       />
     )
     expect(getByText("Achievements")).toBeInTheDocument()

@@ -134,6 +134,7 @@ function App() {
             allAchievements={INITIAL_ACHIEVEMENTS}
             unlockedAchievementIds={gameState.unlockedAchievements}
             insanity={currentInsanityStage}
+            postsMade={gameState.postsMade}
           />
         )
       case "settings":
