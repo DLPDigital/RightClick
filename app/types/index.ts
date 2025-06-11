@@ -1,4 +1,4 @@
-export type ScreenName = "posting" | "monetization" | "upgrades" | "achievements" | "settings"
+export type ScreenName = "posting" | "grifting" | "upgrades" | "clout" | "settings"
 
 export interface Upgrade {
   id: string
@@ -33,6 +33,17 @@ export interface MonetizationOption {
 export interface UpgradeInstance {
   id: string
   level: number
+}
+
+// Define what an "available" upgrade might look like for the UI
+export interface AvailableUpgradeDisplay extends UpgradeInstance {
+  name: string
+  description: string
+  currentCost: number
+  maxLevel?: number
+  canAfford: boolean
+  isMaxLevel: boolean
+  // any other UI-relevant properties
 }
 
 export interface MonetizationInstance {

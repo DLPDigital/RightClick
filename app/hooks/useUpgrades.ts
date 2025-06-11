@@ -1,18 +1,7 @@
 import { useCallback, useMemo, Dispatch } from "react"
 import { GameAction } from "../reducers/gameReducer"
 import { AVAILABLE_UPGRADES } from "../data/upgrades"
-import { GameState, UpgradeInstance } from "../types"
-
-// Define what an "available" upgrade might look like for the UI
-export interface AvailableUpgradeDisplay extends UpgradeInstance {
-  name: string
-  description: string
-  currentCost: number
-  maxLevel?: number
-  canAfford: boolean
-  isMaxLevel: boolean
-  // any other UI-relevant properties
-}
+import { AvailableUpgradeDisplay, GameState } from "../types"
 
 export interface UpgradesHook {
   availableUpgrades: AvailableUpgradeDisplay[]

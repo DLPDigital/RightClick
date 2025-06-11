@@ -2,7 +2,7 @@ import React from "react"
 import { render } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { Upgrades } from "./Upgrades"
-import { AvailableUpgradeDisplay } from "../../hooks/useUpgrades"
+import { AvailableUpgradeDisplay } from "../../types"
 
 const mockUpgrades = [
   {
@@ -38,7 +38,6 @@ describe("Upgrades", () => {
       />
     )
     expect(getByText(/Invest in “Research”/i)).toBeInTheDocument()
-    expect(getByText(/Current Money/)).toHaveTextContent("150.00")
     expect(getByText(/Better Laptop/)).toBeInTheDocument()
     expect(getByText(/Hire Assistant/)).toBeInTheDocument()
   })

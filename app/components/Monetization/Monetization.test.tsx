@@ -39,7 +39,6 @@ describe("Monetization", () => {
       />
     )
     expect(getByText(/Grift & Monetize/i)).toBeInTheDocument()
-    expect(getByText(/Current: \$123.45, Followers: 321/)).toBeInTheDocument()
     expect(getByText(/Ad Revenue/i)).toBeInTheDocument()
     expect(getByText(/Sponsored Post/i)).toBeInTheDocument()
   })

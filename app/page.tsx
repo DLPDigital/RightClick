@@ -1,11 +1,11 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useMemo } from "react"
 import "./App.css"
 import "./theme/theme.css"
 
 import { ScreenName } from "./types"
-// import { INSANITY_STAGES } from "./data/insanityLevels"
+import { INSANITY_STAGES } from "./data/insanityLevels"
 import { GAME_TICK_INTERVAL } from "./data/constants"
 import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
 
@@ -87,10 +87,10 @@ function App() {
   )
 
   // --- Derived Data for UI ---
-  // const currentInsanityStage = useMemo(() => {
-  //   const insanityLevelIndex = gameState?.insanityLevelIndex ?? 0
-  //   return INSANITY_STAGES[insanityLevelIndex] || INSANITY_STAGES[0]
-  // }, [gameState?.insanityLevelIndex])
+  const currentInsanityStage = useMemo(() => {
+    const insanityLevelIndex = gameState?.insanityLevelIndex ?? 0
+    return INSANITY_STAGES[insanityLevelIndex] || INSANITY_STAGES[0]
+  }, [gameState?.insanityLevelIndex])
 
   if (!gameState) {
     return <div>Loading Game...</div>
@@ -111,7 +111,7 @@ function App() {
             username={gameState.username}
           />
         )
-      case "monetization":
+      case "grifting":
         return (
           <Monetization
             availableMonetization={availableMonetization}
@@ -128,11 +128,12 @@ function App() {
             currentMoney={gameState.money}
           />
         )
-      case "achievements":
+      case "clout":
         return (
           <Achievements
             allAchievements={INITIAL_ACHIEVEMENTS}
             unlockedAchievementIds={gameState.unlockedAchievements}
+            insanity={currentInsanityStage}
           />
         )
       case "settings":
@@ -153,7 +154,7 @@ function App() {
 
   return (
     <AppContainer>
-      <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} />
+      <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} onPost={handlePost} />
       <StatusBar
         money={gameState.money}
         postsMade={gameState.postsMade}

@@ -17,10 +17,10 @@ export const useAutoPostGenerator = (
     let intervalId: NodeJS.Timeout | undefined = undefined
 
     if (hasPlayerStartedPosting && manualPostsMade > postsGeneratedForFeed) {
-      console.log(
-        "AUTO_POST_HOOK: Conditions met. Setting up post generation interval. - 0",
-        postsGeneratedForFeed
-      )
+      // console.log(
+      //   "AUTO_POST_HOOK: Conditions met. Setting up post generation interval. - 0",
+      //   postsGeneratedForFeed
+      // )
       intervalId = setInterval(() => {
         const fullPostContentWithHashtags = generateRandomConspiracyPost(followers)
         if (fullPostContentWithHashtags) {
@@ -38,7 +38,7 @@ export const useAutoPostGenerator = (
 
     return () => {
       if (intervalId) {
-        console.log("AUTO_POST_HOOK: Clearing post generation interval.")
+        // console.log("AUTO_POST_HOOK: Clearing post generation interval.")
         clearInterval(intervalId)
       }
     }
