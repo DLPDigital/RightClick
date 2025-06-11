@@ -242,7 +242,7 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
     }
 
     case "SET_USERNAME": {
-      console.log("REDUCER: Setting username to", action.payload.username)
+      // console.log("REDUCER: Setting username to", action.payload.username)
       return {
         ...state,
         username: action.payload.username.trim(), // Trim whitespace

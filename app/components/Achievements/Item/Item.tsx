@@ -1,7 +1,9 @@
 import React from "react"
 import { Achievement } from "../../../types"
+import { TargetIcon } from "../../SVG"
 
-import { achievementItem } from "./Item.css"
+import { achievementItem, iconContainer } from "./Item.css"
+import { vars } from "../../../theme/theme.css"
 
 type Props = {
   achievement: Achievement
@@ -9,16 +11,10 @@ type Props = {
 
 export const AchievementItem: React.FC<Props> = ({ achievement }) => (
   <div className={achievementItem}>
-    <h3>{achievement.name}</h3>
+    <div className={iconContainer}>
+      <TargetIcon fill={vars.color.secondary} />
+    </div>
+    <h4>{achievement.name}</h4>
     <p>{achievement.description}</p>
-    {/* Potentially add later */}
-    {/* {typeof achievement.condition === "function" && (
-      <p className="achievement-condition">
-        <em>
-          How to unlock: (Condition not explicitly displayed here, but you could add logic to
-          describe it based on `achievement.condition.toString()` or a hint field)
-        </em>
-      </p>
-    )} */}
   </div>
 )

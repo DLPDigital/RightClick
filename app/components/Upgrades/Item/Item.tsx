@@ -1,7 +1,7 @@
 import React from "react"
-import { AvailableUpgradeDisplay } from "../../../hooks/useUpgrades"
 import { formatNumber } from "../../../utils/formatters"
 import { Button } from "../../Button"
+import { AvailableUpgradeDisplay } from "../../../types"
 
 interface UpgradeItemProps {
   upgrade: AvailableUpgradeDisplay

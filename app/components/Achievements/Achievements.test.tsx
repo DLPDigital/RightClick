@@ -16,12 +16,15 @@ const mockAchievements = {
 
 const mockUnlockedAchievementIds = ["achv1"]
 
+const mockInsanity = { threshold: 0, name: "Normie", description: "Blissfully unaware." }
+
 describe("Achievements", () => {
   it("renders unlocked achievements", () => {
     const { getByText, queryByText } = render(
       <Achievements
         allAchievements={mockAchievements as unknown as Record<string, Achievement>}
         unlockedAchievementIds={mockUnlockedAchievementIds}
+        insanity={mockInsanity}
       />
     )
     expect(getByText("Achievements")).toBeInTheDocument()

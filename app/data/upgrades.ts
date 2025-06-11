@@ -1,20 +1,20 @@
 import { Upgrade } from "../types"
 
 export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
-  // "test-upgrade": {
-  //   id: "test-upgrade",
-  //   name: "Test Upgrade",
-  //   description: "This is a test upgrade for development purposes.",
-  //   baseCost: 0,
-  //   costMultiplier: 1.1,
-  //   level: 0,
-  //   maxLevel: 10,
-  //   unlocked: true,
-  //   // autoPostsPerSecondBonus: 1,
-  //   // passiveFollowersPerSecondBonus: 0.1,
-  //   postsPerClickBonus: 5,
-  //   requirement: (gs) => gs.followers >= 1,
-  // },
+  "test-upgrade": {
+    id: "test-upgrade",
+    name: "Test Upgrade",
+    description: "This is a test upgrade for development purposes.",
+    baseCost: 0,
+    costMultiplier: 1.1,
+    level: 0,
+    maxLevel: 10,
+    unlocked: true,
+    // autoPostsPerSecondBonus: 1,
+    // passiveFollowersPerSecondBonus: 0.1,
+    postsPerClickBonus: 5,
+    requirement: (gs) => gs.followers >= 0,
+  },
   "faster-typing": {
     id: "faster-typing",
     name: "Faster Typing",

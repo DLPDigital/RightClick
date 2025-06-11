@@ -2,6 +2,8 @@ import React from "react"
 import { AvailableMonetizationDisplay } from "../../hooks/useMonetization"
 import { MonetizationItem } from "./Item"
 
+import { container, itemsContainer } from "./Monetization.css"
+
 interface MonetizationScreenProps {
   availableMonetization: AvailableMonetizationDisplay[]
   onActivateMonetization: (id: string) => void
@@ -20,17 +22,13 @@ export const Monetization: React.FC<MonetizationScreenProps> = ({
   )
 
   return (
-    <div className="monetization-screen">
-      {" "}
+    <div className={container}>
       <h2>Grift & Monetize</h2>
-      <p>
-        Turn your followers into cold, hard cash. Current: ${currentMoney.toFixed(2)}, Followers:{" "}
-        {Math.floor(currentFollowers)}
-      </p>
+      <p>Turn your followers into cold, hard cash.</p>
       {sortedAvailableOptions.length === 0 && (
         <p>No monetization options available yet. Keep posting!</p>
       )}
-      <div className="item-list">
+      <div className={itemsContainer}>
         {sortedAvailableOptions.map((option) => (
           <MonetizationItem
             key={option.id}
