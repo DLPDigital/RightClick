@@ -7,9 +7,15 @@ interface SettingsScreenProps {
   onExport: () => string
   onImport: (saveData: string) => void
   onReset: () => void
+  manualPostsMade: number
 }
 
-export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, onReset }) => {
+export const Settings: React.FC<SettingsScreenProps> = ({
+  onExport,
+  onImport,
+  onReset,
+  manualPostsMade,
+}) => {
   const [importData, setImportData] = useState("")
   const [message, setMessage] = useState("")
 
@@ -37,6 +43,7 @@ export const Settings: React.FC<SettingsScreenProps> = ({ onExport, onImport, on
   return (
     <div>
       <h2>Settings</h2>
+      <p>Manual Posts Made: {manualPostsMade}</p>
       <h3>Export Game</h3>
       <Button onClick={handleExport}>Export to Clipboard</Button>
       <div className={importContainer}>

@@ -13,6 +13,8 @@ export interface Upgrade {
   passiveFollowersPerSecondBonus?: number
   moneyPerFollowerBonus?: number
   unlocks?: string[]
+  postsPerClickBonus?: number
+  autoPostsPerSecondBonus?: number
   requirement?: (gameState: GameState) => boolean
 }
 
@@ -68,6 +70,10 @@ export interface GameState {
   unlockedAchievements: string[]
   lastTick: number
   postsFeed: GeneratedPost[]
+  manualPostsMade: number
+  postsPerClick: number
+  autoPostsPerSecond: number
+  postsGeneratedForFeed: number
 }
 
 export interface GameStore {

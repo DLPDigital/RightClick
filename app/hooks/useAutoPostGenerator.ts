@@ -1,25 +1,26 @@
 import { useEffect, Dispatch } from "react"
 import { GameAction } from "../reducers/gameReducer"
 import { generateRandomConspiracyPost } from "../utils/postGenerator"
-import { MAX_AUTO_POST_LEAD, POST_GENERATION_INTERVAL } from "../data/constants"
+import { POST_GENERATION_INTERVAL } from "../data/constants"
 import { GeneratedPost } from "../types"
 
 export const useAutoPostGenerator = (
-  postsMade: number,
+  manualPostsMade: number,
   postsFeedLength: number,
   followers: number,
+  postsGeneratedForFeed: number,
   dispatch: Dispatch<GameAction>
 ): void => {
   useEffect(() => {
-    console.log("AUTO_POST_HOOK: Evaluating post generation interval setup.")
-
-    const hasPlayerStartedPosting = postsMade > 0
-    const isFeedNotTooFarAhead = postsFeedLength - postsMade < MAX_AUTO_POST_LEAD
+    const hasPlayerStartedPosting = manualPostsMade > 0
 
     let intervalId: NodeJS.Timeout | undefined = undefined
 
-    if (hasPlayerStartedPosting && isFeedNotTooFarAhead) {
-      console.log("AUTO_POST_HOOK: Conditions met. Setting up post generation interval.")
+    if (hasPlayerStartedPosting && manualPostsMade > postsGeneratedForFeed) {
+      console.log(
+        "AUTO_POST_HOOK: Conditions met. Setting up post generation interval. - 0",
+        postsGeneratedForFeed
+      )
       intervalId = setInterval(() => {
         const fullPostContentWithHashtags = generateRandomConspiracyPost(followers)
         if (fullPostContentWithHashtags) {
@@ -29,12 +30,10 @@ export const useAutoPostGenerator = (
             ...fullPostContentWithHashtags,
           }
           dispatch({ type: "ADD_TO_POST_FEED", payload: newPost })
+          dispatch({ type: "INCREMENT_POSTS_GENERATED_FOR_FEED" })
         }
       }, POST_GENERATION_INTERVAL)
     } else {
-      console.log(
-        "AUTO_POST_HOOK: Conditions for post generation NOT met. Interval not started (or will be cleared)."
-      )
     }
 
     return () => {
@@ -43,5 +42,5 @@ export const useAutoPostGenerator = (
         clearInterval(intervalId)
       }
     }
-  }, [dispatch, postsMade, postsFeedLength, followers])
+  }, [dispatch, manualPostsMade, postsFeedLength])
 }

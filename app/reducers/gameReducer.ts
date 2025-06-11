@@ -19,6 +19,8 @@ export type GameAction =
   | { type: "EXPORT_GAME_REQUEST" } // For persistence, though export itself doesn't change state here
   | { type: "ADD_TO_POST_FEED"; payload: GeneratedPost }
   | { type: "SET_USERNAME"; payload: { username: string } }
+  | { type: "POST_GENERATED_FOR_FEED"; payload: { postsGeneratedForFeed: number } }
+  | { type: "INCREMENT_POSTS_GENERATED_FOR_FEED" }
 
 // --- Reducer Function ---
 export const gameReducer = (state: GameState, action: GameAction): GameState => {
@@ -72,6 +74,10 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
         }
       }
 
+      // Calculate passively generated posts using the rates calculated for the current tick
+      const passivelyGeneratedPosts = rates.calculatedAutoPostsPerSecond * cappedDeltaSeconds
+      const newPostsMade = state.postsMade + passivelyGeneratedPosts
+
       // Create a mutable next state object based on the current state
       let nextState: GameState = {
         ...state, // Start with a copy of the current state
@@ -81,11 +87,14 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
         insanityLevelIndex: newInsanityIndex,
         followersPerClick: rates.calculatedFollowersPerClick,
         passiveFollowersPerSecond: rates.calculatedPassiveFollowersPerSecond,
+        postsPerClick: rates.calculatedPostsPerClick, // Update with calculated rate
+        autoPostsPerSecond: rates.calculatedAutoPostsPerSecond, // Update with calculated rate
         lastTick: now,
         // Ensure arrays are copied for modification below
         upgrades: [...state.upgrades],
         monetizationOptions: [...currentMonetizationOptions],
         unlockedAchievements: [...state.unlockedAchievements],
+        postsMade: newPostsMade,
       }
 
       // Unlockables (Upgrades)
@@ -147,7 +156,8 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
       return {
         ...state,
         followers: state.followers + state.followersPerClick,
-        postsMade: state.postsMade + 1,
+        postsMade: state.postsMade + state.postsPerClick,
+        manualPostsMade: state.manualPostsMade + 1,
       }
     }
 
@@ -188,6 +198,8 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
           ...stateAfterPurchase,
           followersPerClick: rates.calculatedFollowersPerClick,
           passiveFollowersPerSecond: rates.calculatedPassiveFollowersPerSecond,
+          postsPerClick: rates.calculatedPostsPerClick, // Ensure this is updated
+          autoPostsPerSecond: rates.calculatedAutoPostsPerSecond, // Ensure this is updated
         }
       }
       return state // Not enough money, no change
@@ -260,15 +272,31 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
     }
 
     case "ADD_TO_POST_FEED": {
-      const newFeed = [action.payload, ...state.postsFeed]
-      // const MAX_FEED_ITEMS = 50
+      // const newFeed = [action.payload, ...state.postsFeed]
+      // // const MAX_FEED_ITEMS = 50
       const MAX_FEED_ITEMS = 10
-      if (newFeed.length > MAX_FEED_ITEMS) {
-        newFeed.length = MAX_FEED_ITEMS
-      }
+      // if (newFeed.length > MAX_FEED_ITEMS) {
+      //   newFeed.length = MAX_FEED_ITEMS
+      // }
+      const newFeed = [action.payload, ...state.postsFeed].slice(0, MAX_FEED_ITEMS)
       return {
         ...state,
         postsFeed: newFeed,
+      }
+    }
+
+    case "POST_GENERATED_FOR_FEED": {
+      const { postsGeneratedForFeed } = action.payload
+      return {
+        ...state,
+        postsGeneratedForFeed,
+      }
+    }
+
+    case "INCREMENT_POSTS_GENERATED_FOR_FEED": {
+      return {
+        ...state,
+        postsGeneratedForFeed: state.postsGeneratedForFeed + 1,
       }
     }
 

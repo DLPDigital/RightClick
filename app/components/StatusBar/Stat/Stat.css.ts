@@ -76,6 +76,7 @@ export const numbers = style({
   justifyContent: "space-between",
   width: "100%",
   flexDirection: "column",
+  flexWrap: "wrap",
 
   "@media": {
     [breakpoints.smallDesktop]: {
