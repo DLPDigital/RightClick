@@ -20,8 +20,8 @@ export const Achievements: React.FC<AchievementsScreenProps> = ({
   return (
     <div className={achievementsScreen}>
       <h2>Clout & Achievements</h2>
-      <p>You have posted {postsMade} times! Your audience are rated {insanity.name}</p>
-      <p>Many are thinking &ldquo;{insanity.description}&rdquo;</p>
+      <p>You have posted {postsMade} times! Your audience are rated &ldquo;{insanity.name}&rdquo;.</p>
+      <p>Many are thinking &ldquo;{insanity.description}&rdquo;.</p>
       <h3>Achievements</h3>
       <div className={achievementList}>
         {Object.entries(allAchievements).map(([id, achievement]) => {
