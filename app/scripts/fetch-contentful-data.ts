@@ -13,6 +13,7 @@ const ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN
 const ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || "master"
 const HASHTAGS_ENTRY = process.env.CONTENTFUL_HASHTAGS_ENTRY
 const SUBJECTS_ENTRY = process.env.CONTENTFUL_SUBJECTS_ENTRY
+const RANDOM_FULL_POSTS = process.env.CONTENTFUL_RANDOM_FULL_POSTS_ENTRY
 
 const client = contentful.createClient({
   space: SPACE_ID,
@@ -27,6 +28,7 @@ const TARGETS_FILE = path.join(OUTPUT_DIR, "targetCategories.ts")
 const TARGETS_GROUP_FILE = path.join(OUTPUT_DIR, "targetGroups.ts")
 const HASHTAGS_FILE = path.join(OUTPUT_DIR, "hashtags.ts")
 const USERNAMES_FILE = path.join(OUTPUT_DIR, "usernames.ts")
+const FULL_POSTS_FILE = path.join(OUTPUT_DIR, "fullPosts.ts")
 
 async function fetchAndSaveData() {
   if (!SPACE_ID || !ACCESS_TOKEN || !HASHTAGS_ENTRY || !SUBJECTS_ENTRY) {
@@ -157,6 +159,19 @@ async function fetchAndSaveData() {
       fs.writeFileSync(VERBS_FILE, mappedVerbsString)
       console.log(`Successfully wrote ${Object.keys(mappedVerbs).length} targets to ${VERBS_FILE}`)
     }
+
+    console.log("--------------------")
+    console.log("Fetching random full posts data from Contentful...")
+    const randomFullPosts = await client.getEntry(RANDOM_FULL_POSTS)
+    const mappedRandomFullPosts = mapContentfulEntry(randomFullPosts)
+
+    const randomFullPostsData = JSON.stringify(mappedRandomFullPosts.fullPosts, null, 2)
+    const randomFullPostsDataString = `export const RANDOM_POSTS: string[] = ${randomFullPostsData}`
+
+    fs.writeFileSync(FULL_POSTS_FILE, randomFullPostsDataString)
+    console.log(
+      `Successfully wrote ${mappedRandomFullPosts.fullPosts.length} full posts to ${FULL_POSTS_FILE}`
+    )
 
     console.log("--------------------")
     console.log("All game data fetched and saved successfully!")
