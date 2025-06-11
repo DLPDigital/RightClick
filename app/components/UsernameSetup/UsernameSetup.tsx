@@ -43,8 +43,8 @@ export const UsernameSetup: React.FC<UsernameSetupProps> = memo(({ onUsernameSet
       setError("Username must be at least 3 characters long.")
       return
     }
-    if (trimmedUsername.length > 20) {
-      setError("Username cannot be more than 20 characters long.")
+    if (trimmedUsername.length > 30) {
+      setError("Username cannot be more than 30 characters long.")
       return
     }
     if (!/^[a-zA-Z0-9_-]+$/.test(trimmedUsername)) {

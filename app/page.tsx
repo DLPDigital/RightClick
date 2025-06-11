@@ -54,9 +54,10 @@ function App() {
   // Posting Engine
   const postsFeedLength = Array.isArray(gameState?.postsFeed) ? gameState.postsFeed.length : 0
   useAutoPostGenerator(
-    gameState?.postsMade ?? 0,
+    gameState?.manualPostsMade ?? 0,
     postsFeedLength,
     gameState.followers ?? 0,
+    gameState.postsGeneratedForFeed ?? 0,
     dispatch
   )
 
@@ -140,6 +141,7 @@ function App() {
             onExport={handleExportGame}
             onImport={handleImportGame}
             onReset={handleResetGame}
+            manualPostsMade={gameState.manualPostsMade}
           />
         )
       default:
@@ -158,6 +160,9 @@ function App() {
         followers={gameState.followers}
         followersPerSecond={gameState.passiveFollowersPerSecond}
         moneyPerSecond={gameState.moneyPerSecond}
+        autoPostsPerSecond={gameState.autoPostsPerSecond}
+        postsPerClick={gameState.postsPerClick}
+        followersPerClick={gameState.followersPerClick}
       />
       <ComponentContainer>{renderScreen()}</ComponentContainer>
       <Footer />

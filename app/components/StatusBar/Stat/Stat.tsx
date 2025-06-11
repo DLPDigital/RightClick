@@ -9,6 +9,7 @@ type Props = {
   total: number | string
   rate: number | string
   label: string
+  perClick?: number
 }
 
 const getIcon = (icon: string) => {
@@ -24,7 +25,7 @@ const getIcon = (icon: string) => {
   }
 }
 
-export const Stat: React.FC<Props> = ({ icon, total, rate, label }) => {
+export const Stat: React.FC<Props> = ({ icon, total, rate, label, perClick }) => {
   return (
     <div className={container}>
       <div className={iconContainer}>{getIcon(icon)}</div>
@@ -32,7 +33,16 @@ export const Stat: React.FC<Props> = ({ icon, total, rate, label }) => {
         <p className={totalNum}>{total}</p>
         <div className={numbers}>
           <h5>{label}</h5>
-          <p className={rateNum}>{rate} p/s</p>
+          <div>
+            <p className={rateNum} title="Per Second">
+              {rate} p/s
+            </p>
+            {perClick && (
+              <p className={rateNum} title="Per Click">
+                {perClick} p/c
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>

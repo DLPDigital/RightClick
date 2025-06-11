@@ -7,10 +7,14 @@ export const calculateRates = (
   calculatedFollowersPerClick: number
   calculatedPassiveFollowersPerSecond: number
   calculatedMoneyPerFollowerPerSecond: number
+  calculatedPostsPerClick: number
+  calculatedAutoPostsPerSecond: number
 } => {
   let followersPerClick = 1
   let passiveFollowersPerSecond = 0
   let moneyPerFollowerBonusTotal = 0
+  let postsPerClick = 1 // Initialize to base value
+  let autoPostsPerSecond = 0 // Initialize to base value
   const upgrades = Array.isArray(gs.upgrades) ? gs.upgrades : []
 
   upgrades.forEach(({ id, level }) => {
@@ -25,6 +29,12 @@ export const calculateRates = (
       if (upgradeDetails.moneyPerFollowerBonus) {
         moneyPerFollowerBonusTotal += upgradeDetails.moneyPerFollowerBonus * level
       }
+      if (upgradeDetails.postsPerClickBonus) {
+        postsPerClick += upgradeDetails.postsPerClickBonus * level
+      }
+      if (upgradeDetails.autoPostsPerSecondBonus) {
+        autoPostsPerSecond += upgradeDetails.autoPostsPerSecondBonus * level
+      }
     }
   })
 
@@ -33,5 +43,7 @@ export const calculateRates = (
     calculatedPassiveFollowersPerSecond: passiveFollowersPerSecond,
     calculatedMoneyPerFollowerPerSecond:
       gs.baseMoneyPerFollowerPerSecond * (1 + moneyPerFollowerBonusTotal),
+    calculatedPostsPerClick: postsPerClick,
+    calculatedAutoPostsPerSecond: autoPostsPerSecond,
   }
 }

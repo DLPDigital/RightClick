@@ -9,7 +9,10 @@ interface StatusBarProps {
   followers: number
   moneyPerSecond: number
   postsMade: number
+  postsPerClick: number
+  followersPerClick: number
   followersPerSecond: number
+  autoPostsPerSecond: number
 }
 
 export const StatusBar: React.FC<StatusBarProps> = ({
@@ -18,17 +21,27 @@ export const StatusBar: React.FC<StatusBarProps> = ({
   followers,
   postsMade,
   followersPerSecond,
+  autoPostsPerSecond,
+  postsPerClick,
+  followersPerClick,
 }) => {
   return (
     <>
       <div className={container}>
         <div className={iconsContainer}>
-          <Stat icon="posts" rate={2} total={postsMade} label="Posts" />
+          <Stat
+            icon="posts"
+            rate={formatNumber(autoPostsPerSecond)}
+            total={formatNumber(postsMade)}
+            label="Posts"
+            perClick={postsPerClick}
+          />
           <Stat
             icon="followers"
             rate={followersPerSecond}
             total={formatNumber(followers)}
             label="Followers"
+            perClick={followersPerClick}
           />
           <Stat
             icon="money"
