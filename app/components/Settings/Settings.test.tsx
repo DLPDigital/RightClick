@@ -17,7 +17,14 @@ describe("Settings", () => {
     // Mock window.confirm
     window.confirm = jest.fn(() => true)
 
-    render(<Settings onExport={mockExport} onImport={mockImport} onReset={mockReset} />)
+    render(
+      <Settings
+        onExport={mockExport}
+        onImport={mockImport}
+        onReset={mockReset}
+        manualPostsMade={20}
+      />
+    )
 
     // Export
     fireEvent.click(screen.getByText(/Export to Clipboard/i))
