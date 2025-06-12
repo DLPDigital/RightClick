@@ -24,11 +24,13 @@ describe("generateRandomConspiracyPost", () => {
 
   it("returns a random post from RANDOM_POSTS when condition is met", () => {
     const originalGetRandomNumber = getRandomNumberModule.getRandomNumber
-    jest.spyOn(getRandomNumberModule, "getRandomNumber").mockReturnValue(96) // Ensure RANDOM_POSTS path IS taken
+    jest.spyOn(getRandomNumberModule, "getRandomNumber").mockReturnValue(99) // Ensure RANDOM_POSTS path IS taken
 
     // We also need to mock getRandomElement to control what RANDOM_POSTS returns for a predictable test
     const originalGetRandomElement = getRandomElementModule.getRandomElement
-    jest.spyOn(getRandomElementModule, "getRandomElement").mockReturnValueOnce("This is a random post from RANDOM_POSTS.")
+    jest
+      .spyOn(getRandomElementModule, "getRandomElement")
+      .mockReturnValueOnce("This is a random post from RANDOM_POSTS.")
 
     const result = generateRandomConspiracyPost(20)
     expect(result).toEqual({
@@ -39,7 +41,9 @@ describe("generateRandomConspiracyPost", () => {
 
     // Restore the original implementations
     jest.spyOn(getRandomNumberModule, "getRandomNumber").mockImplementation(originalGetRandomNumber)
-    jest.spyOn(getRandomElementModule, "getRandomElement").mockImplementation(originalGetRandomElement)
+    jest
+      .spyOn(getRandomElementModule, "getRandomElement")
+      .mockImplementation(originalGetRandomElement)
   })
 
   it("returns null if an error occurs (simulate by mocking getRandomElement)", () => {

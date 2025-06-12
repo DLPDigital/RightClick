@@ -17,6 +17,13 @@ export const INITIAL_ACHIEVEMENTS: Record<string, Achievement> = {
     unlocked: false,
     condition: (gs) => gs.followers >= 100,
   },
+  "hundred-posts": {
+    id: "hundred-posts",
+    name: "100 Posts",
+    description: "You've posted 100 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 100,
+  },
   "money-milestone-1k": {
     id: "money-milestone-1k",
     name: "Grifter Graduate",
@@ -31,6 +38,219 @@ export const INITIAL_ACHIEVEMENTS: Record<string, Achievement> = {
     unlocked: false,
     condition: (gs) =>
       gs.insanityLevelIndex >= INSANITY_STAGES.findIndex((s) => s.name === "Red Pilled"),
+  },
+  // --- Milestone Achievements ---
+  // 500
+  "posts-milestone-500": {
+    id: "posts-milestone-500",
+    name: "Truth Storm 500",
+    description: "You've posted 500 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 500,
+  },
+  "follower-milestone-500": {
+    id: "follower-milestone-500",
+    name: "500 Followers Club",
+    description: "Reached 500 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 500,
+  },
+  "money-milestone-500": {
+    id: "money-milestone-500",
+    name: "Halfway to a Grand",
+    description: "Earned $500.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 500,
+  },
+  // 1000
+  "posts-milestone-1000": {
+    id: "posts-milestone-1000",
+    name: "Millennial Poster",
+    description: "You've posted 1,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 1000,
+  },
+  "manual-post-1000": {
+    id: "manual-post-1000",
+    name: "Power Clicker 1000",
+    description: "You've clicked 1,000 times",
+    unlocked: false,
+    condition: (gs) => gs.manualPostsMade >= 1000,
+  },
+  "follower-milestone-1000": {
+    id: "follower-milestone-1000",
+    name: "1,000 Followers Club",
+    description: "Reached 1,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 1000,
+  },
+  "money-milestone-1000": {
+    id: "money-milestone-1000",
+    name: "Grifter Graduate",
+    description: "Earned your first $1,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 1000,
+  },
+  // 5000
+  "posts-milestone-5000": {
+    id: "posts-milestone-5000",
+    name: "5K Truths Unleashed",
+    description: "You've posted 5,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 5000,
+  },
+  "follower-milestone-5000": {
+    id: "follower-milestone-5000",
+    name: "5,000 Followers Club",
+    description: "Reached 5,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 5000,
+  },
+  "money-milestone-5000": {
+    id: "money-milestone-5000",
+    name: "Five Grand Gainer",
+    description: "Earned $5,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 5000,
+  },
+  // 10000
+  "posts-milestone-10000": {
+    id: "posts-milestone-10000",
+    name: "Misinformation King - 10K Truths",
+    description: "You've posted 10,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 10000,
+  },
+  "manual-post-10000": {
+    id: "manual-post-10000",
+    name: "Power Clicker 10,000",
+    description: "You've clicked 10,000 times! Maybe go outside?",
+    unlocked: false,
+    condition: (gs) => gs.manualPostsMade >= 1000,
+  },
+  "follower-milestone-10000": {
+    id: "follower-milestone-10000",
+    name: "10,000 Followers Club",
+    description: "Reached 10,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 10000,
+  },
+  "money-milestone-10000": {
+    id: "money-milestone-10000",
+    name: "Ten Grand Earner",
+    description: "Earned $10,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 10000,
+  },
+  // 25000
+  "posts-milestone-25000": {
+    id: "posts-milestone-25000",
+    name: "25K Truths",
+    description: "You've posted 25,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 25000,
+  },
+  "follower-milestone-25000": {
+    id: "follower-milestone-25000",
+    name: "25,000 Followers Club",
+    description: "Reached 25,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 25000,
+  },
+  "money-milestone-25000": {
+    id: "money-milestone-25000",
+    name: "Quarter-Millionaire",
+    description: "Earned $25,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 25000,
+  },
+  // 50000
+  "posts-milestone-50000": {
+    id: "posts-milestone-50000",
+    name: "50K Truths",
+    description: "You've posted 50,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 50000,
+  },
+  "follower-milestone-50000": {
+    id: "follower-milestone-50000",
+    name: "50,000 Followers Club",
+    description: "Reached 50,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 50000,
+  },
+  "money-milestone-50000": {
+    id: "money-milestone-50000",
+    name: "Fifty Grand Earner",
+    description: "Earned $50,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 50000,
+  },
+  // 100000
+  "posts-milestone-100000": {
+    id: "posts-milestone-100000",
+    name: "100K Truths",
+    description: "You've posted 100,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 100000,
+  },
+  "follower-milestone-100000": {
+    id: "follower-milestone-100000",
+    name: "100,000 Followers Club",
+    description: "Reached 100,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 100000,
+  },
+  "money-milestone-100000": {
+    id: "money-milestone-100000",
+    name: "Hundred Grand Earner",
+    description: "Earned $100,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 100000,
+  },
+  // 500000
+  "posts-milestone-500000": {
+    id: "posts-milestone-500000",
+    name: "500K Truths",
+    description: "You've posted 500,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 500000,
+  },
+  "follower-milestone-500000": {
+    id: "follower-milestone-500000",
+    name: "500,000 Followers Club",
+    description: "Reached 500,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 500000,
+  },
+  "money-milestone-500000": {
+    id: "money-milestone-500000",
+    name: "Half-Millionaire",
+    description: "Earned $500,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 500000,
+  },
+  // 1,000,000
+  "posts-milestone-1000000": {
+    id: "posts-milestone-1000000",
+    name: "1 Million Truths",
+    description: "You've posted 1,000,000 times!",
+    unlocked: false,
+    condition: (gs) => gs.postsMade >= 1000000,
+  },
+  "follower-milestone-1000000": {
+    id: "follower-milestone-1000000",
+    name: "1 Million Followers Club",
+    description: "Reached 1,000,000 followers.",
+    unlocked: false,
+    condition: (gs) => gs.followers >= 1000000,
+  },
+  "money-milestone-1000000": {
+    id: "money-milestone-1000000",
+    name: "Millionaire",
+    description: "Earned $1,000,000.",
+    unlocked: false,
+    condition: (gs) => gs.money >= 1000000,
   },
   // ... more achievements
 }
