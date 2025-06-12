@@ -48,6 +48,7 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     maxLevel: 10,
     unlocked: true,
     postsPerClickBonus: 1,
+    requirement: (gs) => gs.followers >= 1000,
   },
   "intern-army": {
     id: "intern-army",
