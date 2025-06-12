@@ -12,7 +12,7 @@ import { getRandomNumber } from "./getRandomNumber"
 export const generateRandomConspiracyPost = (followers: number): PostWithHashTags | null => {
   try {
     // Generate a random full post every now and then
-    const randomNum = getRandomNumber(1,100)
+    const randomNum = getRandomNumber(1, 100)
     if (randomNum > 95) {
       return {
         content: getRandomElement(RANDOM_POSTS),

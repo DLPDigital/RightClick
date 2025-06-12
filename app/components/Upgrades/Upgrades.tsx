@@ -1,6 +1,7 @@
 import React from "react"
 import { UpgradeItem } from "./Item"
 import { AvailableUpgradeDisplay } from "../../types"
+import { AUTO_POST_FOLLOWER_WEIGHTING } from "../../data/constants"
 
 interface UpgradesScreenProps {
   availableUpgrades: AvailableUpgradeDisplay[]
@@ -23,6 +24,10 @@ export const Upgrades: React.FC<UpgradesScreenProps> = ({
     <div className="upgrades-screen">
       <h2>Invest in “Research” (and Propaganda)</h2>
       <p>Buy better equipment, hire help, and expand your reach.</p>
+      <p>
+        Note: Autoposts will generate followers but they aren&apos;t as enticing, so they are only{" "}
+        {AUTO_POST_FOLLOWER_WEIGHTING * 100}% as effective as manual posting
+      </p>
       {sortedAvailableUpgrades.length === 0 && (
         <p>No upgrades available yet. Keep building your empire!</p>
       )}

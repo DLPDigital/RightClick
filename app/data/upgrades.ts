@@ -10,7 +10,7 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     level: 0,
     maxLevel: 10,
     unlocked: true,
-    // autoPostsPerSecondBonus: 1,
+    autoPostsPerSecondBonus: 0,
     // passiveFollowersPerSecondBonus: 0.1,
     postsPerClickBonus: 5,
     requirement: (gs) => gs.followers >= 0,
