@@ -17,7 +17,7 @@ export const buildBonusSentence = ({
     effects.push(`Followers per Click by ${followersPerClickBonus}`)
   }
   if (postsPerClickBonus && postsPerClickBonus > 0) {
-    effects.push(`Posts per Click by ${postsPerClickBonus}`)
+    effects.push(`Posts per Click to ${postsPerClickBonus}`)
   }
   if (autoPostsPerSecondBonus && autoPostsPerSecondBonus > 0) {
     effects.push(`Posts per second by ${autoPostsPerSecondBonus}`)

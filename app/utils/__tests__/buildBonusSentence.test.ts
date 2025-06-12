@@ -9,7 +9,7 @@ describe("buildBonusSentence", () => {
     expect(buildBonusSentence({ followersPerClickBonus: 5 })).toBe(
       "Increases Followers per Click by 5."
     )
-    expect(buildBonusSentence({ postsPerClickBonus: 10 })).toBe("Increases Posts per Click by 10.")
+    expect(buildBonusSentence({ postsPerClickBonus: 10 })).toBe("Increases Posts per Click to 10.")
     expect(buildBonusSentence({ autoPostsPerSecondBonus: 15 })).toBe(
       "Increases Posts per second by 15."
     )
@@ -20,10 +20,10 @@ describe("buildBonusSentence", () => {
 
   it("should return the correct sentence for two bonuses", () => {
     expect(buildBonusSentence({ followersPerClickBonus: 5, postsPerClickBonus: 10 })).toBe(
-      "Increases Followers per Click by 5 and Posts per Click by 10."
+      "Increases Followers per Click by 5 and Posts per Click to 10."
     )
     expect(buildBonusSentence({ postsPerClickBonus: 10, autoPostsPerSecondBonus: 15 })).toBe(
-      "Increases Posts per Click by 10 and Posts per second by 15."
+      "Increases Posts per Click to 10 and Posts per second by 15."
     )
     expect(
       buildBonusSentence({ autoPostsPerSecondBonus: 15, passiveFollowersPerSecondBonus: 20 })
@@ -37,7 +37,7 @@ describe("buildBonusSentence", () => {
         postsPerClickBonus: 10,
         autoPostsPerSecondBonus: 15,
       })
-    ).toBe("Increases Followers per Click by 5, Posts per Click by 10, and Posts per second by 15.")
+    ).toBe("Increases Followers per Click by 5, Posts per Click to 10, and Posts per second by 15.")
     expect(
       buildBonusSentence({
         postsPerClickBonus: 10,
@@ -45,7 +45,7 @@ describe("buildBonusSentence", () => {
         passiveFollowersPerSecondBonus: 20,
       })
     ).toBe(
-      "Increases Posts per Click by 10, Posts per second by 15, and Followers per second by 20."
+      "Increases Posts per Click to 10, Posts per second by 15, and Followers per second by 20."
     )
   })
 
@@ -58,7 +58,7 @@ describe("buildBonusSentence", () => {
         passiveFollowersPerSecondBonus: 20,
       })
     ).toBe(
-      "Increases Followers per Click by 5, Posts per Click by 10, Posts per second by 15, and Followers per second by 20."
+      "Increases Followers per Click by 5, Posts per Click to 10, Posts per second by 15, and Followers per second by 20."
     )
   })
 
