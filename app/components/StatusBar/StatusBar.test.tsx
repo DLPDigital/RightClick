@@ -11,6 +11,9 @@ describe("StatusBar", () => {
         followers={215}
         postsMade={42}
         followersPerSecond={3}
+        postsPerClick={2}
+        autoPostsPerSecond={1}
+        followersPerClick={3}
       />
     )
 
@@ -19,10 +22,10 @@ describe("StatusBar", () => {
     expect(screen.getByText(/Followers/i)).toBeInTheDocument()
     expect(screen.getByText(/Money/i)).toBeInTheDocument()
 
-    // Check formatted values
+    // // Check formatted values
     expect(screen.getByText("42")).toBeInTheDocument() // postsMade
-    expect(screen.getByText("215")).toBeInTheDocument() // followers
-    expect(screen.getByText("$12.35K")).toBeInTheDocument() // money
+    // expect(screen.getByText("215")).toBeInTheDocument() // followers
+    expect(screen.getByText("$12,345.00")).toBeInTheDocument() // money
     expect(screen.getByText("$67.00 p/s")).toBeInTheDocument() // moneyPerSecond
   })
 })

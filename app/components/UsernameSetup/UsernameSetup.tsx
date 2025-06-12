@@ -25,7 +25,7 @@ interface UsernameSetupProps {
 
 export const UsernameSetup: React.FC<UsernameSetupProps> = memo(
   ({ onUsernameSet, onAvatarSet }) => {
-    console.log("UsernameSetup RENDERED/RE-RENDERED")
+    // console.log("UsernameSetup RENDERED/RE-RENDERED")
     const [currentUsername, setCurrentUsername] = useState("")
     const [error, setError] = useState("")
     const [selectedAvatar, setSelectedAvatar] = useState<AvatarType | null>(AVATARS[0])

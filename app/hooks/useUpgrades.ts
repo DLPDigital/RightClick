@@ -67,8 +67,6 @@ export const useUpgrades = (gameState: GameState, dispatch: Dispatch<GameAction>
         const currentCost = definition.baseCost * Math.pow(definition.costMultiplier, currentLevel)
         const isMaxLevel = definition.maxLevel !== undefined && currentLevel >= definition.maxLevel
 
-        console.log("definition = ", JSON.stringify(definition))
-
         return {
           id: gsUpgrade.id,
           level: currentLevel,
