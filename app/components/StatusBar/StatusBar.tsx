@@ -31,14 +31,14 @@ export const StatusBar: React.FC<StatusBarProps> = ({
         <div className={iconsContainer}>
           <Stat
             icon="posts"
-            rate={formatNumber(autoPostsPerSecond)}
+            rate={formatNumber(autoPostsPerSecond, true)}
             total={formatNumber(postsMade)}
             label="Posts"
             perClick={postsPerClick}
           />
           <Stat
             icon="followers"
-            rate={followersPerSecond}
+            rate={formatNumber(followersPerSecond, true)}
             total={formatNumber(followers)}
             label="Followers"
             perClick={followersPerClick}

@@ -2,6 +2,9 @@ import React from "react"
 import { formatNumber } from "../../../utils/formatters"
 import { Button } from "../../Button"
 import { AvailableUpgradeDisplay } from "../../../types"
+import { buildBonusSentence } from "../../../utils/buildBonusSentence"
+
+import { card, missing } from "./Item.css"
 
 interface UpgradeItemProps {
   upgrade: AvailableUpgradeDisplay
@@ -10,40 +13,50 @@ interface UpgradeItemProps {
 }
 
 export const UpgradeItem: React.FC<UpgradeItemProps> = ({ upgrade, money, onPurchase }) => {
+  const {
+    name,
+    level,
+    maxLevel,
+    description,
+    currentCost,
+    canAfford,
+    isMaxLevel,
+    id,
+    followersPerClickBonus,
+    postsPerClickBonus,
+    autoPostsPerSecondBonus,
+    passiveFollowersPerSecondBonus,
+  } = upgrade
+
   const handlePurchaseClick = () => {
-    if (upgrade.canAfford && !upgrade.isMaxLevel) {
-      onPurchase(upgrade.id)
+    if (canAfford && !isMaxLevel) {
+      onPurchase(id)
     }
   }
 
+  const bonusSentence = buildBonusSentence({
+    followersPerClickBonus,
+    postsPerClickBonus,
+    autoPostsPerSecondBonus,
+    passiveFollowersPerSecondBonus,
+  })
+
   return (
-    <div className="item-card upgrade-item">
+    <div className={card}>
       <h3>
-        {upgrade.name} (Lvl: {upgrade.level}
-        {upgrade.maxLevel !== undefined ? `/${upgrade.maxLevel}` : ""})
+        {name} (Lvl: {level}
+        {maxLevel !== undefined ? `/${maxLevel}` : ""})
       </h3>
-      <p>{upgrade.description}</p>
-      {!upgrade.isMaxLevel && <p>Cost: ${formatNumber(upgrade.currentCost)}</p>}
+      <p>{description}</p>
+      {bonusSentence !== "No effect." && <p>{bonusSentence}</p>}
+      {!isMaxLevel && <p>Cost: ${formatNumber(currentCost)}</p>}
 
-      {/* {upgrade.followersPerClickBonus && ( // Assuming these are on AvailableUpgradeDisplay
-        <p>Effect: +{formatNumber(upgrade.followersPerClickBonus)} Followers/Post (per level)</p>
-      )}
-      {upgrade.passiveFollowersPerSecondBonus && ( // Assuming these are on AvailableUpgradeDisplay
-        <p>Effect: +{formatNumber(upgrade.passiveFollowersPerSecondBonus)} Followers/Sec (per level)</p>
-      )}
-      {upgrade.moneyPerFollowerBonus && ( // Assuming these are on AvailableUpgradeDisplay
-        <p>Effect: +{upgrade.moneyPerFollowerBonus * 100}% Money/Follower (per level)</p>
-      )} */}
-
-      <Button onClick={handlePurchaseClick} disabled={!upgrade.canAfford || upgrade.isMaxLevel}>
-        {upgrade.isMaxLevel ? "Max Level" : upgrade.canAfford ? "Buy" : "Not Enough Money"}
+      <Button onClick={handlePurchaseClick} disabled={!canAfford || isMaxLevel}>
+        {isMaxLevel ? "Max Level" : canAfford ? "Buy" : "Not Enough Money"}
       </Button>
-      {!upgrade.canAfford && !upgrade.isMaxLevel && (
-        <div
-          className="requirements-missing"
-          style={{ fontSize: "0.9em", color: "#777", marginTop: "5px" }}
-        >
-          <small>Need ${formatNumber(upgrade.currentCost - money)} more</small>
+      {!canAfford && !isMaxLevel && (
+        <div className={missing}>
+          <small>Need ${formatNumber(currentCost - money)} more</small>
         </div>
       )}
     </div>

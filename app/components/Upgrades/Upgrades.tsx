@@ -3,6 +3,8 @@ import { UpgradeItem } from "./Item"
 import { AvailableUpgradeDisplay } from "../../types"
 import { AUTO_POST_FOLLOWER_WEIGHTING } from "../../data/constants"
 
+import { container, itemsContainer } from "./Upgrades.css"
+
 interface UpgradesScreenProps {
   availableUpgrades: AvailableUpgradeDisplay[]
   onPurchaseUpgrade: (id: string) => void
@@ -21,7 +23,7 @@ export const Upgrades: React.FC<UpgradesScreenProps> = ({
   })
 
   return (
-    <div className="upgrades-screen">
+    <div className={container}>
       <h2>Invest in “Research” (and Propaganda)</h2>
       <p>Buy better equipment, hire help, and expand your reach.</p>
       <p>
@@ -31,7 +33,7 @@ export const Upgrades: React.FC<UpgradesScreenProps> = ({
       {sortedAvailableUpgrades.length === 0 && (
         <p>No upgrades available yet. Keep building your empire!</p>
       )}
-      <div className="item-list">
+      <div className={itemsContainer}>
         {sortedAvailableUpgrades.map((upgrade) => (
           <UpgradeItem
             key={upgrade.id}
