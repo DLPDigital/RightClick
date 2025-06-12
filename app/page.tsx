@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback, useMemo } from "react"
+import debounce from "lodash/debounce"
 import "./App.css"
 import "./theme/theme.css"
 
@@ -75,9 +76,16 @@ function App() {
   }, [dispatch]) // `dispatch` from useReducer is stable and won't change.
 
   // --- Handle Post Action ---
-  const handlePost = useCallback(() => {
-    dispatch({ type: "POST" })
-  }, [dispatch])
+  const debouncedHandlePost = useMemo(
+    () => debounce(() => dispatch({ type: "POST" }), 50, { leading: true, trailing: false }),
+    [dispatch]
+  )
+
+  useEffect(() => {
+    return () => {
+      debouncedHandlePost.cancel()
+    }
+  }, [debouncedHandlePost])
 
   const handleUsernameSet = useCallback(
     (username: string) => {
@@ -113,7 +121,7 @@ function App() {
       case "posting":
         return (
           <Posting
-            onPost={handlePost}
+            onPost={debouncedHandlePost}
             postsFeed={gameState.postsFeed}
             username={gameState.username}
             avatar={gameState.avatar}
@@ -163,7 +171,11 @@ function App() {
 
   return (
     <AppContainer>
-      <NavBar currentScreen={currentScreen} onNavigate={setCurrentScreen} onPost={handlePost} />
+      <NavBar
+        currentScreen={currentScreen}
+        onNavigate={setCurrentScreen}
+        onPost={debouncedHandlePost}
+      />
       <StatusBar
         money={gameState.money}
         postsMade={gameState.postsMade}
