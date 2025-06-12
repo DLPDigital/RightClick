@@ -105,6 +105,7 @@ export type TargetCategoryType =
 export interface PostSubject {
   name: string
   plural: boolean
+  status: "good" | "bad"
 }
 
 export interface PostVerbs {

@@ -67,21 +67,38 @@ async function fetchAndSaveData() {
     console.log("Fetching subjects data from Contentful...")
     const subjectEntries = await client.getEntry(SUBJECTS_ENTRY)
     const mappedSubjects = mapContentfulEntry(subjectEntries)
-    const { singleSubjects, pluralSubjects } = mappedSubjects
+    const { singleSubjects, pluralSubjects, goodSingleSubjects, goodPluralSubjects } =
+      mappedSubjects
     const singleData = singleSubjects.map((item: string) => {
       return {
         name: item,
         plural: false,
+        status: "bad",
       }
     })
     const pluralData = pluralSubjects.map((item: string) => {
       return {
         name: item,
         plural: true,
+        status: "bad",
+      }
+    })
+    const goodSingleData = goodSingleSubjects.map((item: string) => {
+      return {
+        name: item,
+        plural: false,
+        status: "good",
+      }
+    })
+    const goodPluralData = goodPluralSubjects.map((item: string) => {
+      return {
+        name: item,
+        plural: true,
+        status: "good",
       }
     })
 
-    const allSubjects = [...singleData, ...pluralData]
+    const allSubjects = [...singleData, ...pluralData, ...goodSingleData, ...goodPluralData]
     const allSubjectsString = JSON.stringify(allSubjects, null, 2)
 
     const subjectsString =
@@ -99,16 +116,19 @@ async function fetchAndSaveData() {
     })
     if (targetGroups?.items && targetGroups?.items.length > 0) {
       const mappedTargetGroups = targetGroups.items.reduce(
-        (acc: Record<string, any[]>, item: any) => {
+        (acc: Record<string, { bad: any[]; good: any[] }>, item: any) => {
           const map = mapContentfulEntry(item)
-          acc[map.groupId] = map.groups
+          acc[map.groupId] = {
+            bad: map.groups || [],
+            good: map.goodGroups || [],
+          }
           return acc
         },
         {}
       )
       const targetsString =
         `import { TargetCategoryType, VerbCategoryType } from "../../types"\n\n` +
-        `export const verbTargetCompatibility: Record<VerbCategoryType, TargetCategoryType[]> = ${JSON.stringify(mappedTargetGroups, null, 2)}`
+        `export const verbTargetCompatibility: Record<VerbCategoryType, { bad: TargetCategoryType[]; good: TargetCategoryType[] }> = ${JSON.stringify(mappedTargetGroups, null, 2)}`
       fs.writeFileSync(TARGETS_GROUP_FILE, targetsString)
       console.log(
         `Successfully wrote ${Object.keys(mappedTargetGroups).length} target groups to ${TARGETS_GROUP_FILE}`

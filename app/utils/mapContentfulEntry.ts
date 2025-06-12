@@ -21,6 +21,7 @@ const mapfields = (entry: Entry | Asset): Record<string, any> => {
     return {
       groupId: (fields as any).groupId,
       groups: (fields as any).groups.map((group: any) => group.fields.targetId),
+      goodGroups: (fields as any).groupsForGoodSubjects?.map((group: any) => group.fields.targetId),
     }
   }
 
