@@ -1,12 +1,15 @@
 export type ScreenName = "posting" | "grifting" | "upgrades" | "clout" | "settings"
 
-export interface Upgrade {
+export interface UpgradeInstance {
   id: string
+  level: number
+}
+
+export interface Upgrade extends UpgradeInstance {
   name: string
   description: string
   baseCost: number
   costMultiplier: number
-  level: number
   maxLevel?: number
   unlocked: boolean
   followersPerClickBonus?: number
@@ -16,6 +19,13 @@ export interface Upgrade {
   postsPerClickBonus?: number
   autoPostsPerSecondBonus?: number
   requirement?: (gameState: GameState) => boolean
+}
+
+// Define what an "available" upgrade might look like for the UI
+export interface AvailableUpgradeDisplay extends Upgrade {
+  currentCost: number
+  canAfford: boolean
+  isMaxLevel: boolean
 }
 
 export interface MonetizationOption {
@@ -28,22 +38,6 @@ export interface MonetizationOption {
   active: boolean
   unlocked: boolean
   requirement?: (gameState: GameState) => boolean
-}
-
-export interface UpgradeInstance {
-  id: string
-  level: number
-}
-
-// Define what an "available" upgrade might look like for the UI
-export interface AvailableUpgradeDisplay extends UpgradeInstance {
-  name: string
-  description: string
-  currentCost: number
-  maxLevel?: number
-  canAfford: boolean
-  isMaxLevel: boolean
-  // any other UI-relevant properties
 }
 
 export interface MonetizationInstance {

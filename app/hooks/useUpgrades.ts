@@ -67,6 +67,8 @@ export const useUpgrades = (gameState: GameState, dispatch: Dispatch<GameAction>
         const currentCost = definition.baseCost * Math.pow(definition.costMultiplier, currentLevel)
         const isMaxLevel = definition.maxLevel !== undefined && currentLevel >= definition.maxLevel
 
+        console.log("definition = ", JSON.stringify(definition))
+
         return {
           id: gsUpgrade.id,
           level: currentLevel,
@@ -76,6 +78,18 @@ export const useUpgrades = (gameState: GameState, dispatch: Dispatch<GameAction>
           maxLevel: definition.maxLevel,
           canAfford: gameState.money >= currentCost && !isMaxLevel,
           isMaxLevel: isMaxLevel,
+          followersPerClickBonus:
+            (definition.followersPerClickBonus ?? 0) *
+            (currentLevel === definition.maxLevel ? currentLevel : currentLevel + 1),
+          postsPerClickBonus:
+            (definition.postsPerClickBonus ?? 0) *
+            (currentLevel === definition.maxLevel ? currentLevel : currentLevel + 1),
+          autoPostsPerSecondBonus:
+            (definition.autoPostsPerSecondBonus ?? 0) *
+            (currentLevel === definition.maxLevel ? currentLevel : currentLevel + 1),
+          passiveFollowersPerSecondBonus:
+            (definition.passiveFollowersPerSecondBonus ?? 0) *
+            (currentLevel === definition.maxLevel ? currentLevel : currentLevel + 1),
         }
       })
       .filter(Boolean) as AvailableUpgradeDisplay[] // Filter out any nulls from missing definitions
