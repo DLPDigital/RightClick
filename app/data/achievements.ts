@@ -31,6 +31,13 @@ export const INITIAL_ACHIEVEMENTS: Record<string, Achievement> = {
     unlocked: false,
     condition: (gs) => gs.money >= 1000,
   },
+  "hundred-per-second": {
+    id: "hundred-per-second",
+    name: "100 dollars per second",
+    description: "Raking it in, nice.",
+    unlocked: false,
+    condition: (gs) => gs.moneyPerSecond >= 100,
+  },
   "tin-foil-hat": {
     id: "tin-foil-hat",
     name: "Tin Foil Connoisseur",
