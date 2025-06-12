@@ -13,7 +13,7 @@ export const generateRandomConspiracyPost = (followers: number): PostWithHashTag
   try {
     // Generate a random full post every now and then
     const randomNum = getRandomNumber(1, 100)
-    if (randomNum > 95) {
+    if (randomNum > 98) {
       return {
         content: getRandomElement(RANDOM_POSTS),
         hashtags: "",
