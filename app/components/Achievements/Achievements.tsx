@@ -3,6 +3,7 @@ import { Achievement, InsanityStage } from "../../types"
 import { AchievementItem } from "./Item"
 
 import { achievementsScreen, achievementList } from "./Achievements.css"
+import { formatNumber } from "../../utils/formatters"
 
 interface AchievementsScreenProps {
   allAchievements: Record<string, Achievement>
@@ -21,7 +22,7 @@ export const Achievements: React.FC<AchievementsScreenProps> = ({
     <div className={achievementsScreen}>
       <h2>Clout & Achievements</h2>
       <p>
-        You have posted {postsMade} times! Your audience are rated &ldquo;{insanity.name}&rdquo;.
+        You have posted {formatNumber(postsMade)} times! Your audience are rated &ldquo;{insanity.name}&rdquo;.
       </p>
       <p>Many are thinking &ldquo;{insanity.description}&rdquo;.</p>
       <h3>Achievements</h3>
