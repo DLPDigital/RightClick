@@ -36,7 +36,10 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 3,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.followers >= 5000 && gs.money == 2000,
+    requirement: (gs) => {
+      const podcastSponsorshipItem = gs.monetizationOptions.find((u) => u.id === "podcast-sponsorships")
+      return !!(podcastSponsorshipItem && podcastSponsorshipItem.active)
+    },
   },
   "gold-buying": {
     id: "gold-buying",
@@ -47,7 +50,10 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 10,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.followers >= 5000,
+    requirement: (gs) => {
+      const newsletterItem = gs.monetizationOptions.find((u) => u.id === "launch-newsletter")
+      return !!(newsletterItem && newsletterItem.active)
+    },
   },
   "survival-gear": {
     id: "survival-gear",
@@ -59,7 +65,10 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 50,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.followers >= 5000,
+    requirement: (gs) => {
+      const goldBuyingItem = gs.monetizationOptions.find((u) => u.id === "gold-buying")
+      return !!(goldBuyingItem && goldBuyingItem.active)
+    },
   },
   merch: {
     id: "merch",
@@ -71,7 +80,10 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 100,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.followers >= 10000,
+    requirement: (gs) => {
+      const survivalGearItem = gs.monetizationOptions.find((u) => u.id === "survival-gear")
+      return !!(survivalGearItem && survivalGearItem.active)
+    },
   },
   podcast: {
     id: "podcast",
@@ -83,7 +95,10 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 250,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.followers >= 20000,
+    requirement: (gs) => {
+      const merchItem = gs.monetizationOptions.find((u) => u.id === "merch")
+      return !!(merchItem && merchItem.active)
+    },
   },
   "youtube-channel": {
     id: "youtube-channel",
@@ -94,6 +109,9 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     moneyPerSecond: 500,
     active: false,
     unlocked: false,
-    requirement: (gs) => gs.followers >= 50000,
+    requirement: (gs) => {
+      const podcastItem = gs.monetizationOptions.find((u) => u.id === "podcast")
+      return !!(podcastItem && podcastItem.active)
+    },
   },
 }
