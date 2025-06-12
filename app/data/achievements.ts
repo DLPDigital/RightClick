@@ -126,7 +126,7 @@ export const INITIAL_ACHIEVEMENTS: Record<string, Achievement> = {
     name: "Power Clicker 10,000",
     description: "You've clicked 10,000 times! Maybe go outside?",
     unlocked: false,
-    condition: (gs) => gs.manualPostsMade >= 1000,
+    condition: (gs) => gs.manualPostsMade >= 10000,
   },
   "follower-milestone-10000": {
     id: "follower-milestone-10000",
