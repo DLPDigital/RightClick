@@ -63,11 +63,11 @@ export const avatarsContainer = style({
   flexWrap: "wrap",
   justifyContent: "center",
   width: "100%",
-  maxWidth: "360px",
+  maxWidth: "300px",
   margin: "0 auto",
   gap: "1rem",
-  border: "solid 1px white",
   padding: "1rem",
+  marginTop: "1rem",
 })
 
 const avatarContainer = style({
