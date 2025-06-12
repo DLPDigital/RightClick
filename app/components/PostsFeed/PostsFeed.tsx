@@ -1,6 +1,6 @@
 import React from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { GeneratedPost } from "../../types"
+import { AvatarType, GeneratedPost } from "../../types"
 import { Post } from "./Post"
 
 import { container, postsContainer } from "./PostsFeed.css"
@@ -8,9 +8,10 @@ import { container, postsContainer } from "./PostsFeed.css"
 type Props = {
   postsFeed: GeneratedPost[]
   username: string
+  avatar: AvatarType
 }
 
-export const PostsFeed: React.FC<Props> = ({ postsFeed, username }) => (
+export const PostsFeed: React.FC<Props> = ({ postsFeed, username, avatar }) => (
   <div className={container}>
     <h3>Posts</h3>
     <div className={postsContainer}>
@@ -32,6 +33,7 @@ export const PostsFeed: React.FC<Props> = ({ postsFeed, username }) => (
                 hashtags={post.hashtags}
                 username={username}
                 engagements={post.engagements}
+                avatar={avatar}
               />
             </motion.div>
           )

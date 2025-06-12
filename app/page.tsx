@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from "react"
 import "./App.css"
 import "./theme/theme.css"
 
-import { ScreenName } from "./types"
+import { AvatarType, ScreenName } from "./types"
 import { INSANITY_STAGES } from "./data/insanityLevels"
 import { GAME_TICK_INTERVAL } from "./data/constants"
 import { INITIAL_ACHIEVEMENTS } from "./data/achievements"
@@ -86,6 +86,13 @@ function App() {
     [dispatch]
   )
 
+  const handleAvatarSet = useCallback(
+    (avatar: AvatarType) => {
+      dispatch({ type: "SET_AVATAR", payload: { avatar } })
+    },
+    [dispatch]
+  )
+
   // --- Derived Data for UI ---
   const currentInsanityStage = useMemo(() => {
     const insanityLevelIndex = gameState?.insanityLevelIndex ?? 0
@@ -97,7 +104,7 @@ function App() {
   }
 
   if (!gameState.username) {
-    return <UsernameSetup onUsernameSet={handleUsernameSet} />
+    return <UsernameSetup onUsernameSet={handleUsernameSet} onAvatarSet={handleAvatarSet} />
   }
 
   // --- Screen Rendering Logic ---
@@ -109,6 +116,7 @@ function App() {
             onPost={handlePost}
             postsFeed={gameState.postsFeed}
             username={gameState.username}
+            avatar={gameState.avatar}
           />
         )
       case "grifting":

@@ -62,6 +62,7 @@ export interface InsanityStage {
 
 export interface GameState {
   username: string
+  avatar: AvatarType
   money: number
   followers: number
   postsMade: number
@@ -133,4 +134,9 @@ export interface PostWithHashTags {
 export interface GeneratedPost extends PostWithHashTags {
   id: string
   timestamp: number
+}
+
+export interface AvatarType {
+  filename: string
+  alt: string
 }

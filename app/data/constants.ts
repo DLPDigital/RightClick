@@ -1,4 +1,5 @@
 import { GameState } from "../types"
+import { AVATARS } from "./avatars"
 
 export const SAVE_KEY = "conspiracyClickerSave"
 export const VISUAL_UPDATE_INTERVAL = 50 // 20fps for smooth UI
@@ -11,6 +12,7 @@ export const AUTO_POST_FOLLOWER_WEIGHTING = 0.2
 
 export const initialGameState: GameState = {
   username: "",
+  avatar: AVATARS[0],
   money: 0,
   followers: 0,
   postsMade: 0,

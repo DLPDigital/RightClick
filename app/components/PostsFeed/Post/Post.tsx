@@ -5,34 +5,36 @@ import Image from "next/image"
 import {
   container,
   avatarContainer,
-  avatar,
+  avatarStyle,
   tweetContainer,
   userContainer,
   contentContainer,
   iconsContainer,
 } from "./Post.css"
 import { vars } from "../../../theme/theme.css"
-import { PostWithHashTags } from "../../../types"
+import { AvatarType, PostWithHashTags } from "../../../types"
 
 type Props = {
   content: string
   hashtags: string
   username: string
   engagements: PostWithHashTags["engagements"]
+  avatar: AvatarType
 }
 
-export const Post: React.FC<Props> = ({ content, hashtags, username, engagements }) => {
+export const Post: React.FC<Props> = ({ content, hashtags, username, engagements, avatar }) => {
   const { comments, retweets, likes } = engagements
+  const { filename, alt } = avatar
   return (
     <div className={container}>
       <div className={avatarContainer}>
-        <div className={avatar}>
+        <div className={avatarStyle}>
           <Image
-            src="/images/red-pill-icon.png"
-            alt="Take the Red Pill"
-            title="red-pill-icon.png"
-            width="30"
-            height="40"
+            src={`/images/avatars/${filename}`}
+            alt={alt}
+            title={filename}
+            width="60"
+            height="60"
           />
         </div>
       </div>

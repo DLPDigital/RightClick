@@ -15,6 +15,7 @@ export const avatarContainer = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  minWidth: "60px",
   "@media": {
     [breakpoints.smallDesktop]: {
       padding: "0.5rem",
@@ -22,13 +23,17 @@ export const avatarContainer = style({
   },
 })
 
-export const avatar = style({
+export const avatarStyle = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: vars.color.foreground,
   height: "2.5rem",
   width: "2.5rem",
+  borderRadius: "50%",
+})
+
+globalStyle(`${avatarStyle} img`, {
   borderRadius: "50%",
 })
 
