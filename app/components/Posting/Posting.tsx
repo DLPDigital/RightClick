@@ -2,16 +2,17 @@ import React from "react"
 import { Button } from "../Button"
 
 import { container, content, tip } from "./Posting.css"
-import { GeneratedPost } from "../../types"
+import { AvatarType, GeneratedPost } from "../../types"
 import { PostsFeed } from "../PostsFeed"
 
 interface PostingScreenProps {
   onPost: () => void
   postsFeed: GeneratedPost[]
   username: string
+  avatar: AvatarType
 }
 
-export const Posting: React.FC<PostingScreenProps> = ({ onPost, postsFeed, username }) => {
+export const Posting: React.FC<PostingScreenProps> = ({ onPost, postsFeed, username, avatar }) => {
   return (
     <div className={container}>
       <div className={content}>
@@ -25,7 +26,9 @@ export const Posting: React.FC<PostingScreenProps> = ({ onPost, postsFeed, usern
         Tip: The more you post, the deeper down the rabbit hole you go... and the more
         &ldquo;lucrative&rdquo; opportunities arise.
       </p>
-      {postsFeed.length >= 0 && <PostsFeed postsFeed={postsFeed} username={username} />}
+      {postsFeed.length >= 0 && (
+        <PostsFeed postsFeed={postsFeed} username={username} avatar={avatar} />
+      )}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css"
+import { globalStyle, style, styleVariants } from "@vanilla-extract/css"
 import { vars, alveraFontBold } from "../../theme/theme.css"
 
 export const usernameSetupContainer = style({
@@ -55,4 +55,40 @@ export const errorMessage = style({
   marginTop: "0.5rem",
   minHeight: "1.2em",
   fontSize: "0.9rem",
+})
+
+export const avatarsContainer = style({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  justifyContent: "center",
+  width: "100%",
+  maxWidth: "360px",
+  margin: "0 auto",
+  gap: "1rem",
+  border: "solid 1px white",
+  padding: "1rem",
+})
+
+const avatarContainer = style({
+  borderRadius: "50%",
+})
+
+export const avatarVariant = styleVariants({
+  Default: [
+    avatarContainer,
+    {
+      border: `solid 2px ${vars.color.highlight}`,
+    },
+  ],
+  Selected: [
+    avatarContainer,
+    {
+      border: `solid 2px ${vars.color.secondary}`,
+    },
+  ],
+})
+
+globalStyle(`${avatarContainer} img`, {
+  borderRadius: "50%",
 })

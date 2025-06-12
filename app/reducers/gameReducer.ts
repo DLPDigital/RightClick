@@ -1,4 +1,10 @@
-import { GameState, UpgradeInstance, MonetizationInstance, GeneratedPost } from "../types" // Import necessary types
+import {
+  GameState,
+  UpgradeInstance,
+  MonetizationInstance,
+  GeneratedPost,
+  AvatarType,
+} from "../types" // Import necessary types
 import { initialGameState } from "../data/constants" // For reset and potentially initial load
 import { AVAILABLE_UPGRADES } from "../data/upgrades"
 import { INITIAL_MONETIZATION_OPTIONS } from "../data/monetization"
@@ -21,6 +27,7 @@ export type GameAction =
   | { type: "SET_USERNAME"; payload: { username: string } }
   | { type: "POST_GENERATED_FOR_FEED"; payload: { postsGeneratedForFeed: number } }
   | { type: "INCREMENT_POSTS_GENERATED_FOR_FEED" }
+  | { type: "SET_AVATAR"; payload: { avatar: AvatarType } }
 
 // --- Reducer Function ---
 export const gameReducer = (state: GameState, action: GameAction): GameState => {
@@ -297,6 +304,14 @@ export const gameReducer = (state: GameState, action: GameAction): GameState => 
       return {
         ...state,
         postsGeneratedForFeed: state.postsGeneratedForFeed + 1,
+      }
+    }
+
+    case "SET_AVATAR": {
+      // console.log("REDUCER: Setting username to", action.payload.username)
+      return {
+        ...state,
+        avatar: action.payload.avatar,
       }
     }
 
