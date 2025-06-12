@@ -34,7 +34,7 @@ export const generateRandomConspiracyPost = (followers: number): PostWithHashTag
     const verbData = getRandomElement(POST_VERBS)
     const verbGerund = getRandomElement(verbData.verbs)
 
-    const compatibleTargetTypes = verbTargetCompatibility[verbData.type]
+    const compatibleTargetTypes = verbTargetCompatibility[verbData.type][subject.status]
 
     if (!compatibleTargetTypes || compatibleTargetTypes.length === 0) {
       console.warn(

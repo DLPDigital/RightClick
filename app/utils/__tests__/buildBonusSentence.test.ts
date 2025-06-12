@@ -37,9 +37,7 @@ describe("buildBonusSentence", () => {
         postsPerClickBonus: 10,
         autoPostsPerSecondBonus: 15,
       })
-    ).toBe(
-      "Increases Followers per Click by 5, Posts per Click by 10, and Posts per second by 15."
-    )
+    ).toBe("Increases Followers per Click by 5, Posts per Click by 10, and Posts per second by 15.")
     expect(
       buildBonusSentence({
         postsPerClickBonus: 10,
