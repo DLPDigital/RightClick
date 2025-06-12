@@ -1,5 +1,5 @@
 [build]
-  command = "yarn generate && yarn fix && yarn test && next build"
+  command = "yarn generate && yarn fix && yarn test && yarn tsc && next build"
   publish = "out"
 
 [build.environment]
