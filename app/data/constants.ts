@@ -7,6 +7,7 @@ export const SAVE_INTERVAL = 5000 // Save every 5 seconds
 export const DEBOUNCED_SAVE_INTERVAL = 10000 // 10 seconds
 export const POST_GENERATION_INTERVAL = 6000 // 6 seconds
 // export const POST_GENERATION_INTERVAL = 2000 // 2 seconds
+export const AUTO_POST_FOLLOWER_WEIGHTING = 0.2
 
 export const initialGameState: GameState = {
   username: "",
