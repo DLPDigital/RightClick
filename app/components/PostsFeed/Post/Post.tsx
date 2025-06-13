@@ -13,6 +13,7 @@ import {
 } from "./Post.css"
 import { vars } from "../../../theme/theme.css"
 import { AvatarType, PostWithHashTags } from "../../../types"
+import { formatNumber } from "../../../utils/formatters"
 
 type Props = {
   content: string
@@ -49,15 +50,15 @@ export const Post: React.FC<Props> = ({ content, hashtags, username, engagements
         <div className={iconsContainer}>
           <div>
             <SpeechbubbleIcon fill={vars.color.borderSecondary} />
-            <span>{comments}</span>
+            <span>{formatNumber(comments)}</span>
           </div>
           <div>
             <RetweetIcon fill={vars.color.borderSecondary} />
-            <span>{retweets}</span>
+            <span>{formatNumber(retweets)}</span>
           </div>
           <div>
             <HeartIcon fill={vars.color.borderSecondary} />
-            <span>{likes}</span>
+            <span>{formatNumber(likes)}</span>
           </div>
         </div>
       </div>
