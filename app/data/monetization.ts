@@ -151,7 +151,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "Who said old media was dead? Not the way we do it, 17 issues a day, free for anyone who knows the handshake",
     costToActivate: 1000000,
-    followerRequirement: 800000,
+    followerRequirement: 2000000,
     moneyPerSecond: 250,
     active: false,
     unlocked: false,
@@ -166,7 +166,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "We're broadcasting 24/7 in every nursing home in the world, those seniors aren't gonna radicalise themselves",
     costToActivate: 2500000,
-    followerRequirement: 1200000,
+    followerRequirement: 4000000,
     moneyPerSecond: 800,
     active: false,
     unlocked: false,
@@ -181,7 +181,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "We're making movies now, none of that woke stuff either. The hero always gets the girl, and she knows her place",
     costToActivate: 5000000,
-    followerRequirement: 2000000,
+    followerRequirement: 8000000,
     moneyPerSecond: 1200,
     active: false,
     unlocked: false,
@@ -196,7 +196,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "We've had enough of our kids playing these super violent games like Grand Theft Auto where players kill cops on their wokestations. Buy our video games where the player hunts pink haired lefists with pet cats.",
     costToActivate: 7500000,
-    followerRequirement: 4000000,
+    followerRequirement: 12000000,
     moneyPerSecond: 2000,
     active: false,
     unlocked: false,
@@ -211,7 +211,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "These communist corporates keep censoring our voices! Put a stop to that with our own ISP.",
     costToActivate: 10000000,
-    followerRequirement: 6000000,
+    followerRequirement: 15000000,
     moneyPerSecond: 5000,
     active: false,
     unlocked: false,
@@ -226,7 +226,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "No more vaxxes for your supports. Take this one tablet and it will render all big pharma poison completely inert (any similarities to flea powder are coincidental).",
     costToActivate: 15000000,
-    followerRequirement: 7500000,
+    followerRequirement: 25000000,
     moneyPerSecond: 6000,
     active: false,
     unlocked: false,
@@ -241,7 +241,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "The people want to see you! Agree to show up to their divorce parties and firings and sell selfies!",
     costToActivate: 20000000,
-    followerRequirement: 10000000,
+    followerRequirement: 50000000,
     moneyPerSecond: 8000,
     active: false,
     unlocked: false,
@@ -256,7 +256,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "Sell your followers signed autographs, it'll prove to their families they're really friends with you",
     costToActivate: 40000000,
-    followerRequirement: 15000000,
+    followerRequirement: 75000000,
     moneyPerSecond: 10000,
     active: false,
     unlocked: false,
@@ -273,7 +273,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "You knew it was coming. Everyone is doing it, why shouldn't you? Sell GriftCoin to your followers. It's totally not a rug pull you guys. Requires the Meme Coin Upgrade.",
     costToActivate: 80000000,
-    followerRequirement: 30000000,
+    followerRequirement: 85000000,
     moneyPerSecond: 25000,
     active: false,
     unlocked: false,
@@ -294,7 +294,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "You met the Donald, GEOTUS Trump. It was at a rally sure, but he stuck his thumb at you and glanced in your direction during his totally not weird dance. Your followers will want a picture of that. Requires the Trump Ticket upgrade.",
     costToActivate: 100000000,
-    followerRequirement: 50000000,
+    followerRequirement: 100000000,
     moneyPerSecond: 30000,
     active: false,
     unlocked: false,
@@ -315,7 +315,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     description:
       "He's been hearing all about your totally awesome work, now you get to go on Rogan, smoke cigars and set the world straight with your facts",
     costToActivate: 200000000,
-    followerRequirement: 100000000,
+    followerRequirement: 125000000,
     moneyPerSecond: 40000,
     active: false,
     unlocked: false,
