@@ -26,6 +26,10 @@ export interface AvailableUpgradeDisplay extends Upgrade {
   currentCost: number
   canAfford: boolean
   isMaxLevel: boolean
+  initialFollowersPerClick?: number
+  initialFollowersPerSecond?: number
+  initialPostsPerClick?: number
+  initialPostsPerSecond?: number
 }
 
 export interface MonetizationOption {

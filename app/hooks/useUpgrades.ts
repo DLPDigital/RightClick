@@ -88,6 +88,10 @@ export const useUpgrades = (gameState: GameState, dispatch: Dispatch<GameAction>
           passiveFollowersPerSecondBonus:
             (definition.passiveFollowersPerSecondBonus ?? 0) *
             (currentLevel === definition.maxLevel ? currentLevel : currentLevel + 1),
+          initialFollowersPerClick: definition.followersPerClickBonus,
+          initialFollowersPerSecond: definition.passiveFollowersPerSecondBonus,
+          initialPostsPerClick: definition.postsPerClickBonus,
+          initialPostsPerSecond: definition.autoPostsPerSecondBonus,
         }
       })
       .filter(Boolean) as AvailableUpgradeDisplay[] // Filter out any nulls from missing definitions

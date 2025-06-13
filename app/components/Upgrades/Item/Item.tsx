@@ -22,10 +22,10 @@ export const UpgradeItem: React.FC<UpgradeItemProps> = ({ upgrade, money, onPurc
     canAfford,
     isMaxLevel,
     id,
-    followersPerClickBonus,
-    postsPerClickBonus,
-    autoPostsPerSecondBonus,
-    passiveFollowersPerSecondBonus,
+    initialFollowersPerClick,
+    initialFollowersPerSecond,
+    initialPostsPerClick,
+    initialPostsPerSecond,
   } = upgrade
 
   const handlePurchaseClick = () => {
@@ -35,10 +35,10 @@ export const UpgradeItem: React.FC<UpgradeItemProps> = ({ upgrade, money, onPurc
   }
 
   const bonusSentence = buildBonusSentence({
-    followersPerClickBonus,
-    postsPerClickBonus,
-    autoPostsPerSecondBonus,
-    passiveFollowersPerSecondBonus,
+    followersPerClickBonus: initialFollowersPerClick,
+    postsPerClickBonus: initialPostsPerClick,
+    autoPostsPerSecondBonus: initialPostsPerSecond,
+    passiveFollowersPerSecondBonus: initialFollowersPerSecond,
   })
 
   return (
