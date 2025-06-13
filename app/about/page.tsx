@@ -23,7 +23,7 @@ const AboutPage: React.FC = () => (
     <h2>Tech</h2>
     <p>The game is built in Typescript using Next.js, the posts come from Contentful</p>
     <h2>Cookie Policy</h2>
-    <p>We don't have one because we don't collect any. Basic anayltics are provided by <a href="https://withcabin.com/" target="_blank" rel="noreferrer" title="WithCabin">WithCabin</a>, a privacy first Google Analytics alternative.</p>
+    <p>We don't have one because we don&apos;t collect any. Basic anayltics are provided by <a href="https://withcabin.com/" target="_blank" rel="noreferrer" title="WithCabin">WithCabin</a>, a privacy first Google Analytics alternative.</p>
     <h2>Contact</h2>
     <p>If you want to get in touch, drop me a line here: right-clicker-game@proton.me</p>
     <p>Thanks for playing!</p>
