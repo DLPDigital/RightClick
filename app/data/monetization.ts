@@ -130,10 +130,11 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
       return !!(youtubeItem && youtubeItem.active)
     },
   },
-  "newspaper": {
+  newspaper: {
     id: "newspaper",
     name: "Start a newspaper",
-    description: "Who said old media was dead? Not the way we do it, 17 issues a day, free for anyone who knows the handshake",
+    description:
+      "Who said old media was dead? Not the way we do it, 17 issues a day, free for anyone who knows the handshake",
     costToActivate: 1000000,
     followerRequirement: 800000,
     moneyPerSecond: 250,
@@ -147,7 +148,8 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
   "tv-channel": {
     id: "tv-channel",
     name: "Our own TV Channel",
-    description: "We're broadcasting 24/7 in every nursing home in the world, those seniors aren't gonna radicalise themselves",
+    description:
+      "We're broadcasting 24/7 in every nursing home in the world, those seniors aren't gonna radicalise themselves",
     costToActivate: 2500000,
     followerRequirement: 1200000,
     moneyPerSecond: 800,
@@ -161,7 +163,8 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
   "making-movies": {
     id: "making-movies",
     name: "Making Movies",
-    description: "We're making movies now, none of that woke stuff either. The hero always gets the girl, and she knows her place",
+    description:
+      "We're making movies now, none of that woke stuff either. The hero always gets the girl, and she knows her place",
     costToActivate: 5000000,
     followerRequirement: 2000000,
     moneyPerSecond: 1200,

@@ -127,7 +127,8 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
   botfarm: {
     id: "botfarm",
     name: "Botfarm",
-    description: "Your cousin and his broccoli-top friends are slacking, we need more posts and posters. Hire out a bot farm to really get those posts going",
+    description:
+      "Your cousin and his broccoli-top friends are slacking, we need more posts and posters. Hire out a bot farm to really get those posts going",
     baseCost: 50000,
     costMultiplier: 2,
     level: 0,
@@ -137,7 +138,7 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     requirement: (gs) => {
       const internItem = gs.upgrades.find((u) => u.id === "inter-army")
       return !!(internItem && internItem.level >= 15)
-    }
+    },
   },
   // ... more upgrades: SEO, Bot Farm, Green Screen, Studio, etc.
 }
