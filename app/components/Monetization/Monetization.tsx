@@ -16,29 +16,23 @@ export const Monetization: React.FC<MonetizationScreenProps> = ({
   onActivateMonetization,
   currentMoney,
   currentFollowers,
-}) => {
-  const sortedAvailableOptions = [...availableMonetization].sort(
-    (a, b) => a.followerRequirement - b.followerRequirement
-  )
-
-  return (
-    <div className={container}>
-      <h2>Grift & Monetize</h2>
-      <p>Turn your followers into cold, hard cash.</p>
-      {sortedAvailableOptions.length === 0 && (
-        <p>No monetization options available yet. Keep posting!</p>
-      )}
-      <div className={itemsContainer}>
-        {sortedAvailableOptions.map((option) => (
-          <MonetizationItem
-            key={option.id}
-            option={option}
-            money={currentMoney}
-            followers={currentFollowers}
-            onActivate={onActivateMonetization}
-          />
-        ))}
-      </div>
+}) => (
+  <div className={container}>
+    <h2>Grift & Monetize</h2>
+    <p>Turn your followers into cold, hard cash.</p>
+    {availableMonetization.length === 0 && (
+      <p>No monetization options available yet. Keep posting!</p>
+    )}
+    <div className={itemsContainer}>
+      {availableMonetization.map((option) => (
+        <MonetizationItem
+          key={option.id}
+          option={option}
+          money={currentMoney}
+          followers={currentFollowers}
+          onActivate={onActivateMonetization}
+        />
+      ))}
     </div>
-  )
-}
+  </div>
+)
