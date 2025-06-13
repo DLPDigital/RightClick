@@ -228,7 +228,7 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     unlocked: false,
     requirement: (gs) => {
       const spotifyDealItem = gs.upgrades.find((u) => u.id === "spotify-deal")
-      return !!(spotifyDealItem && spotifyDealItem.level >= 3)
+      return !!(spotifyDealItem && spotifyDealItem.level >= 1)
     },
   },
   "delete-podcasts": {
