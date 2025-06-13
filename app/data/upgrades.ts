@@ -136,9 +136,138 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     autoPostsPerSecondBonus: 20,
     unlocked: false,
     requirement: (gs) => {
-      const internItem = gs.upgrades.find((u) => u.id === "inter-army")
+      const internItem = gs.upgrades.find((u) => u.id === "intern-army")
       return !!(internItem && internItem.level >= 15)
     },
   },
+  memecoin: {
+    id: "memecoin",
+    name: "Mint your own meme coins",
+    description:
+      "Someone popped up in your DMs saying they can mint you your own meme coin - GriftCoin, if you just give them some money. Purchasing unlocks selling meme coins.",
+    baseCost: 40000000,
+    costMultiplier: 1,
+    level: 0,
+    maxLevel: 1,
+    autoPostsPerSecondBonus: 0,
+    unlocked: false,
+    requirement: (gs) => {
+      const botFarmItem = gs.upgrades.find((u) => u.id === "botfarm")
+      return !!(botFarmItem && botFarmItem.level >= 2)
+    },
+  },
+  "trump-ticket": {
+    id: "trump-ticket",
+    name: "Meet President Trump",
+    description:
+      "The big man himself wants to meet you, well not just you but thousands of you, in an audience, at a rally. Grab a pic with him at the end for your profile pic!",
+    baseCost: 75000,
+    costMultiplier: 1,
+    level: 0,
+    maxLevel: 1,
+    autoPostsPerSecondBonus: 40,
+    unlocked: false,
+    requirement: (gs) => {
+      const botFarmItem = gs.upgrades.find((u) => u.id === "botfarm")
+      return !!(botFarmItem && botFarmItem.level >= 3)
+    },
+  },
+  "private-jet": {
+    id: "private-jet",
+    name: "Private Jet",
+    description:
+      "You can't be flying commercial with all the regular folk, it's not right. Invest in a PJ and hit the skies in style",
+    baseCost: 5000000,
+    costMultiplier: 1.5,
+    level: 0,
+    maxLevel: 3,
+    autoPostsPerSecondBonus: 150,
+    followersPerClickBonus: 20,
+    unlocked: false,
+    requirement: (gs) => {
+      const memeCoinItem = gs.upgrades.find((u) => u.id === "memecoin")
+      return !!(memeCoinItem && memeCoinItem.level >= 1)
+    },
+  },
+  "whitehouse-press": {
+    id: "whitehouse-press",
+    name: "Whitehouse Press Pass",
+    description:
+      "The people need to hear straight from the horse's mouth, especially if it's full of horse paste. Buy a press pass to the Whitehouse and get your scoops direct",
+    baseCost: 10000000,
+    costMultiplier: 1,
+    level: 0,
+    maxLevel: 1,
+    followersPerClickBonus: 100,
+    unlocked: false,
+    requirement: (gs) => {
+      const privateJetItem = gs.upgrades.find((u) => u.id === "private-jet")
+      return !!(privateJetItem && privateJetItem.level >= 2)
+    },
+  },
+  "spotify-deal": {
+    id: "spotify-deal",
+    name: "Spotify Deal",
+    description: "Sign a distribution deal with Spotify, stop being silenced!",
+    baseCost: 100000000,
+    costMultiplier: 1,
+    level: 0,
+    maxLevel: 1,
+    autoPostsPerSecondBonus: 500,
+    unlocked: false,
+    requirement: (gs) => {
+      const memeCoinItem = gs.upgrades.find((u) => u.id === "memecoin")
+      return !!(memeCoinItem && memeCoinItem.level >= 1)
+    },
+  },
+  "buyout-spotify": {
+    id: "buyout-spotify",
+    name: "Buyout Spotify",
+    description:
+      "You've outgrown Spotify, time to take it out of the hands of the corporate lefties",
+    baseCost: 500000000,
+    costMultiplier: 1,
+    level: 0,
+    maxLevel: 1,
+    autoPostsPerSecondBonus: 2000,
+    unlocked: false,
+    requirement: (gs) => {
+      const spotifyDealItem = gs.upgrades.find((u) => u.id === "spotify-deal")
+      return !!(spotifyDealItem && spotifyDealItem.level >= 3)
+    },
+  },
+  "delete-podcasts": {
+    id: "delete-podcasts",
+    name: "Cancel Lefty Podcasts",
+    description:
+      "These lefty podcasts want us censored and cancelled. Make sure they can't by deleting them all.",
+    baseCost: 750000000,
+    costMultiplier: 2,
+    level: 0,
+    maxLevel: 3,
+    autoPostsPerSecondBonus: 4000,
+    unlocked: false,
+    requirement: (gs) => {
+      const buyoutSpotifyItem = gs.upgrades.find((u) => u.id === "buyout-spotify")
+      return !!(buyoutSpotifyItem && buyoutSpotifyItem.level >= 3)
+    },
+  },
+  // "": {
+  //   id: "",
+  //   name: "",
+  //   description: "",
+  //   baseCost: ,
+  //   costMultiplier: ,
+  //   level: 0,
+  //   maxLevel: ,
+  //   autoPostsPerSecondBonus: ,
+  //   followersPerClickBonus: ,
+  //   unlocked: false,
+  //   requirement: (gs) => {
+  //     const Item = gs.upgrades.find((u) => u.id === "")
+  //     return !!(Item && Item.level >= 3)
+  //   },
+  // },
+
   // ... more upgrades: SEO, Bot Farm, Green Screen, Studio, etc.
 }
