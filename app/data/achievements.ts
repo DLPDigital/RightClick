@@ -457,5 +457,24 @@ export const INITIAL_ACHIEVEMENTS: Record<string, Achievement> = {
     unlocked: false,
     condition: (gs) => gs.money >= 100000000000,
   },
-  // ... more achievements
+  "fifty-broccoli-tops": {
+    id: "fifty-broccoli-tops",
+    name: "50 Broccoli Tops",
+    description: "You've got 50 Broccoli tops, you can smell the body spray",
+    unlocked: false,
+    condition: (gs) => {
+      const internItem = gs.upgrades.find((u) => u.id === "clickbait-headlines")
+      return !!(internItem && internItem.level >= 50)
+    }
+  },
+  "one-hundred-broccoli-tops": {
+    id: "one-hundred-broccoli-tops",
+    name: "100 Broccoli Tops",
+    description: "You've got 100 Broccoli tops, air the room out",
+    unlocked: false,
+    condition: (gs) => {
+      const internItem = gs.upgrades.find((u) => u.id === "clickbait-headlines")
+      return !!(internItem && internItem.level >= 100)
+    }
+  }
 }
