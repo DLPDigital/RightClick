@@ -216,7 +216,7 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     active: false,
     unlocked: false,
     requirement: (gs) => {
-      const videoGamesItem = gs.monetizationOptions.find((u) => u.id === "video-games")
+      const videoGamesItem = gs.monetizationOptions.find((u) => u.id === "videogames")
       return !!(videoGamesItem && videoGamesItem.active)
     },
   },
