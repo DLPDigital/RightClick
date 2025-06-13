@@ -8,6 +8,11 @@ globalStyle(`${resetContainer} button`, {
   borderColor: vars.color.lightRed,
 })
 
+globalStyle(`${resetContainer} a`, {
+  color: vars.color.secondary,
+  marginTop: "5rem",
+})
+
 export const importContainer = style({
   margin: "2rem 0",
   display: "flex",

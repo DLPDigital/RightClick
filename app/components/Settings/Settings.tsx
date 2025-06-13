@@ -68,6 +68,8 @@ export const Settings: React.FC<SettingsScreenProps> = ({
       <div className={resetContainer}>
         <h3>Reset</h3>
         <Button onClick={onReset}>Reset Game</Button>
+        <p>&nbsp;</p>
+      <p><a href="/about" title="About Right Clicker">About Right Clicker</a></p>
       </div>
     </div>
   )
