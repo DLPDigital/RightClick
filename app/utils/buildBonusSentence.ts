@@ -14,16 +14,16 @@ export const buildBonusSentence = ({
   const effects: string[] = []
 
   if (followersPerClickBonus && followersPerClickBonus > 0) {
-    effects.push(`Followers per Click to ${followersPerClickBonus}`)
+    effects.push(`Followers per Click by ${followersPerClickBonus}`)
   }
   if (postsPerClickBonus && postsPerClickBonus > 0) {
-    effects.push(`Posts per Click to ${postsPerClickBonus}`)
+    effects.push(`Posts per Click by ${postsPerClickBonus}`)
   }
   if (autoPostsPerSecondBonus && autoPostsPerSecondBonus > 0) {
-    effects.push(`Posts per second to ${autoPostsPerSecondBonus}`)
+    effects.push(`Posts per second by ${autoPostsPerSecondBonus}`)
   }
   if (passiveFollowersPerSecondBonus && passiveFollowersPerSecondBonus > 0) {
-    effects.push(`Followers per second to ${passiveFollowersPerSecondBonus}`)
+    effects.push(`Followers per second by ${passiveFollowersPerSecondBonus}`)
   }
 
   if (effects.length === 0) {

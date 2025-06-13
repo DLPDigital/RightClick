@@ -50,10 +50,27 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     postsPerClickBonus: 1,
     requirement: (gs) => gs.followers >= 1000,
   },
+  "profile-pic": {
+    id: "profile-pic",
+    name: "Profile Pic",
+    description:
+      "Get a new headshot for your profile, your followers need to see how alpha you are",
+    baseCost: 100,
+    costMultiplier: 1,
+    level: 0,
+    maxLevel: 1,
+    unlocked: true,
+    followersPerClickBonus: 5,
+    requirement: (gs) => {
+      const headlinesItem = gs.upgrades.find((u) => u.id === "clickbait-headlines")
+      return !!(headlinesItem && headlinesItem.level >= 4)
+    },
+  },
   "intern-army": {
     id: "intern-army",
-    name: "Hire an Intern",
-    description: 'They post while you "research". +1 posts/sec.',
+    name: "Hire a Broccoli Top Intern",
+    description:
+      "Hire your little cousin and his friends to post for you, you're busy with your own research",
     baseCost: 1000,
     costMultiplier: 1.5,
     level: 0,
@@ -61,6 +78,19 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     unlocked: false,
     autoPostsPerSecondBonus: 1,
     requirement: (gs) => gs.followers >= 2000,
+  },
+  dyor: {
+    id: "dyor",
+    name: "Do Your Own Research",
+    description:
+      "Click around stuff so fast you don't even have time to read it let alone understand it, who cares? Just share it!",
+    baseCost: 10000,
+    costMultiplier: 1.5,
+    level: 0,
+    maxLevel: 20,
+    unlocked: false,
+    autoPostsPerSecondBonus: 3,
+    requirement: (gs) => gs.followers >= 10000,
   },
   "podcast-mic": {
     id: "podcast-mic",
@@ -92,6 +122,22 @@ export const AVAILABLE_UPGRADES: Record<string, Upgrade> = {
     requirement: (gs) => {
       const youtubeItem = gs.monetizationOptions.find((u) => u.id === "youtube-channel")
       return !!(youtubeItem && youtubeItem.active)
+    },
+  },
+  botfarm: {
+    id: "botfarm",
+    name: "Botfarm",
+    description:
+      "Your cousin and his broccoli-top friends are slacking, we need more posts and posters. Hire out a bot farm to really get those posts going",
+    baseCost: 50000,
+    costMultiplier: 2,
+    level: 0,
+    maxLevel: 5,
+    autoPostsPerSecondBonus: 20,
+    unlocked: false,
+    requirement: (gs) => {
+      const internItem = gs.upgrades.find((u) => u.id === "inter-army")
+      return !!(internItem && internItem.level >= 15)
     },
   },
   // ... more upgrades: SEO, Bot Farm, Green Screen, Studio, etc.

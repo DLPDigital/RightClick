@@ -37,7 +37,9 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     active: false,
     unlocked: false,
     requirement: (gs) => {
-      const podcastSponsorshipItem = gs.monetizationOptions.find((u) => u.id === "podcast-sponsorships")
+      const podcastSponsorshipItem = gs.monetizationOptions.find(
+        (u) => u.id === "podcast-sponsorships"
+      )
       return !!(podcastSponsorshipItem && podcastSponsorshipItem.active)
     },
   },
@@ -112,6 +114,65 @@ export const INITIAL_MONETIZATION_OPTIONS: Record<string, MonetizationOption> = 
     requirement: (gs) => {
       const podcastItem = gs.monetizationOptions.find((u) => u.id === "podcast")
       return !!(podcastItem && podcastItem.active)
+    },
+  },
+  "podcast-network": {
+    id: "podcast-network",
+    name: "Podcast Network",
+    description: "One podcast just isn't enough you, start a sprawling network",
+    costToActivate: 750000,
+    followerRequirement: 800000,
+    moneyPerSecond: 700,
+    active: false,
+    unlocked: false,
+    requirement: (gs) => {
+      const youtubeItem = gs.monetizationOptions.find((u) => u.id === "youtube-channel")
+      return !!(youtubeItem && youtubeItem.active)
+    },
+  },
+  newspaper: {
+    id: "newspaper",
+    name: "Start a newspaper",
+    description:
+      "Who said old media was dead? Not the way we do it, 17 issues a day, free for anyone who knows the handshake",
+    costToActivate: 1000000,
+    followerRequirement: 800000,
+    moneyPerSecond: 250,
+    active: false,
+    unlocked: false,
+    requirement: (gs) => {
+      const podcastNetworkItem = gs.monetizationOptions.find((u) => u.id === "podcast-network")
+      return !!(podcastNetworkItem && podcastNetworkItem.active)
+    },
+  },
+  "tv-channel": {
+    id: "tv-channel",
+    name: "Our own TV Channel",
+    description:
+      "We're broadcasting 24/7 in every nursing home in the world, those seniors aren't gonna radicalise themselves",
+    costToActivate: 2500000,
+    followerRequirement: 1200000,
+    moneyPerSecond: 800,
+    active: false,
+    unlocked: false,
+    requirement: (gs) => {
+      const newspaperItem = gs.monetizationOptions.find((u) => u.id === "newspaper")
+      return !!(newspaperItem && newspaperItem.active)
+    },
+  },
+  "making-movies": {
+    id: "making-movies",
+    name: "Making Movies",
+    description:
+      "We're making movies now, none of that woke stuff either. The hero always gets the girl, and she knows her place",
+    costToActivate: 5000000,
+    followerRequirement: 2000000,
+    moneyPerSecond: 1200,
+    active: false,
+    unlocked: false,
+    requirement: (gs) => {
+      const tvchannelItem = gs.monetizationOptions.find((u) => u.id === "tv-channel")
+      return !!(tvchannelItem && tvchannelItem.active)
     },
   },
 }
