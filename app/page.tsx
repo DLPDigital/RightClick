@@ -27,6 +27,9 @@ import { Settings } from "./components/Settings"
 import { Footer } from "./components/Footer"
 import { useAutoPostGenerator } from "./hooks/useAutoPostGenerator"
 import { UsernameSetup } from "./components/UsernameSetup"
+import { useAchievementNotifications } from "./hooks/useAchievementNotifications"
+import { ToastNotification } from "./components/ToastNotification"
+import * as Toast from "@radix-ui/react-toast"
 
 function App() {
   // --- State for UI Navigation ---
@@ -101,6 +104,19 @@ function App() {
     [dispatch]
   )
 
+  const [toasts, setToasts] = useState<Array<{ id: string; message: string }>>([])
+
+  const showToast = useCallback((message: string) => {
+    const toastId = `toast-${Date.now()}-${Math.random()}`
+    setToasts((prevToasts) => [...prevToasts, { id: toastId, message }])
+  }, [])
+
+  const removeToast = useCallback((toastId: string) => {
+    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== toastId))
+  }, [])
+
+  useAchievementNotifications(gameState, showToast)
+
   // --- Derived Data for UI ---
   const currentInsanityStage = useMemo(() => {
     const insanityLevelIndex = gameState?.insanityLevelIndex ?? 0
@@ -170,25 +186,35 @@ function App() {
   }
 
   return (
-    <AppContainer>
-      <NavBar
-        currentScreen={currentScreen}
-        onNavigate={setCurrentScreen}
-        onPost={debouncedHandlePost}
-      />
-      <StatusBar
-        money={gameState.money}
-        postsMade={gameState.postsMade}
-        followers={gameState.followers}
-        followersPerSecond={gameState.passiveFollowersPerSecond}
-        moneyPerSecond={gameState.moneyPerSecond}
-        autoPostsPerSecond={gameState.autoPostsPerSecond}
-        postsPerClick={gameState.postsPerClick}
-        followersPerClick={gameState.followersPerClick}
-      />
-      <ComponentContainer>{renderScreen()}</ComponentContainer>
-      <Footer />
-    </AppContainer>
+    <Toast.Provider swipeDirection="right">
+      <AppContainer>
+        <NavBar
+          currentScreen={currentScreen}
+          onNavigate={setCurrentScreen}
+          onPost={debouncedHandlePost}
+        />
+        <StatusBar
+          money={gameState.money}
+          postsMade={gameState.postsMade}
+          followers={gameState.followers}
+          followersPerSecond={gameState.passiveFollowersPerSecond}
+          moneyPerSecond={gameState.moneyPerSecond}
+          autoPostsPerSecond={gameState.autoPostsPerSecond}
+          postsPerClick={gameState.postsPerClick}
+          followersPerClick={gameState.followersPerClick}
+        />
+        <ComponentContainer>{renderScreen()}</ComponentContainer>
+        {toasts.map((toast) => (
+          <ToastNotification
+            key={toast.id}
+            toastId={toast.id}
+            message={toast.message}
+            onRemove={removeToast}
+          />
+        ))}
+        <Footer />
+      </AppContainer>
+    </Toast.Provider>
   )
 }
 

@@ -28,12 +28,14 @@ export const Achievements: React.FC<AchievementsScreenProps> = ({
       <p>Many are thinking &ldquo;{insanity.description}&rdquo;.</p>
       <h3>Achievements</h3>
       <div className={achievementList}>
-        {Object.entries(allAchievements).reverse().map(([id, achievement]) => {
-          if (!unlockedAchievementIds.includes(id)) {
-            return
-          }
-          return <AchievementItem achievement={achievement} key={id} />
-        })}
+        {Object.entries(allAchievements)
+          .reverse()
+          .map(([id, achievement]) => {
+            if (!unlockedAchievementIds.includes(id)) {
+              return
+            }
+            return <AchievementItem achievement={achievement} key={id} />
+          })}
       </div>
     </div>
   )
