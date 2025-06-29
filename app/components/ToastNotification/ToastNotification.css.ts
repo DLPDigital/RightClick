@@ -60,8 +60,8 @@ export const toastViewport = style({
 })
 
 export const toastTitle = style({
-	marginBottom: "5px",
-	fontWeight: "500",
-	color: "var(--slate-12)",
-	fontSize: "15px",
+  marginBottom: "5px",
+  fontWeight: "500",
+  color: "var(--slate-12)",
+  fontSize: "15px",
 })

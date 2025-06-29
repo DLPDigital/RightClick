@@ -465,7 +465,7 @@ export const INITIAL_ACHIEVEMENTS: Record<string, Achievement> = {
     condition: (gs) => {
       const internItem = gs.upgrades.find((u) => u.id === "clickbait-headlines")
       return !!(internItem && internItem.level >= 50)
-    }
+    },
   },
   "one-hundred-broccoli-tops": {
     id: "one-hundred-broccoli-tops",
@@ -475,6 +475,6 @@ export const INITIAL_ACHIEVEMENTS: Record<string, Achievement> = {
     condition: (gs) => {
       const internItem = gs.upgrades.find((u) => u.id === "clickbait-headlines")
       return !!(internItem && internItem.level >= 100)
-    }
-  }
+    },
+  },
 }
