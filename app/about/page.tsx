@@ -24,7 +24,7 @@ const AboutPage: React.FC = () => (
     <p>The game is built in Typescript using Next.js, the posts come from Contentful</p>
     <h2>Cookie Policy</h2>
     <p>
-      We don&apos;t have one because we don&apos;t collect any. Basic anayltics are provided by{" "}
+      We don&apos;t have one because we don&apos;t collect any. Basic analytics are provided by{" "}
       <a href="https://withcabin.com/" target="_blank" rel="noreferrer" title="WithCabin">
         WithCabin
       </a>
