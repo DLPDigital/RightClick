@@ -15,8 +15,10 @@ import {
   errorMessage,
   avatarsContainer,
   avatarVariant,
+  aboutLink,
 } from "./UsernameSetup.css"
 import { AvatarType } from "../../types"
+import Link from "next/link"
 
 interface UsernameSetupProps {
   onUsernameSet: (username: string) => void
@@ -126,6 +128,7 @@ export const UsernameSetup: React.FC<UsernameSetupProps> = memo(
             </div>
             {error && <p className={errorMessage}>{error}</p>}
           </form>
+          <p className={aboutLink}><Link href="/about" title="About Right Clicker">About Right Clicker</Link></p>
         </div>
       </>
     )

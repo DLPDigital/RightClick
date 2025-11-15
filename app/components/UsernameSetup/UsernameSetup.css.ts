@@ -92,3 +92,10 @@ export const avatarVariant = styleVariants({
 globalStyle(`${avatarContainer} img`, {
   borderRadius: "50%",
 })
+
+export const aboutLink = style({
+  color: "white",
+})
+
+globalStyle(`${aboutLink} a`, {color: "white",
+})
