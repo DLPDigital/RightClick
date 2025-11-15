@@ -8,8 +8,13 @@ export const Footer: React.FC = () => (
   <footer>
     <div className={container}>
       <p>v1.0</p>
-      <p>© {thisYear}</p>
-      <p>
+      <p>© {thisYear} <br /><a
+          href="/about"
+          title="About RightClicker"
+        >
+          About
+        </a></p>
+     <p>
         <a
           href="https://github.com/DLPDigital/RightClick"
           target="_blank"
